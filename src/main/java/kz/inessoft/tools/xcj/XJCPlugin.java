@@ -28,7 +28,7 @@ public class XJCPlugin extends Plugin {
 
     @Override
     public String getOptionName() {
-        return "XknpXJCPlugin";
+        return "Xknp-pattern";
     }
 
     @Override
@@ -39,7 +39,7 @@ public class XJCPlugin extends Plugin {
 
     @Override
     public String getUsage() {
-        return "  -XknpXJCPlugin    :  knp xjc plugin for generate xml";
+        return "  -Xknp-pattern    :  knp xjc plugin for generate jaxb/json from xml";
     }
 
     @Override
