@@ -28,7 +28,7 @@ public class XJCPlugin extends Plugin {
 
     @Override
     public String getOptionName() {
-        return "Xexample-plugin";
+        return "XknpXJCPlugin";
     }
 
     @Override
@@ -39,7 +39,7 @@ public class XJCPlugin extends Plugin {
 
     @Override
     public String getUsage() {
-        return "  -Xexample-plugin    :  xjc example plugin";
+        return "  -XknpXJCPlugin    :  knp xjc plugin for generate xml";
     }
 
     @Override
