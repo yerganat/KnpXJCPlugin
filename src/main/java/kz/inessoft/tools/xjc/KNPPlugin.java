@@ -1,6 +1,6 @@
 package kz.inessoft.tools.xjc;
 
-import java.io.IOException;
+import java.io.*;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.codemodel.*;
@@ -9,8 +9,6 @@ import com.sun.tools.xjc.model.CPropertyInfo;
 import com.sun.xml.xsom.*;
 import kz.inessoft.tools.xjc.ext.JLambda;
 import kz.inessoft.tools.xjc.ext.JLambdaParam;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -19,10 +17,11 @@ import org.apache.logging.log4j.core.config.Configurator;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 import com.sun.tools.xjc.BadCommandLineException;
 import com.sun.tools.xjc.Options;
@@ -35,9 +34,18 @@ import com.sun.tools.xjc.model.CClassInfoParent.Package;
 import static com.sun.codemodel.JMod.*;
 
 public class KNPPlugin extends Plugin {
-    private static String PKG_BASE = "kz.inessoft.sono.app.fno.f";
-    private static String PKG = "kz.inessoft.sono.app.fno.f421.v19.services.";
+
+    private static Boolean GENERATE_ONLY_DTO = false;
+
+    private static String PKG_BASE = "kz.inessoft.sono.app.fno.";
+    private static String PKG_FNO = "f";
+    private static String PKG_FNO_WTIH_VERSION = "";
+    private static String PKG_FNO1 = "";
+    private static String PKG_FNO2= "";
+    private static String PKG_SERVICE = "kz.inessoft.sono.app.fno.f421.v19.services.";
     //private static String PKG = "kz.";
+
+    private File targetDir;
 
     private static final Logger logger = LogManager.getLogger(KNPPlugin.class);
 
@@ -73,6 +81,7 @@ public class KNPPlugin extends Plugin {
         for(String arg : args) {
             if(arg.equals("-onlydto")) {
                 logger.debug("Generate only DTO");
+                GENERATE_ONLY_DTO = true;
             }
             if(arg.equals("-quiet")) {
                 quiet = true;
@@ -95,7 +104,8 @@ public class KNPPlugin extends Plugin {
     @Override
     public boolean run(Outline model, Options opt, ErrorHandler errorHandler)
             throws SAXException {
-
+        this.targetDir = opt.targetDir;
+        //logger.debug( ToStringBuilder.reflectionToString(opt, ToStringStyle.SHORT_PREFIX_STYLE));
         this.J_MODEL = model.getCodeModel();
 
         for (ClassOutline classOutline : model.getClasses()) {
@@ -120,27 +130,38 @@ public class KNPPlugin extends Plugin {
 
                 String[] codeParts = this.FORM_CODE.split("\\.");
                 if(codeParts.length > 1) {
-                    PKG = PKG_BASE + codeParts[0];
+                    PKG_FNO1 = codeParts[0];
+                    PKG_FNO = PKG_FNO +  PKG_FNO1;
 
                     if(!codeParts[1].equals("00")) {
-                        PKG = PKG + ".app" + codeParts[1];
+                        PKG_FNO2 = codeParts[2];
+                        PKG_FNO = PKG_FNO + ".app" + PKG_FNO2;
                     }
                 } else {
-                    PKG = PKG_BASE + this.FORM_CODE;
+                    PKG_FNO = PKG_FNO + this.FORM_CODE;
                 }
 
                 //logger.debug( ToStringBuilder.reflectionToString(codeParts, ToStringStyle.SHORT_PREFIX_STYLE));
 
                 if(this.FNO_VERSION != null) {
-                    PKG = PKG + ".v" + this.FNO_VERSION;
+                    PKG_FNO_WTIH_VERSION = PKG_FNO + ".v" + this.FNO_VERSION;
+                } else {
+                    PKG_FNO_WTIH_VERSION = PKG_FNO;
                 }
 
-                PKG = PKG + ".services.";
+                PKG_SERVICE = PKG_BASE + PKG_FNO_WTIH_VERSION + ".services.";
+
+
             }
 
-            System.out.println(PKG);
+            System.out.println(PKG_SERVICE);
 
         }
+
+
+        this.generateMocks();
+
+        //System.exit(1);
 
         for (ClassOutline classOutline : model.getClasses()) {
 
@@ -176,7 +197,7 @@ public class KNPPlugin extends Plugin {
                 logger.debug("  to be generated fields for " + cClassInfo.shortName);
 
 
-                JDefinedClass restClass = this.J_MODEL._class(PKG + "dto.rest." + cClassInfo.shortName);
+                JDefinedClass restClass = this.J_MODEL._class(PKG_SERVICE + "dto.rest." + cClassInfo.shortName);
 
                 if(restClass.name().equals("Fno")) {
                     restFnoClass = restClass;
@@ -189,7 +210,7 @@ public class KNPPlugin extends Plugin {
 
                 JDefinedClass commonInterface = null;
                 if(classOutline.target.shortName.contains("Page")) {
-                    commonInterface = this.J_MODEL._class(PKG + "dto.I" + cClassInfo.shortName, ClassType.INTERFACE);
+                    commonInterface = this.J_MODEL._class(PKG_SERVICE + "dto.I" + cClassInfo.shortName, ClassType.INTERFACE);
                     //public interface IPage1010400101<T extends IPage1010400101Row> { TODO сделать extend для Rows
 
 
@@ -198,7 +219,7 @@ public class KNPPlugin extends Plugin {
                     if(classOutline.implClass.fields().get("row") == null) {
                         restClass._implements(commonInterface);
                     } else {
-                        restClass._implements(commonInterface.narrow(this.J_MODEL._class(PKG + "dto." + "I" + restClass.name() + "Row")));
+                        restClass._implements(commonInterface.narrow(this.J_MODEL._class(PKG_SERVICE + "dto." + "I" + restClass.name() + "Row")));
                     }
 
                     interfacePageList.add(commonInterface);
@@ -230,7 +251,7 @@ public class KNPPlugin extends Plugin {
                     if (fieldType instanceof JDefinedClass) {
                         JDefinedClass generatedByXmlClassType = (JDefinedClass) fieldType;
                         if (generatedByXmlClassType.getPackage().name().contains(xmlPackageName)) { //Меняем пакет в наших кастомных генерируемых классах
-                            fieldType = this.J_MODEL.parseType(fieldVarEntry.getValue().type().name().replace(xmlPackageName, PKG + "dto.rest."));
+                            fieldType = this.J_MODEL.parseType(fieldVarEntry.getValue().type().name().replace(xmlPackageName, PKG_SERVICE + "dto.rest."));
                         }
                     }
 
@@ -252,7 +273,7 @@ public class KNPPlugin extends Plugin {
                         this.generateSetter(commonInterface, fieldType, fieldName, true);
 
                         if(fieldName.equals("row")) {
-                            commonInterface.generify("T", this.J_MODEL._class(PKG + "dto." + commonInterface.name() + "Row"));
+                            commonInterface.generify("T", this.J_MODEL._class(PKG_SERVICE + "dto." + commonInterface.name() + "Row"));
                         }
                     }
 
@@ -300,11 +321,11 @@ public class KNPPlugin extends Plugin {
         }
 
 
-        this.jBaseConverterClass = this.generateBaseConverter(PKG + "dto.");
+        this.jBaseConverterClass = this.generateBaseConverter(PKG_SERVICE + "dto.");
 
-        this.jRestToXmlConverter = this.generateRestToXmlConverter(PKG + "dto.");
+        this.jRestToXmlConverter = this.generateRestToXmlConverter(PKG_SERVICE + "dto.");
 
-        this.jXmlToRestConverter = this.generateXmlToRestConverter(PKG + "dto.");
+        this.jXmlToRestConverter = this.generateXmlToRestConverter(PKG_SERVICE + "dto.");
 
 
         return true;
@@ -416,7 +437,7 @@ public class KNPPlugin extends Plugin {
             //private Form10104 convertForm10104(kz.inessoft.sono.app.fno.f101.app04.v20.services.dto.rest.Form10104 form10104) {
             for (JDefinedClass xmlFormClass: this.xmlFormClassList) {
                 JMethod jConvertFormMethod = jRestToXmlConverter.method(PUBLIC, xmlFormClass, "convert" + xmlFormClass.name());
-                JType jRestType = this.J_MODEL.parseType( PKG + "dto.rest." + xmlFormClass.name());
+                JType jRestType = this.J_MODEL.parseType( PKG_SERVICE + "dto.rest." + xmlFormClass.name());
                 JVar jFormParam = jConvertFormMethod.param(jRestType, xmlFormClass.name().toLowerCase());
 
 
@@ -507,7 +528,7 @@ public class KNPPlugin extends Plugin {
             //private Form10104 convertForm10104(kz.inessoft.sono.app.fno.f101.app04.v20.services.dto.xml.Form10104 form10104) {
             for (JDefinedClass xmlFormClass: this.restFormClassList) {
                 JMethod jConvertFormMethod = jXmlToRestConverter.method(PUBLIC, xmlFormClass, "convert" + xmlFormClass.name());
-                JType jRestType = this.J_MODEL.parseType( PKG + "dto.rest." + xmlFormClass.name());
+                JType jRestType = this.J_MODEL.parseType( PKG_SERVICE + "dto.rest." + xmlFormClass.name());
                 JVar jFormParam = jConvertFormMethod.param(jRestType, xmlFormClass.name().toLowerCase());
 
 
@@ -628,6 +649,54 @@ public class KNPPlugin extends Plugin {
         }
 
         return fixedValue.value;
+    }
+
+
+    private void generateMocks() {
+        if(!GENERATE_ONLY_DTO) {
+            this.genMockResourceContent(PKG_FNO_WTIH_VERSION + ".rest.", "VXXRestController.java", "rest/");
+
+            this.genMockResourceContent(PKG_FNO_WTIH_VERSION + ".services.", "VXXChargeInfoBuilder.java", "services/");
+            this.genMockResourceContent(PKG_FNO_WTIH_VERSION + ".services.", "VXXConstants.java", "services/");
+            this.genMockResourceContent(PKG_FNO_WTIH_VERSION + ".services.", "VXXFLKProcessor.java", "services/");
+            this.genMockResourceContent(PKG_FNO_WTIH_VERSION + ".services.", "VXXService.java", "services/");
+            this.genMockResourceContent(PKG_FNO_WTIH_VERSION + ".services.", "VXXUtils.java", "services/");
+
+            this.genMockResourceContent(PKG_FNO + ".", "FXXXApplication.java", "");
+            this.genMockResourceContent(PKG_FNO + ".", "FXXXChargeCallback.java", "");
+            this.genMockResourceContent(PKG_FNO + ".", "FXXXConfiguration.java", "");
+            this.genMockResourceContent(PKG_FNO + ".", "FXXXConstants.java", "");
+        }
+    }
+
+
+    private  void genMockResourceContent(String addPkg, String resName, String subDir) {
+        try {
+            String restDir = this.targetDir.getAbsolutePath() + File.separator + (PKG_BASE+ addPkg).replace('.', File.separatorChar);
+            new File(restDir).mkdirs();
+            String restPath = restDir + resName.replace("VXX", "V" + this.FNO_VERSION ).replace("FXXX", "F" + this.PKG_FNO1 );
+
+            logger.debug("Gen file " + restPath);
+
+
+            InputStream inputStream = getClass().getResourceAsStream("/mock/" + subDir + resName);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            String restController = reader.lines()
+                    .collect(Collectors.joining(System.lineSeparator()));
+
+            restController = restController
+                    .replace("fXXX", "f" +PKG_FNO1)
+                    .replace("FXXX", "F" +PKG_FNO1)
+                    .replace("vXX", "v"+FNO_VERSION)
+                    .replace("VXX", "V"+FNO_VERSION)
+                    .replace("x_form_path", FORM_CODE)
+                    .replace("x_fno_version", "v" + FNO_VERSION)
+                    .replace("x_only_fno_version", FNO_VERSION);
+            Files.write( Paths.get(restPath), restController.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
