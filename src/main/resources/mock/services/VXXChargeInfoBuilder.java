@@ -11,6 +11,7 @@ import kz.inessoft.sono.lib.tax.payers.dtos.BaseTaxPayer;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -29,12 +30,18 @@ public class VXXChargeInfoBuilder {
     private String taxOrg;
     private Date paymentDate1;
 
+    //private PageXXXXXXX pageXXXXXXX;
+
     private boolean additionalOrNotice;
 
 
     public VXXChargeInfoBuilder(Fno fno, BaseTaxPayer tp, DictDaysOffService dictDaysOffService) throws ParseException {
         this.fno = fno;
         this.tp = tp;
+
+        paymentDate1 = this.getDate1();
+
+        paymentDate1 = dictDaysOffService.getWorkDate(paymentDate1, 0);
     }
 
 
@@ -42,6 +49,8 @@ public class VXXChargeInfoBuilder {
         List<Charge> chargesTaxOrg = new ArrayList<>();
 
         //TODO Charge builder
+
+        //createAndAddCharge(chargesTaxOrg, pageXXXXXXX.getFieldXXXXXX(), paymentDate1, "101.04.002 I", KBK);
 
         ChargeInfo retVal = createEmptyCharge();
 
@@ -77,5 +86,13 @@ public class VXXChargeInfoBuilder {
         ChargeInfo chargeInfo = new ChargeInfo();
         //TODO set params
         return chargeInfo;
+    }
+
+
+    private Date getDate1(){
+        //Срок 1 - см Документацию по разноске
+        Calendar cal = Calendar.getInstance();
+        //TODO дата
+        return  cal.getTime();
     }
 }
