@@ -65,7 +65,7 @@ set JAVA="%JAVA_HOME%\bin\java"
 goto LAUNCHXJC
 
 :LAUNCHXJC
-set JAVA="D:\RSK\jdk-11.0.4\bin\java"
+set JAVA="..\jre-11.0.5.jre\bin\java"
 rem JXC module path
 set JAXB_PATH=%JAXB_HOME%/mod/jaxb-xjc.jar;%JAXB_HOME%/mod/jaxb-api.jar;%JAXB_HOME%/mod/codemodel.jar;%JAXB_HOME%/mod/jaxb-runtime.jar;%JAXB_HOME%/mod/istack-commons-runtime.jar;%JAXB_HOME%/mod/istack-commons-tools.jar;%JAXB_HOME%/mod/rngom.jar;%JAXB_HOME%/mod/xsom.jar;%JAXB_HOME%/mod/dtd-parser.jar;%JAXB_HOME%/mod/txw2.jar;%JAXB_HOME%/mod/stax-ex.jar;%JAXB_HOME%/mod/FastInfoset.jar;%JAXB_HOME%/mod/javax.activation.jar;%JAXB_HOME%/mod/relaxng-datatype.jar;%JAXB_HOME%/mod/activation-1.1.1.jar;%JAXB_HOME%/mod/KnpXJCPlugin-1.0-SNAPSHOT.jar;%JAXB_HOME%/mod/jackson-annotations-2.10.0.jar;%JAXB_HOME%/mod/jaxb-impl-2.3.2.jar;%JAXB_HOME%/mod/jaxb-core-2.3.0.1.jar;%JAXB_HOME%/mod/commons-lang3-3.3.2.jar;%JAXB_HOME%/mod/log4j-api-2.12.1.jar;%JAXB_HOME%/mod/log4j-core-2.12.1.jar
 
@@ -86,18 +86,18 @@ for /f "delims=-" %%i in ('echo %JAVA_VERSION2%') do set JAVA_VERSION=%%i
 echo Java major version: %JAVA_VERSION%
 
 if %JAVA_VERSION% GEQ 9 goto JDK9_OR_GREATER
-%JAVA% -cp %JAXB_PATH% %XJC_OPTS% com.sun.tools.xjc.XJCFacade %*  -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005
+%JAVA% -cp %JAXB_PATH% %XJC_OPTS% com.sun.tools.xjc.XJCFacade %*
 GOTO END
 
 :JDK9_OR_GREATER
 if %JAVA_VERSION% GTR 10 goto JDK11_OR_GREATER
 rem module path + upgrade
-%JAVA% --module-path %JAXB_PATH% --upgrade-module-path %JAXB_HOME%/mod/jaxb-api.jar %XJC_OPTS% -m com.sun.tools.xjc/com.sun.tools.xjc.XJCFacade %*  -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=1044
+%JAVA% --module-path %JAXB_PATH% --upgrade-module-path %JAXB_HOME%/mod/jaxb-api.jar %XJC_OPTS% -m com.sun.tools.xjc/com.sun.tools.xjc.XJCFacade %*
 GOTO END
 
 :JDK11_OR_GREATER
 rem module path
-%JAVA% --module-path %JAXB_PATH% %XJC_OPTS% -m com.sun.tools.xjc/com.sun.tools.xjc.XJCFacade %* -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=1044
+%JAVA% --module-path %JAXB_PATH% %XJC_OPTS% -m com.sun.tools.xjc/com.sun.tools.xjc.XJCFacade %*
 GOTO END
 
 :END

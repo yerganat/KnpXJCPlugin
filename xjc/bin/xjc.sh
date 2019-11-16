@@ -84,8 +84,11 @@ else
     JAVA=java
 fi
 
+JAVA="../jre-11.0.5.jre/bin/java";
+
 #JXC module path
 JAXB_PATH=${JAXB_HOME}/mod/jaxb-xjc.jar:\
+${JAXB_HOME}/mod/jaxb-jxc.jar:\
 ${JAXB_HOME}/mod/jaxb-api.jar:\
 ${JAXB_HOME}/mod/codemodel.jar:\
 ${JAXB_HOME}/mod/jaxb-runtime.jar:\
@@ -97,13 +100,25 @@ ${JAXB_HOME}/mod/dtd-parser.jar:\
 ${JAXB_HOME}/mod/txw2.jar:\
 ${JAXB_HOME}/mod/stax-ex.jar:\
 ${JAXB_HOME}/mod/FastInfoset.jar:\
-${JAXB_HOME}/mod/javax.activation.jar:\
-${JAXB_HOME}/mod/relaxng-datatype.jar
+${JAXB_HOME}/mod/javax.activation-api.jar:\
+${JAXB_HOME}/mod/relaxng-datatype.jar:\
+${JAXB_HOME}/mod/activation-1.1.1.jar:\
+${JAXB_HOME}/mod/KnpXJCPlugin-1.0-SNAPSHOT.jar:\
+${JAXB_HOME}/mod/jackson-annotations-2.10.0.jar:\
+${JAXB_HOME}/mod/jaxb-impl-2.3.2.jar:\
+${JAXB_HOME}/mod/jaxb-core-2.3.0.1.jar:\
+${JAXB_HOME}/mod/commons-lang3-3.3.2.jar:\
+${JAXB_HOME}/mod/log4j-api-2.12.1.jar:\
+${JAXB_HOME}/mod/log4j-core-2.12.1.jar
+
 
 
 JAVA_VERSION=`${JAVA} -version 2>&1 | head -n 1 | cut -d'"' -f2 | sed -E 's/^(1\.)?([0-9]+).+$/\2/'`
 echo "Java major version: ${JAVA_VERSION}"
 
+#classpath
+exec "${JAVA}" -cp "${JAXB_PATH}" ${XJC_OPTS} com.sun.tools.xjc.XJCFacade "$@"
+exit;
 # Check if supports module path
 if [[ ${JAVA_VERSION} -lt 9 ]] ;
 then
