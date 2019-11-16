@@ -88,7 +88,6 @@ JAVA="../jre-11.0.5.jre/bin/java";
 
 #JXC module path
 JAXB_PATH=${JAXB_HOME}/mod/jaxb-xjc.jar:\
-${JAXB_HOME}/mod/jaxb-jxc.jar:\
 ${JAXB_HOME}/mod/jaxb-api.jar:\
 ${JAXB_HOME}/mod/codemodel.jar:\
 ${JAXB_HOME}/mod/jaxb-runtime.jar:\
