@@ -9,6 +9,8 @@ import com.sun.tools.xjc.model.CPropertyInfo;
 import com.sun.xml.xsom.*;
 import kz.inessoft.tools.xjc.ext.JLambda;
 import kz.inessoft.tools.xjc.ext.JLambdaParam;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -30,6 +32,8 @@ import com.sun.tools.xjc.outline.ClassOutline;
 import com.sun.tools.xjc.outline.Outline;
 import com.sun.tools.xjc.model.CClassInfoParent.Package;
 
+
+import javax.xml.bind.annotation.XmlRootElement;
 
 import static com.sun.codemodel.JMod.*;
 
@@ -63,6 +67,7 @@ public class KNPPlugin extends Plugin {
 
     private JDefinedClass xmlFnoClass;
     private List<JDefinedClass> xmlFormClassList = new ArrayList<>();
+    Map<String, JDefinedClass> xmlFormClassMap = new HashMap<String, JDefinedClass>();
     private List<JDefinedClass> xmlPageClassList = new ArrayList<>();
 
 
@@ -168,8 +173,11 @@ public class KNPPlugin extends Plugin {
             if(classOutline.target.shortName.equals("Fno")) {
                 //logger.debug( ToStringBuilder.reflectionToString(cPropertyInfo, ToStringStyle.SHORT_PREFIX_STYLE));
                 xmlFnoClass = classOutline.implClass;
+                JAnnotationUse jAnnotationForRow = classOutline.implClass.annotate(XmlRootElement.class);
+                jAnnotationForRow.param("name", "fno");
             } else if(classOutline.target.shortName.startsWith("Form")) {
                 xmlFormClassList.add(classOutline.implClass);
+                xmlFormClassMap.put(classOutline.implClass.name(), classOutline.implClass);
             } else  if (classOutline.target.shortName.startsWith("Page")) {
                 xmlPageClassList.add(classOutline.implClass);
             }
@@ -414,7 +422,7 @@ public class KNPPlugin extends Plugin {
             JMethod jConstructor = jRestToXmlConverter.constructor(PUBLIC);
             JVar jFnoVar = jConstructor.param(this.restFnoClass, "fno");
             JBlock jConstructorBlock = jConstructor.body();
-            jConstructorBlock.assign(jFnoFieldVar, jFnoVar);
+            jConstructorBlock.assign(JExpr.ref(JExpr._this(), jFnoFieldVar.name()), jFnoVar);
 
 
             //public Fno convert() {
@@ -452,12 +460,12 @@ public class KNPPlugin extends Plugin {
                 jConvertBlock.add(retVal2.invoke("setSheetGroup").arg(sheetGroup));
 
                 for (Entry<String, JFieldVar> eFieldVar: jSheetGroupClass.fields().entrySet()) {
-                    JBlock jIfNullBlock= jConvertBlock._if(jFormParam.invoke("get" + WordUtils.capitalize( eFieldVar.getKey())).eq(JExpr._null()))._then();
 
                     JDefinedClass jPageClass = (JDefinedClass) eFieldVar.getValue().type();
-                    JVar jSheetPageVar = jIfNullBlock.decl(NONE, jPageClass, eFieldVar.getKey(), JExpr._new(jPageClass));
-                    jIfNullBlock.add(sheetGroup.invoke("set" + WordUtils.capitalize( eFieldVar.getKey())).arg(jSheetPageVar));
+                    JVar jSheetPageVar = jConvertBlock.decl(NONE, jPageClass, eFieldVar.getKey(), JExpr._new(jPageClass));
+                    jConvertBlock.add(sheetGroup.invoke("set" + WordUtils.capitalize( eFieldVar.getKey())).arg(jSheetPageVar));
 
+                    JBlock jIfNullBlock= jConvertBlock._if(jFormParam.invoke("get" + WordUtils.capitalize( eFieldVar.getKey())).ne(JExpr._null()))._then();
                     jIfNullBlock.invoke("copyTo").arg(jFormParam.invoke("get" +  WordUtils.capitalize( eFieldVar.getKey()))).arg(jSheetPageVar);
 
                     JFieldVar jPageRowVar = jPageClass.fields().get("row");
@@ -492,7 +500,7 @@ public class KNPPlugin extends Plugin {
         return jRestToXmlConverter;
     }
 
-    private JDefinedClass generateXmlToRestConverter(String packageName) { //getSheetGroup() TODO
+    private JDefinedClass generateXmlToRestConverter(String packageName) {
         JDefinedClass jXmlToRestConverter= null;
         try {
 
@@ -505,7 +513,7 @@ public class KNPPlugin extends Plugin {
             JMethod jConstructor = jXmlToRestConverter.constructor(PUBLIC);
             JVar jFnoVar = jConstructor.param(this.xmlFnoClass, "fno");
             JBlock jConstructorBlock = jConstructor.body();
-            jConstructorBlock.assign(jFnoFieldVar, jFnoVar);
+            jConstructorBlock.assign(JExpr.ref(JExpr._this(), jFnoFieldVar.name()), jFnoVar);
 
 
             //public Fno convert() {
@@ -526,9 +534,10 @@ public class KNPPlugin extends Plugin {
 
 
             //private Form10104 convertForm10104(kz.inessoft.sono.app.fno.f101.app04.v20.services.dto.xml.Form10104 form10104) {
-            for (JDefinedClass xmlFormClass: this.restFormClassList) {
+            for (Entry<String, JFieldVar> xmlFnoFieldVar: xmlFnoClass.fields().entrySet()) {
+                JType xmlFormClass = xmlFnoFieldVar.getValue().type();
                 JMethod jConvertFormMethod = jXmlToRestConverter.method(PUBLIC, xmlFormClass, "convert" + xmlFormClass.name());
-                JType jRestType = this.J_MODEL.parseType( PKG_SERVICE + "dto.rest." + xmlFormClass.name());
+                JType jRestType = this.J_MODEL.parseType( PKG_SERVICE + "dto.xml." + xmlFormClass.name());
                 JVar jFormParam = jConvertFormMethod.param(jRestType, xmlFormClass.name().toLowerCase());
 
 
@@ -537,14 +546,21 @@ public class KNPPlugin extends Plugin {
                 JVar retVal2 = jConvertBlock.decl(NONE, xmlFormClass, "retVal", JExpr._new(xmlFormClass));
 
 
-                for (Entry<String, JFieldVar> eFieldVar: xmlFormClass.fields().entrySet()) {
-                    JBlock jIfNullBlock = jConvertBlock._if(jFormParam.invoke("get" + WordUtils.capitalize(eFieldVar.getKey())).eq(JExpr._null()))._then();
+                //logger.debug( ToStringBuilder.reflectionToString(xmlFormClassMap, ToStringStyle.SHORT_PREFIX_STYLE));
+                System.out.println(xmlFnoFieldVar.getValue().type().name());
+
+                if(!xmlFnoFieldVar.getValue().type().name().contains("Form")) continue;
+
+                for (Entry<String, JFieldVar> eFieldVar: xmlFormClassMap.get(xmlFnoFieldVar.getValue().type().name().replace("List<", "").replace(">", "")).fields().entrySet()) {
 
                     JType jPageClass = eFieldVar.getValue().type();
-                    JVar jSheetPageVar = jIfNullBlock.decl(NONE, jPageClass, eFieldVar.getKey(), JExpr._new(jPageClass));
-                    jIfNullBlock.add(retVal2.invoke("set" + WordUtils.capitalize(eFieldVar.getKey())).arg(jSheetPageVar));
 
-                    jIfNullBlock.invoke("copyTo").arg(jFormParam.invoke("get" + WordUtils.capitalize(eFieldVar.getKey()))).arg(jSheetPageVar);
+                    JType jInitPage  = this.J_MODEL.parseType( PKG_SERVICE + "dto.rest." + jPageClass.name());
+                    JVar jSheetPageVar = jConvertBlock.decl(NONE, jInitPage, eFieldVar.getKey(), JExpr._new(jInitPage));
+                    jConvertBlock.add(retVal2.invoke("set" + WordUtils.capitalize(eFieldVar.getKey())).arg(jSheetPageVar));
+
+                    JBlock jIfNullBlock = jConvertBlock._if(jFormParam.invoke("getSheetGroup").invoke("get" + WordUtils.capitalize(eFieldVar.getKey())).ne(JExpr._null()))._then();
+                    jIfNullBlock.invoke("copyTo").arg(jFormParam.invoke("getSheetGroup").invoke("get" + WordUtils.capitalize(eFieldVar.getKey()))).arg(jSheetPageVar);
 
                     if (jPageClass instanceof JDefinedClass) {
                         JFieldVar jPageRowVar = ((JDefinedClass)jPageClass).fields().get("row");

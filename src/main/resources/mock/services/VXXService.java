@@ -114,79 +114,80 @@ public class VXXService {
 
     private Fno generateDefaultForm(BaseTaxPayer taxPayer, int year) {
         Fno retVal = new Fno();
-        Form42100 form42100 = new Form42100();
-        retVal.setForm42100(form42100);
-
-        Page4210001 page4210001 = new Page4210001();
-        form42100.setPage4210001(page4210001);
-        page4210001.setRnn(taxPayer.getRnn());
-        page4210001.setIin(taxPayer.getXin());
-        page4210001.setPeriodYear(String.valueOf(year));
-
-
-        Page4210002 page4210002 = new Page4210002();
-        form42100.setPage4210002(page4210002);
-
-        String strNow = date(new Date());
-        page4210002.setSubmitDate(strNow);
-        page4210002.setAcceptDate(strNow);
-        page4210002.setIin(taxPayer.getXin());
-        page4210002.setPeriodYear(String.valueOf(year));
-
-
-
-        Form42101 form42101 = new Form42101();
-        retVal.setForm42101(form42101);
-
-        Page4210101 page4210101 = new Page4210101();
-        form42101.setPage4210101(page4210101);
-        page4210101.setIin(taxPayer.getXin());
-        page4210101.setPeriodYear(String.valueOf(year));
-
-
-
-        Form42102 form42102 = new Form42102();
-        retVal.setForm42102(form42102);
-
-        Page4210201 page4210201 = new Page4210201();
-        form42102.setPage4210201(page4210201);
-        page4210201.setIin(taxPayer.getXin());
-        page4210201.setPeriodYear(String.valueOf(year));
-
-        Page4210202 page4210202 = new Page4210202();
-        form42102.setPage4210202(page4210202);
-        page4210202.setIin(taxPayer.getXin());
-        page4210202.setPeriodYear(String.valueOf(year));
-
-
-
-        Form42103 form42103 = new Form42103();
-        retVal.setForm42103(form42103);
-
-        Page4210301 page4210301 = new Page4210301();
-        form42103.setPage4210301(page4210301);
-        page4210301.setIin(taxPayer.getXin());
-        page4210301.setPeriodYear(String.valueOf(year));
-
-
-
-        Form42104 form42104 = new Form42104();
-        retVal.setForm42104(form42104);
-
-        Page4210401 page4210401 = new Page4210401();
-        form42104.setPage4210401(page4210401);
-        page4210401.setIin(taxPayer.getXin());
-        page4210401.setPeriodYear(String.valueOf(year));
-
-        Page4210402 page4210402 = new Page4210402();
-        form42104.setPage4210402(page4210402);
-        page4210402.setIin(taxPayer.getXin());
-        page4210402.setPeriodYear(String.valueOf(year));
-
-        Page4210403 page4210403 = new Page4210403();
-        form42104.setPage4210403(page4210403);
-        page4210403.setIin(taxPayer.getXin());
-        page4210403.setPeriodYear(String.valueOf(year));
+//        TODO надо зполнить функцию, можно сгенерировать
+//        Form42100 form42100 = new Form42100();
+//        retVal.setForm42100(form42100);
+//
+//        Page4210001 page4210001 = new Page4210001();
+//        form42100.setPage4210001(page4210001);
+//        page4210001.setRnn(taxPayer.getRnn());
+//        page4210001.setIin(taxPayer.getXin());
+//        page4210001.setPeriodYear(String.valueOf(year));
+//
+//
+//        Page4210002 page4210002 = new Page4210002();
+//        form42100.setPage4210002(page4210002);
+//
+//        String strNow = date(new Date());
+//        page4210002.setSubmitDate(strNow);
+//        page4210002.setAcceptDate(strNow);
+//        page4210002.setIin(taxPayer.getXin());
+//        page4210002.setPeriodYear(String.valueOf(year));
+//
+//
+//
+//        Form42101 form42101 = new Form42101();
+//        retVal.setForm42101(form42101);
+//
+//        Page4210101 page4210101 = new Page4210101();
+//        form42101.setPage4210101(page4210101);
+//        page4210101.setIin(taxPayer.getXin());
+//        page4210101.setPeriodYear(String.valueOf(year));
+//
+//
+//
+//        Form42102 form42102 = new Form42102();
+//        retVal.setForm42102(form42102);
+//
+//        Page4210201 page4210201 = new Page4210201();
+//        form42102.setPage4210201(page4210201);
+//        page4210201.setIin(taxPayer.getXin());
+//        page4210201.setPeriodYear(String.valueOf(year));
+//
+//        Page4210202 page4210202 = new Page4210202();
+//        form42102.setPage4210202(page4210202);
+//        page4210202.setIin(taxPayer.getXin());
+//        page4210202.setPeriodYear(String.valueOf(year));
+//
+//
+//
+//        Form42103 form42103 = new Form42103();
+//        retVal.setForm42103(form42103);
+//
+//        Page4210301 page4210301 = new Page4210301();
+//        form42103.setPage4210301(page4210301);
+//        page4210301.setIin(taxPayer.getXin());
+//        page4210301.setPeriodYear(String.valueOf(year));
+//
+//
+//
+//        Form42104 form42104 = new Form42104();
+//        retVal.setForm42104(form42104);
+//
+//        Page4210401 page4210401 = new Page4210401();
+//        form42104.setPage4210401(page4210401);
+//        page4210401.setIin(taxPayer.getXin());
+//        page4210401.setPeriodYear(String.valueOf(year));
+//
+//        Page4210402 page4210402 = new Page4210402();
+//        form42104.setPage4210402(page4210402);
+//        page4210402.setIin(taxPayer.getXin());
+//        page4210402.setPeriodYear(String.valueOf(year));
+//
+//        Page4210403 page4210403 = new Page4210403();
+//        form42104.setPage4210403(page4210403);
+//        page4210403.setIin(taxPayer.getXin());
+//        page4210403.setPeriodYear(String.valueOf(year));
 
         return retVal;
     }
