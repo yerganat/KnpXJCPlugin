@@ -196,7 +196,7 @@ public class KNPPluginNew extends Plugin {
                 }
 
 
-                for (Entry<String, JFieldVar> fieldVarEntry : classOutline.implClass.fields().entrySet()) {
+                for (Entry<String, JFieldVar> fieldVarEntry : currentClass.fields().entrySet()) {
 
                     String fieldName = fieldVarEntry.getKey();
                     JType fieldType = fieldVarEntry.getValue().type();
