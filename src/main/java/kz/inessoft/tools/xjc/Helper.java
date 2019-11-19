@@ -1,4 +1,4 @@
-package kz.inessoft.tools.xjc.util;
+package kz.inessoft.tools.xjc;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.codemodel.*;
@@ -16,9 +16,9 @@ import java.util.List;
 import static com.sun.codemodel.JMod.PUBLIC;
 import static kz.inessoft.tools.xjc.KNPPluginNew.*;
 
-public class Helper {
+class Helper {
 
-    public static String getFixedValue(CPropertyInfo fieldInfo) {
+    static String getFixedValue(CPropertyInfo fieldInfo) {
         if (!(fieldInfo.getSchemaComponent() instanceof XSAttributeUse)) {
             return "unknown";
         }
@@ -31,7 +31,7 @@ public class Helper {
         return fixedValue.value;
     }
 
-    public static void generateGetter(JDefinedClass restClass, JType fieldType, String fieldName, boolean isInterface) {
+    static void generateGetter(JDefinedClass restClass, JType fieldType, String fieldName, boolean isInterface) {
         if(isInterface) {
             restClass.method(PUBLIC,
                     (fieldName.equals("row") ? (J_MODEL.ref(List.class).narrow(J_MODEL.ref("T"))): fieldType),
@@ -56,7 +56,7 @@ public class Helper {
         body._return(JExpr.ref(JExpr._this(), fieldName));
     }
 
-    public static void generateSetter(JDefinedClass restClass, JType fieldType, String name, boolean isInterface) {
+    static void generateSetter(JDefinedClass restClass, JType fieldType, String name, boolean isInterface) {
         if(fieldType.fullName().contains("java.util.List")) {
             return;
         }
@@ -82,7 +82,7 @@ public class Helper {
         return getMethodName + WordUtils.capitalize(fieldName);
     }
 
-    public static JType getRestFieldType(JType fieldType, String xmlPackageName) throws ClassNotFoundException {
+    static JType getRestFieldType(JType fieldType, String xmlPackageName) throws ClassNotFoundException {
         JType restFieldType = fieldType;
 
         if (fieldType instanceof JDefinedClass) {
@@ -101,7 +101,7 @@ public class Helper {
 
     }
 
-    public static void annotateWithJsonProperty(JFieldVar restField, String fieldName, Collection<JAnnotationUse> annotations) throws ClassNotFoundException {
+    static void annotateWithJsonProperty(JFieldVar restField, String fieldName, Collection<JAnnotationUse> annotations) throws ClassNotFoundException {
         if(fieldName.equals("row")) {
             JAnnotationUse jAnnotationForRow = restField.annotate(JsonProperty.class);
             jAnnotationForRow.param("value", "rows");
@@ -140,7 +140,7 @@ public class Helper {
         return s.toString().replace("\"", "");
     }
 
-    public static JDefinedClass implementInterface(JDefinedClass currentClass, JDefinedClass restClass, String classShortName) throws JClassAlreadyExistsException {
+    static JDefinedClass implementInterface(JDefinedClass currentClass, JDefinedClass restClass, String classShortName) throws JClassAlreadyExistsException {
         JDefinedClass commonInterface = J_MODEL._class(PKG_SERVICE_DTO + "I" + classShortName, ClassType.INTERFACE);
         //public interface IPage1010400101<T extends IPage1010400101Row> { TODO сделать T extend для Rows
 

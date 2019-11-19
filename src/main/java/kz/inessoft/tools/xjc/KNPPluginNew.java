@@ -1,6 +1,5 @@
 package kz.inessoft.tools.xjc;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.codemodel.*;
 import com.sun.tools.xjc.BadCommandLineException;
 import com.sun.tools.xjc.Options;
@@ -10,13 +9,7 @@ import com.sun.tools.xjc.model.CClassInfoParent.Package;
 import com.sun.tools.xjc.model.CPropertyInfo;
 import com.sun.tools.xjc.outline.ClassOutline;
 import com.sun.tools.xjc.outline.Outline;
-import com.sun.xml.xsom.XSAttributeUse;
-import com.sun.xml.xsom.XmlString;
-import kz.inessoft.tools.xjc.ext.JLambda;
-import kz.inessoft.tools.xjc.ext.JLambdaParam;
-import kz.inessoft.tools.xjc.util.Helper;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,11 +19,8 @@ import org.xml.sax.SAXException;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.Map.Entry;
-import java.util.stream.Collectors;
 
 import static com.sun.codemodel.JMod.*;
 
@@ -46,18 +36,18 @@ public class KNPPluginNew extends Plugin {
     private static String FNO_VERSION_VALUE = "";
 
     private static String PKG_BASE = "kz.inessoft.sono.app.fno"; //kz.inessoft.sono.app.fno.f710.v22
-    public static String PKG_REST = ""; //kz.inessoft.sono.app.fno.f710.v22.rest.
-    public static String PKG_SERVICE = ""; //kz.inessoft.sono.app.fno.f710.v22.services.
-    public static String PKG_SERVICE_DTO = ""; //kz.inessoft.sono.app.fno.f710.v22.services.dto.
-    public static String PKG_SERVICE_DTO_REST = ""; //kz.inessoft.sono.app.fno.f710.v22.services.dto.rest.
-    public static String PKG_SERVICE_DTO_XML = ""; //kz.inessoft.sono.app.fno.f710.v22.services.dto.xml.
-    public static String PKG_SERVICE_FLK = ""; //kz.inessoft.sono.app.fno.f710.v22.services.flk.
+    static String PKG_REST = ""; //kz.inessoft.sono.app.fno.f710.v22.rest.
+    static String PKG_SERVICE = ""; //kz.inessoft.sono.app.fno.f710.v22.services.
+    static String PKG_SERVICE_DTO = ""; //kz.inessoft.sono.app.fno.f710.v22.services.dto.
+    static String PKG_SERVICE_DTO_REST = ""; //kz.inessoft.sono.app.fno.f710.v22.services.dto.rest.
+    static String PKG_SERVICE_DTO_XML = ""; //kz.inessoft.sono.app.fno.f710.v22.services.dto.xml.
+    static String PKG_SERVICE_FLK = ""; //kz.inessoft.sono.app.fno.f710.v22.services.flk.
 
     private File targetDir;
 
     public static final Logger logger = LogManager.getLogger(KNPPluginNew.class);
 
-    public static  JCodeModel J_MODEL;
+    static  JCodeModel J_MODEL;
 
     private JDefinedClass xmlFnoClass;
     private Map<String, JDefinedClass> xmlFormClassMap = new HashMap<String, JDefinedClass>();
