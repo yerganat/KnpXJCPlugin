@@ -15,6 +15,7 @@ import com.sun.xml.xsom.XmlString;
 import kz.inessoft.tools.xjc.ext.JLambda;
 import kz.inessoft.tools.xjc.ext.JLambdaParam;
 import kz.inessoft.tools.xjc.util.Helper;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -41,26 +42,27 @@ public class KNPPluginNew extends Plugin {
     private static String FNO_VERSION = "";
 
     private static String FORM_CODE_VALUE = "";
+    private static String FORM_APP_VALUE = "";
     private static String FNO_VERSION_VALUE = "";
 
-    private static String PKG_BASE = "kz.inessoft.sono.app.fno."; //kz.inessoft.sono.app.fno.f710.v22
-    private static String PKG_REST = ""; //kz.inessoft.sono.app.fno.f710.v22.rest
-    private static String PKG_SERVICE = ""; //kz.inessoft.sono.app.fno.f710.v22.services
-    private static String PKG_SERVICE_DTO = ""; //kz.inessoft.sono.app.fno.f710.v22.services.dto
-    private static String PKG_SERVICE_DTO_REST = ""; //kz.inessoft.sono.app.fno.f710.v22.services.dto.rest
-    private static String PKG_SERVICE_DTO_XML = ""; //kz.inessoft.sono.app.fno.f710.v22.services.dto.xml
-    private static String PKG_SERVICE_FLK = ""; //kz.inessoft.sono.app.fno.f710.v22.services.flk
+    private static String PKG_BASE = "kz.inessoft.sono.app.fno"; //kz.inessoft.sono.app.fno.f710.v22
+    public static String PKG_REST = ""; //kz.inessoft.sono.app.fno.f710.v22.rest.
+    public static String PKG_SERVICE = ""; //kz.inessoft.sono.app.fno.f710.v22.services.
+    public static String PKG_SERVICE_DTO = ""; //kz.inessoft.sono.app.fno.f710.v22.services.dto.
+    public static String PKG_SERVICE_DTO_REST = ""; //kz.inessoft.sono.app.fno.f710.v22.services.dto.rest.
+    public static String PKG_SERVICE_DTO_XML = ""; //kz.inessoft.sono.app.fno.f710.v22.services.dto.xml.
+    public static String PKG_SERVICE_FLK = ""; //kz.inessoft.sono.app.fno.f710.v22.services.flk.
 
     private File targetDir;
 
-    private static final Logger logger = LogManager.getLogger(KNPPluginNew.class);
+    public static final Logger logger = LogManager.getLogger(KNPPluginNew.class);
 
-    private JCodeModel J_MODEL;
+    public static  JCodeModel J_MODEL;
 
     private JDefinedClass xmlFnoClass;
     private Map<String, JDefinedClass> xmlFormClassMap = new HashMap<String, JDefinedClass>();
     private Map<String, JDefinedClass> xmlPageClassMap = new HashMap<>();
-
+    private List<JDefinedClass> interfacePageList = new ArrayList<>();
 
     @Override
     public String getOptionName() {
@@ -99,69 +101,147 @@ public class KNPPluginNew extends Plugin {
             throws SAXException {
         this.targetDir = opt.targetDir;
         //logger.debug( ToStringBuilder.reflectionToString(opt, ToStringStyle.SHORT_PREFIX_STYLE));
-        this.J_MODEL = model.getCodeModel();
+        J_MODEL = model.getCodeModel();
 
         for (ClassOutline classOutline : model.getClasses()) {
             if(classOutline.target.shortName.equals("Fno")) {
                 CPropertyInfo cPropertyInfo = model.getModel().beans().get(classOutline.target).getProperty("code");
                 if(cPropertyInfo != null) {
-                    this.FORM_CODE = Helper.getFixedValue(cPropertyInfo);
+                    FORM_CODE = Helper.getFixedValue(cPropertyInfo);
                 }
-                logger.debug(this.FORM_CODE);
+                logger.debug(FORM_CODE);
 
                 CPropertyInfo cPropertyInfo2 = model.getModel().beans().get(classOutline.target).getProperty("version");
                 if(cPropertyInfo2 != null) {
-                    this.FNO_VERSION = Helper.getFixedValue(cPropertyInfo2);
+                    FNO_VERSION = Helper.getFixedValue(cPropertyInfo2);
                 }
-                logger.debug(this.FNO_VERSION);
+                logger.debug(FNO_VERSION);
             }
         }
 
 
         {
-            if(this.FORM_CODE != null) {
+            if(StringUtils.isNotBlank(FORM_CODE)) {
 
-                String[] codeParts = this.FORM_CODE.split("\\.");
+                String[] codeParts = FORM_CODE.split("\\.");
                 if(codeParts.length > 1) {
-                    PKG_FNO1 = codeParts[0];
-                    PKG_FNO = PKG_FNO +  PKG_FNO1;
+                    FORM_CODE_VALUE = codeParts[0];
 
                     if(!codeParts[1].equals("00")) {
-                        PKG_FNO2 = codeParts[2];
-                        PKG_FNO = PKG_FNO + ".app" + PKG_FNO2;
+                        FORM_APP_VALUE = codeParts[2];
                     }
-                } else {
-                    PKG_FNO = PKG_FNO + this.FORM_CODE;
                 }
+
 
                 //logger.debug( ToStringBuilder.reflectionToString(codeParts, ToStringStyle.SHORT_PREFIX_STYLE));
 
-                if(this.FNO_VERSION != null) {
-                    PKG_FNO_WTIH_VERSION = PKG_FNO + ".v" + this.FNO_VERSION;
-                } else {
-                    PKG_FNO_WTIH_VERSION = PKG_FNO;
+
+                PKG_BASE =  PKG_BASE + ".f" + FORM_CODE_VALUE;
+
+                if(StringUtils.isNotBlank(FORM_APP_VALUE)) {
+                    PKG_BASE =  PKG_BASE + ".app" + FORM_APP_VALUE;
                 }
 
-                PKG_SERVICE = PKG_BASE + PKG_FNO_WTIH_VERSION + ".services.";
-
-
+                if(StringUtils.isNotBlank(FNO_VERSION)) {
+                    PKG_BASE =  PKG_BASE + ".v" + FNO_VERSION;
+                }
             }
 
-            System.out.println(PKG_SERVICE);
+            PKG_REST = PKG_BASE + ".rest.";
+            PKG_SERVICE = PKG_BASE + ".services.";
+            PKG_SERVICE_DTO = PKG_SERVICE + ".dto.";
+            PKG_SERVICE_DTO_REST = PKG_SERVICE_DTO + ".rest.";
+            PKG_SERVICE_DTO_XML = PKG_SERVICE_DTO + ".xml.";
+            PKG_SERVICE_FLK = PKG_SERVICE + ".flk.";
 
+            logger.debug(PKG_BASE);
         }
 
 
         for (ClassOutline classOutline : model.getClasses()) {
-            if(classOutline.target.shortName.equals("Fno")) {
-                xmlFnoClass = classOutline.implClass;
-            } else if(classOutline.target.shortName.startsWith("Form")) {
-                xmlFormClassMap.put(classOutline.implClass.name(), classOutline.implClass);
-            } else  if (classOutline.target.shortName.startsWith("Page")) {
-                xmlPageClassMap.put(classOutline.implClass.name(), classOutline.implClass);
+            JDefinedClass currentClass = classOutline.implClass;
+            CClassInfo cClassInfo = classOutline.target;
+
+            if(cClassInfo.shortName.equals("Fno")) {
+                xmlFnoClass = currentClass;
+                JAnnotationUse jAnnotationForRow = currentClass.annotate(XmlRootElement.class);
+                jAnnotationForRow.param("name", "fno");
+            } else if(cClassInfo.shortName.startsWith("Form")) {
+                xmlFormClassMap.put(currentClass.name(), currentClass);
+            } else  if (cClassInfo.shortName.startsWith("Page")) {
+                xmlPageClassMap.put(currentClass.name(), currentClass);
             }
+
+            logger.debug("Class name " + cClassInfo.shortName);
+
+            if(currentClass.fields().containsKey("sheetGroup")) { //Если есть параметр sheetGroup то пропускаем(Это Form класс), так как Json атрибуты сгенерирована в классе SheetGroup
+                logger.debug("  skip... ");
+                continue;
+            }
+
+            if(cClassInfo.shortName.equals("SheetGroup")) { //Если класс SheetGroup то генерируем на его Parent класс Json атрибуты
+                cClassInfo = (CClassInfo) cClassInfo.parent();
+            }
+
+            logger.debug("  to be generated fields for " + cClassInfo.shortName);
+
+
+            try {
+                JDefinedClass restClass = J_MODEL._class(PKG_REST + cClassInfo.shortName);
+
+                JDefinedClass commonInterface = null;
+                if(cClassInfo.shortName.contains("Page")) {
+                    commonInterface = Helper.implementInterface(currentClass, restClass, cClassInfo.shortName);
+                    interfacePageList.add(commonInterface);
+                }
+
+
+                String xmlPackageName = "";
+                if(cClassInfo.parent() instanceof Package) {
+                    xmlPackageName = ((Package) cClassInfo.parent()) .fullName();
+                } else { //Получение имя пакета из SheetGroup
+                    if (cClassInfo.parent() instanceof CClassInfo) {
+                        xmlPackageName = ( (Package)  ((CClassInfo) cClassInfo.parent()).parent()) .fullName();
+                    }
+                }
+
+
+                for (Entry<String, JFieldVar> fieldVarEntry : classOutline.implClass.fields().entrySet()) {
+
+                    String fieldName = fieldVarEntry.getKey();
+                    JType fieldType = fieldVarEntry.getValue().type();
+
+                    if (fieldName.equals("code") || fieldName.equals("version") || fieldName.equals("formatVersion")) {
+                        continue;
+                    }
+
+                    JType restFieldType = Helper.getRestFieldType(fieldType, xmlPackageName);
+                    JFieldVar restField = restClass.field(PRIVATE, restFieldType, fieldName);
+                    logger.debug("      gen field " + restField.type().fullName() + " " + restField.name());
+
+                    Helper.generateGetter(restClass, restFieldType, fieldName, false);
+                    Helper.generateSetter(restClass, restFieldType, fieldName, false);
+
+                    if (commonInterface != null) {
+                        Helper.generateGetter(commonInterface, restFieldType, fieldName, true);
+                        Helper.generateSetter(commonInterface, restFieldType, fieldName, true);
+
+                        if(fieldName.equals("row")) {
+                            commonInterface.generify("T", J_MODEL._class(PKG_SERVICE_DTO + commonInterface.name() + "Row"));
+                        }
+                    }
+
+                    Helper.annotateWithJsonProperty(restField, fieldName, fieldVarEntry.getValue().annotations());
+
+                }
+
+            }  catch (JClassAlreadyExistsException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
         }
 
         return true;
     }
+
 }

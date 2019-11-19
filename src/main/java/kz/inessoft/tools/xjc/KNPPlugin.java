@@ -259,7 +259,7 @@ public class KNPPlugin extends Plugin {
                     if (fieldType instanceof JDefinedClass) {
                         JDefinedClass generatedByXmlClassType = (JDefinedClass) fieldType;
                         if (generatedByXmlClassType.getPackage().name().contains(xmlPackageName)) { //Меняем пакет в наших кастомных генерируемых классах
-                            fieldType = this.J_MODEL.parseType(fieldVarEntry.getValue().type().name().replace(xmlPackageName, PKG_SERVICE + "dto.rest."));
+                            fieldType = this.J_MODEL.parseType(fieldType.name().replace(xmlPackageName, PKG_SERVICE + "dto.rest."));
                         }
                     }
 
