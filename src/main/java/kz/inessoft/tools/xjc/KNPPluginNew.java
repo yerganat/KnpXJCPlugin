@@ -10,6 +10,8 @@ import com.sun.tools.xjc.model.CPropertyInfo;
 import com.sun.tools.xjc.outline.ClassOutline;
 import com.sun.tools.xjc.outline.Outline;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,6 +25,7 @@ import java.util.*;
 import java.util.Map.Entry;
 
 import static com.sun.codemodel.JMod.*;
+import static kz.inessoft.tools.xjc.Helper.getInterfacePageRow;
 
 public class KNPPluginNew extends Plugin {
 
@@ -49,10 +52,13 @@ public class KNPPluginNew extends Plugin {
 
     static  JCodeModel J_MODEL;
 
-    private JDefinedClass xmlFnoClass;
-    private Map<String, JDefinedClass> xmlFormClassMap = new HashMap<String, JDefinedClass>();
-    private Map<String, JDefinedClass> xmlPageClassMap = new HashMap<>();
-    private List<JDefinedClass> interfacePageList = new ArrayList<>();
+    static JDefinedClass xmlFnoClass;
+    static Map<String, JDefinedClass> xmlFormClassMap = new HashMap<String, JDefinedClass>();
+    static Map<String, JDefinedClass> xmlPageClassMap = new HashMap<>();
+    private static Map<String, JDefinedClass> interfacePageMap = new HashMap<>();
+
+    static JDefinedClass jBaseConverterClass = null;
+
 
     @Override
     public String getOptionName() {
@@ -139,10 +145,10 @@ public class KNPPluginNew extends Plugin {
 
             PKG_REST = PKG_BASE + ".rest.";
             PKG_SERVICE = PKG_BASE + ".services.";
-            PKG_SERVICE_DTO = PKG_SERVICE + ".dto.";
-            PKG_SERVICE_DTO_REST = PKG_SERVICE_DTO + ".rest.";
-            PKG_SERVICE_DTO_XML = PKG_SERVICE_DTO + ".xml.";
-            PKG_SERVICE_FLK = PKG_SERVICE + ".flk.";
+            PKG_SERVICE_DTO = PKG_SERVICE + "dto.";
+            PKG_SERVICE_DTO_REST = PKG_SERVICE_DTO + "rest.";
+            PKG_SERVICE_DTO_XML = PKG_SERVICE_DTO + "xml.";
+            PKG_SERVICE_FLK = PKG_SERVICE + "flk.";
 
             logger.debug(PKG_BASE);
         }
@@ -173,16 +179,12 @@ public class KNPPluginNew extends Plugin {
                 cClassInfo = (CClassInfo) cClassInfo.parent();
             }
 
-            logger.debug("  to be generated fields for " + cClassInfo.shortName);
-
-
             try {
-                JDefinedClass restClass = J_MODEL._class(PKG_REST + cClassInfo.shortName);
+                JDefinedClass restClass = J_MODEL._class(PKG_SERVICE_DTO_REST + cClassInfo.shortName);
 
                 JDefinedClass commonInterface = null;
                 if(cClassInfo.shortName.contains("Page")) {
-                    commonInterface = Helper.implementInterface(currentClass, restClass, cClassInfo.shortName);
-                    interfacePageList.add(commonInterface);
+                    commonInterface = Helper.implementInterface(interfacePageMap, currentClass, restClass, cClassInfo.shortName);
                 }
 
 
@@ -194,6 +196,9 @@ public class KNPPluginNew extends Plugin {
                         xmlPackageName = ( (Package)  ((CClassInfo) cClassInfo.parent()).parent()) .fullName();
                     }
                 }
+
+
+                logger.debug("  to be generated fields for " + cClassInfo.shortName);
 
 
                 for (Entry<String, JFieldVar> fieldVarEntry : currentClass.fields().entrySet()) {
@@ -217,7 +222,7 @@ public class KNPPluginNew extends Plugin {
                         Helper.generateSetter(commonInterface, restFieldType, fieldName, true);
 
                         if(fieldName.equals("row")) {
-                            commonInterface.generify("T", J_MODEL._class(PKG_SERVICE_DTO + commonInterface.name() + "Row"));
+                            commonInterface.generify("T", getInterfacePageRow(interfacePageMap, commonInterface.name() + "Row"));
                         }
                     }
 
@@ -230,6 +235,10 @@ public class KNPPluginNew extends Plugin {
             }
 
         }
+
+
+        this.jBaseConverterClass = Helper.generateBaseConverter(interfacePageMap);
+
 
         return true;
     }

@@ -109,6 +109,8 @@ public class KNPPlugin extends Plugin {
     @Override
     public boolean run(Outline model, Options opt, ErrorHandler errorHandler)
             throws SAXException {
+
+        if(true) return false;
         this.targetDir = opt.targetDir;
         //logger.debug( ToStringBuilder.reflectionToString(opt, ToStringStyle.SHORT_PREFIX_STYLE));
         this.J_MODEL = model.getCodeModel();
