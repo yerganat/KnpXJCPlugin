@@ -275,65 +275,41 @@ class Helper {
 
             //private Form10104 convertForm10104(kz.inessoft.sono.app.fno.f101.app04.v20.services.dto.xml.Form10104 form10104) {
             for (Map.Entry<String, JFieldVar> xmlFnoFieldVar: xmlFnoClass.fields().entrySet()) {
-                JType xmlFormClass = xmlFnoFieldVar.getValue().type();
-                JMethod jConvertFormMethod = jXmlToRestConverter.method(PUBLIC, xmlFormClass, "convert" + xmlFormClass.name());
-                JType jRestType = J_MODEL.parseType( PKG_SERVICE + "dto.xml." + xmlFormClass.name());
-                JVar jFormParam = jConvertFormMethod.param(jRestType, xmlFormClass.name().toLowerCase());
+                JType xmlFormFieldType = xmlFnoFieldVar.getValue().type();
+                if(!xmlFormFieldType.name().contains("Form")) continue;
+
+                String typeName = getNameWithoutList(xmlFormFieldType.name());
+                JMethod jConvertFormMethod = jXmlToRestConverter.method(PUBLIC, xmlFormFieldType, "convert" + typeName);
+                JVar jFormParam = jConvertFormMethod.param(restFormClassMap.get(typeName), xmlFnoFieldVar.getKey());
+
+
+                JType jArrayListType = J_MODEL.parseType(xmlFormFieldType.fullName().replace("List", "ArrayList"));
 
 
                 JBlock jConvertBlock = jConvertFormMethod.body();
                 jConvertBlock._if(jFormParam.eq(JExpr._null()))._then()._return(JExpr._null());
-                JVar retVal2 = jConvertBlock.decl(NONE, xmlFormClass, "retVal", JExpr._new(xmlFormClass));
+                JVar retVal2 = jConvertBlock.decl(NONE, xmlFormFieldType, "retVal", JExpr._new(jArrayListType));
 
-
-                //logger.debug( ToStringBuilder.reflectionToString(xmlFormClassMap, ToStringStyle.SHORT_PREFIX_STYLE));
-                System.out.println(xmlFnoFieldVar.getValue().type().name());
-
-                if(!xmlFnoFieldVar.getValue().type().name().contains("Form")) continue;
-
-                for (Map.Entry<String, JFieldVar> eFieldVar: xmlFormClassMap.get(xmlFnoFieldVar.getValue().type().name().replace("List<", "").replace(">", "")).fields().entrySet()) {
-
-                    JType jPageClass = eFieldVar.getValue().type();
-
-                    JType jInitPage  = J_MODEL.parseType( PKG_SERVICE + "dto.rest." + jPageClass.name());
-                    JVar jSheetPageVar = jConvertBlock.decl(NONE, jInitPage, eFieldVar.getKey(), JExpr._new(jInitPage));
-                    jConvertBlock.add(retVal2.invoke("set" + WordUtils.capitalize(eFieldVar.getKey())).arg(jSheetPageVar));
-
-                    JBlock jIfNullBlock = jConvertBlock._if(jFormParam.invoke("getSheetGroup").invoke("get" + WordUtils.capitalize(eFieldVar.getKey())).ne(JExpr._null()))._then();
-                    jIfNullBlock.invoke("copyTo").arg(jFormParam.invoke("getSheetGroup").invoke("get" + WordUtils.capitalize(eFieldVar.getKey()))).arg(jSheetPageVar);
-
-                    if (jPageClass instanceof JDefinedClass) {
-                        JFieldVar jPageRowVar = ((JDefinedClass)jPageClass).fields().get("row");
-                        if (jPageRowVar != null) {
-                            JLambda aLambda = new JLambda();
-                            JLambdaParam aParam = aLambda.addParam("srcRow");
-                            JBlock jLambdaBlock = aLambda.body();
-
-                            String rowClassName = jPageRowVar.type().fullName().replace("java.util.List<", "").replace(">", "");
-
-                            JVar lambdaRetVal = jLambdaBlock.decl(NONE, J_MODEL.parseType(rowClassName), "retVal1", JExpr._new(J_MODEL.parseType(rowClassName)));
-                            jLambdaBlock.add(JExpr._this().invoke("copyTo").arg(JExpr.ref(aParam.name())).arg(lambdaRetVal))._return(lambdaRetVal);
-
-
-                            jIfNullBlock.invoke("fillPageRows").arg(
-                                    jFormParam.invoke("get" + WordUtils.capitalize(eFieldVar.getKey())).invoke("getRow"))
-                                    .arg(jSheetPageVar.invoke("getRow")).arg(aLambda);
-
-                        }
-
-                    }
-                }
+//
+//                JFieldVar jSheetGroupVar = xmlFormFieldType.fields().get("sheetGroup");
+//                JDefinedClass jSheetGroupClass = (JDefinedClass) jSheetGroupVar.type();
+//
+//                JVar sheetGroup = jConvertBlock.decl(NONE, jSheetGroupClass, "sheetGroup", JExpr._new(jSheetGroupClass));
+//                jConvertBlock.add(retVal2.invoke("setSheetGroup").arg(sheetGroup));
 
                 jConvertBlock._return(retVal2);
             }
 
-        } catch (JClassAlreadyExistsException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (JClassAlreadyExistsException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
         return jXmlToRestConverter;
+    }
+
+
+    static String getNameWithoutList(String typeName) {
+        return typeName.replace("List<", "").replace(">", "");
     }
 
 

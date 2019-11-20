@@ -57,8 +57,13 @@ public class KNPPluginNew extends Plugin {
     static Map<String, JDefinedClass> xmlPageClassMap = new HashMap<>();
     private static Map<String, JDefinedClass> interfacePageMap = new HashMap<>();
 
-    static JDefinedClass jBaseConverterClass = null;
+    static JDefinedClass restFnoClass;
+    static Map<String, JDefinedClass> restFormClassMap = new HashMap<String, JDefinedClass>();
+    static Map<String, JDefinedClass> restPageClassMap = new HashMap<>();
 
+    static JDefinedClass jBaseConverterClass = null;
+    static  JDefinedClass jRestToXmlConverter = null;
+    static  JDefinedClass jXmlToRestConverter = null;
 
     @Override
     public String getOptionName() {
@@ -182,6 +187,16 @@ public class KNPPluginNew extends Plugin {
             try {
                 JDefinedClass restClass = J_MODEL._class(PKG_SERVICE_DTO_REST + cClassInfo.shortName);
 
+
+                if(restClass.name().equals("Fno")) {
+                    restFnoClass = restClass;
+                } else if(restClass.name().startsWith("Form")) {
+                    restFormClassMap.put(cClassInfo.shortName, restClass);
+                } else if (restClass.name().startsWith("Page")) {
+                    restPageClassMap.put(cClassInfo.shortName, restClass);
+                }
+
+
                 JDefinedClass commonInterface = null;
                 if(cClassInfo.shortName.contains("Page")) {
                     commonInterface = Helper.implementInterface(interfacePageMap, currentClass, restClass, cClassInfo.shortName);
@@ -237,7 +252,8 @@ public class KNPPluginNew extends Plugin {
         }
 
 
-        this.jBaseConverterClass = Helper.generateBaseConverter(interfacePageMap);
+        jBaseConverterClass = Helper.generateBaseConverter(interfacePageMap);
+        jXmlToRestConverter = Helper.generateXmlToRestConverter();
 
 
         return true;
