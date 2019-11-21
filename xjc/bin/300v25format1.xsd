@@ -1,0 +1,3507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:fn="http://www.w3.org/2005/xpath-functions">
+    <xs:element name="fno" type="Fno"/>
+    <xs:complexType name="Fno">
+        <xs:sequence>
+            <xs:element name="form_300_00" type="form_300_00"/>
+            <xs:element name="form_300_01" type="form_300_01" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="form_300_02" type="form_300_02" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="form_300_03" type="form_300_03" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="form_300_04" type="form_300_04" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="form_300_05" type="form_300_05" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="form_300_05_001" type="form_300_05_001" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="form_300_06" type="form_300_06" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="form_300_07" type="form_300_07" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="form_300_08" type="form_300_08" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="form_300_09" type="form_300_09" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="code" fixed="300.00"/>
+        <xs:attribute name="formatVersion" fixed="1"/>
+        <xs:attribute name="version" fixed="25"/>
+    </xs:complexType>
+    <xs:complexType name="form_300_00">
+        <xs:sequence>
+            <xs:element name="sheetGroup">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="page_300_00_01" type="page_300_00_01"/>
+                        <xs:element name="page_300_00_02" type="page_300_00_02"/>
+                        <xs:element name="page_300_00_03" type="page_300_00_03"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_00_01">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="category_w" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="currency_code">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="date_" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="ded_meth1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="ded_meth2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="ded_meth3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="dt_additional" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="dt_final" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="dt_main" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="dt_notice" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="dt_regular" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="dt_w" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="dt_w_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_001_01_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_001_01_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_001_02_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_001_02_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_001_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_001_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_002" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_003_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_003_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_004" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_005" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_006" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_006_01_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_007" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:fractionDigits value="2"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="notice_date" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="notice_number" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="num" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="number">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="7"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="payer_name1">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="27"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="payer_name2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="35"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="payer_name3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="36"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="pril_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="pril_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="pril_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="pril_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="pril_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="pril_6" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="pril_7" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="pril_8" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="pril_9" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="rnn" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="schet_extract_electronic" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="schet_extract_paper" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="schet_reception_electronic" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="schet_reception_paper" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="series">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="5"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="uchr_dov" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="upr_dov" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="use_another" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="use_article" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_00_02">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_008" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:fractionDigits value="2"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_009" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:fractionDigits value="2"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_010" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_011" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_012" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_013_01_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_013_01_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_013_02_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_013_02_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_013_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_013_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_014_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_014_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_015" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_016_01_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_016_01_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_016_02_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_016_02_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_017" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_018" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_019" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_020_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_020_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_021" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_022" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_023" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_024" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_024_01" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_024_02" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_024_03" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_025_01" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_025_02" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_025_03" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_00_03">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="accept_date" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_025_04" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_026_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_026_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_026_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_027_01" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_027_02" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_028" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_029_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_029_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_030_01" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_030_02" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_031" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_032" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_032_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_032_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_032_3_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_00_032_3_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="head_name">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="in_doc_number" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="post_date" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="rating_auth_code">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="4"/>
+                        <xs:pattern value="[0-9]*"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="receptor_name" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="submit_date">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="form_300_01">
+        <xs:sequence>
+            <xs:element name="sheetGroup">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="page_300_01_01" type="page_300_01_01"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_01_01">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_001" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_001_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_001_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_001_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_001_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_001_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_002" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_003" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_003_01_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_003_01_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_003_02_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_003_02_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_003_03_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_003_03_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_003_04_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_003_04_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_003_05_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_003_05_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_004" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_005" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_006" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_007" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_01_008" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="form_300_02">
+        <xs:sequence>
+            <xs:element name="sheetGroup">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="page_300_02_01" type="page_300_02_01"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_02_01">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_001" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_001_01_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_001_01_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_001_02_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_001_02_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_001_03_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_001_03_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_001_04_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_001_04_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_001_05_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_001_05_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_002" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_003" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_004" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_005" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_006" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_007" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_008" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_009" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_010" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_010_01_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_010_01_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_010_02_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_010_02_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_010_03_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_010_03_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_010_04_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_010_04_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_010_05_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_010_05_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_011" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_012" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_013" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_02_014" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="form_300_03">
+        <xs:sequence>
+            <xs:element name="sheetGroup">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="page_300_03_01" type="page_300_03_01"/>
+                        <xs:element name="page_300_03_02" type="page_300_03_02"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_03_01">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_03_n_c_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="page_number" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="row" type="page_300_03_01_row" minOccurs="0" maxOccurs="19"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_03_01_row">
+        <xs:sequence>
+            <xs:element name="form_300_03_n_a" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_03_n_b" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="18"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_03_n_c" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_03_n_d" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_03_02">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_03_n_e_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_03_n_f_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_03_n_g_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="page_number" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="row" type="page_300_03_02_row" minOccurs="0" maxOccurs="19"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_03_02_row">
+        <xs:sequence>
+            <xs:element name="form_300_03_n_a" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_03_n_e" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_03_n_f" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_03_n_g" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="form_300_04">
+        <xs:sequence>
+            <xs:element name="sheetGroup">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="page_300_04_01" type="page_300_04_01"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_04_01">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_04_001_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_04_001_A_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_04_001_A_10" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_04_001_A_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_04_001_A_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_04_001_A_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_04_001_A_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_04_001_A_6" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_04_001_A_7" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_04_001_A_8" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_04_001_A_9" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_04_001_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_04_001_B_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_04_001_B_10" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_04_001_B_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_04_001_B_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_04_001_B_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_04_001_B_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_04_001_B_6" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_04_001_B_7" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_04_001_B_8" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_04_001_B_9" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="form_300_05">
+        <xs:sequence>
+            <xs:element name="sheetGroup">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="page_300_05_01" type="page_300_05_01"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_05_01">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_05_001" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_05_002" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_05_003" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_05_004" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_05_005" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_05_006" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_05_007" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="form_300_05_001">
+        <xs:sequence>
+            <xs:element name="sheetGroup">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="page_300_05_001_01" type="page_300_05_001_01"/>
+                        <xs:element name="page_300_05_001_02" type="page_300_05_001_02"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_05_001_01">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="page_number" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="row" type="page_300_05_001_01_row" minOccurs="0" maxOccurs="19"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_05_001_01_row">
+        <xs:sequence>
+            <xs:element name="form_300_05_n_a" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_05_n_b" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_05_n_c" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_05_n_d" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_05_n_e" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_05_001_02">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_05_n_f_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_05_n_g_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_05_n_h_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="page_number" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="row" type="page_300_05_001_02_row" minOccurs="0" maxOccurs="19"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_05_001_02_row">
+        <xs:sequence>
+            <xs:element name="form_300_05_n_a" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_05_n_f" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_05_n_g" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_05_n_h" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="form_300_06">
+        <xs:sequence>
+            <xs:element name="sheetGroup">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="page_300_06_01" type="page_300_06_01"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_06_01">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_001_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_001_1_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_001_1_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_001_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_001_2_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_001_2_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_001_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_001_3_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_001_3_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_001_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_001_4_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_001_4_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_001_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_001_5_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_001_5_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_001_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_001_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_002_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_002_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_003_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_003_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_004_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_004_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_005_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_006_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_006_1_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_006_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_006_2_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_006_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_006_3_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_006_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_006_4_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_006_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_006_5_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_006_A" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_007_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_007_1_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_007_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_007_2_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_007_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_007_3_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_007_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_007_4_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_007_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_007_5_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_007_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_008_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_009_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_06_010_B" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="form_300_07">
+        <xs:sequence>
+            <xs:element name="sheetGroup">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="page_300_07_01" type="page_300_07_01"/>
+                        <xs:element name="page_300_07_02" type="page_300_07_02"/>
+                        <xs:element name="page_300_07_03" type="page_300_07_03"/>
+                        <xs:element name="page_300_07_04" type="page_300_07_04"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_07_01">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="page_number" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="row" type="page_300_07_01_row" minOccurs="0" maxOccurs="14"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_07_01_row">
+        <xs:sequence>
+            <xs:element name="form_300_07_n_a" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_07_n_b" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_07_n_c" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_07_n_d" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_07_02">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="page_number" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="row" type="page_300_07_02_row" minOccurs="0" maxOccurs="14"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_07_02_row">
+        <xs:sequence>
+            <xs:element name="form_300_07_n_a" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_07_n_e" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="100"/>
+                        <xs:pattern value="[0-9]*"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_07_n_f" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_07_n_g" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_07_03">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_07_n_h_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_07_n_i_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_07_n_j_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="page_number" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="row" type="page_300_07_03_row" minOccurs="0" maxOccurs="14"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_07_03_row">
+        <xs:sequence>
+            <xs:element name="form_300_07_n_a" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_07_n_h" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_07_n_i" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_07_n_j" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_07_04">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="page_number" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="row" type="page_300_07_04_row" minOccurs="0" maxOccurs="14"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_07_04_row">
+        <xs:sequence>
+            <xs:element name="form_300_07_n_a" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_07_n_k" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_07_n_l" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_07_n_m" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="form_300_08">
+        <xs:sequence>
+            <xs:element name="sheetGroup">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="page_300_08_01" type="page_300_08_01"/>
+                        <xs:element name="page_300_08_02" type="page_300_08_02"/>
+                        <xs:element name="page_300_08_03" type="page_300_08_03"/>
+                        <xs:element name="page_300_08_04" type="page_300_08_04"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_08_01">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="page_number" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="row" type="page_300_08_01_row" minOccurs="0" maxOccurs="14"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_08_01_row">
+        <xs:sequence>
+            <xs:element name="form_300_08_n_a" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_08_n_b" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_08_n_c" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_08_n_d" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_08_02">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="page_number" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="row" type="page_300_08_02_row" minOccurs="0" maxOccurs="14"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_08_02_row">
+        <xs:sequence>
+            <xs:element name="form_300_08_n_a" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_08_n_e" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_08_n_f" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_08_n_g" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_08_03">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_08_n_h_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_08_n_i_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_08_n_j_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="page_number" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="row" type="page_300_08_03_row" minOccurs="0" maxOccurs="14"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_08_03_row">
+        <xs:sequence>
+            <xs:element name="form_300_08_n_a" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_08_n_h" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_08_n_i" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_08_n_j" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_08_04">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="page_number" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="row" type="page_300_08_04_row" minOccurs="0" maxOccurs="14"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_08_04_row">
+        <xs:sequence>
+            <xs:element name="form_300_08_n_a" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_08_n_k" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_08_n_l" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="form_300_08_n_m" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="form_300_09">
+        <xs:sequence>
+            <xs:element name="sheetGroup">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="page_300_09_01" type="page_300_09_01"/>
+                        <xs:element name="page_300_09_02" type="page_300_09_02"/>
+                        <xs:element name="page_300_09_03" type="page_300_09_03"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_09_01">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_12_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_12_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_12_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_12_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_12_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_1_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_1_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_1_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_1_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_1_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_2_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_2_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_2_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_2_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_2_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_34_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_34_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_34_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_34_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_34_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_3_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_3_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_3_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_3_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_3_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_4_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_4_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_4_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_4_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_01_4_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_12_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_12_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_12_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_12_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_12_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_1_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_1_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_1_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_1_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_1_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_2_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_2_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_2_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_2_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_2_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_34_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_34_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_34_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_34_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_34_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_3_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_3_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_3_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_3_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_3_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_4_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_4_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_4_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_4_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_02_4_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_09_02">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_12_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_12_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_12_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_12_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_12_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_1_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_1_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_1_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_1_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_1_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_2_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_2_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_2_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_2_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_2_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_34_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_34_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_34_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_34_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_34_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_3_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_3_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_3_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_3_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_3_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_4_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_4_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_4_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_4_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_03_4_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_12_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_12_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_12_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_12_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_12_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_1_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_1_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_1_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_1_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_1_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_2_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_2_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_2_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_2_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_2_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_34_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_34_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_34_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_34_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_34_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_3_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_3_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_3_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_3_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_3_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_4_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_4_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_4_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_4_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_04_4_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="page_300_09_03">
+        <xs:sequence>
+            <xs:element name="PaperFormsBarcode2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_12_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_12_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_12_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_12_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_12_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_1_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_1_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_1_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_1_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_1_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_2_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_2_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_2_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_2_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_2_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_34_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_34_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_34_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_34_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_34_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_3_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_3_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_3_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_3_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_3_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_4_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_4_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_4_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_4_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_05_4_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_12_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_12_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_12_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_12_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_12_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_1_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_1_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_1_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_1_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_1_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_2_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_2_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_2_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_2_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_2_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_34_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_34_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_34_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_34_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_34_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_3_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_3_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_3_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_3_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_3_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_4_1" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_4_2" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_4_3" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_4_4" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="field_300_09_001_06_4_5" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:long"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iin" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_quarter">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="period_year">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="2000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

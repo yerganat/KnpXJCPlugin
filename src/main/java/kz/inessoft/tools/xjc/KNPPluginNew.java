@@ -57,9 +57,9 @@ public class KNPPluginNew extends Plugin {
     static Map<String, JDefinedClass> xmlPageClassMap = new HashMap<>();
     private static Map<String, JDefinedClass> interfacePageMap = new HashMap<>();
 
-    static JDefinedClass restFnoClass;
-    static Map<String, JDefinedClass> restFormClassMap = new HashMap<String, JDefinedClass>();
-    static Map<String, JDefinedClass> restPageClassMap = new HashMap<>();
+//    static JDefinedClass restFnoClass;
+//    static Map<String, JDefinedClass> restFormClassMap = new HashMap<String, JDefinedClass>();
+//    static Map<String, JDefinedClass> restPageClassMap = new HashMap<>();
 
     static JDefinedClass jBaseConverterClass = null;
     static  JDefinedClass jRestToXmlConverter = null;
@@ -129,7 +129,7 @@ public class KNPPluginNew extends Plugin {
                     FORM_CODE_VALUE = codeParts[0];
 
                     if(!codeParts[1].equals("00")) {
-                        FORM_APP_VALUE = codeParts[2];
+                        FORM_APP_VALUE = codeParts[1];
                     }
                 }
 
@@ -188,13 +188,13 @@ public class KNPPluginNew extends Plugin {
                 JDefinedClass restClass = J_MODEL._class(PKG_SERVICE_DTO_REST + cClassInfo.shortName);
 
 
-                if(restClass.name().equals("Fno")) {
-                    restFnoClass = restClass;
-                } else if(restClass.name().startsWith("Form")) {
-                    restFormClassMap.put(cClassInfo.shortName, restClass);
-                } else if (restClass.name().startsWith("Page")) {
-                    restPageClassMap.put(cClassInfo.shortName, restClass);
-                }
+//                if(restClass.name().equals("Fno")) {
+//                    restFnoClass = restClass;
+//                } else if(restClass.name().startsWith("Form")) {
+//                    restFormClassMap.put(cClassInfo.shortName, restClass);
+//                } else if (restClass.name().startsWith("Page")) {
+//                    restPageClassMap.put(cClassInfo.shortName, restClass);
+//                }
 
 
                 JDefinedClass commonInterface = null;
@@ -254,6 +254,7 @@ public class KNPPluginNew extends Plugin {
 
         jBaseConverterClass = Helper.generateBaseConverter(interfacePageMap);
         jXmlToRestConverter = Helper.generateXmlToRestConverter();
+        jRestToXmlConverter = Helper.generateRestToXmlConverter();
 
 
         return true;
