@@ -79,7 +79,7 @@ public class RestToXmlConverter {
 
                 for (JFieldVar formField: xmlFormClassMap.get(formTypeName).fields().values()) {
 
-                    if(!formField.name().equals("sheetGroup")) continue;
+                    if(!formField.name().equals("sheetGroup")|| formField.type().fullName().contains("List")) continue;
 
                     JDefinedClass jSheetClass = (JDefinedClass)  formField.type();
 
