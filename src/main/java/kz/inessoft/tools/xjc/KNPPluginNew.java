@@ -10,8 +10,6 @@ import com.sun.tools.xjc.model.CPropertyInfo;
 import com.sun.tools.xjc.outline.ClassOutline;
 import com.sun.tools.xjc.outline.Outline;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -253,8 +251,8 @@ public class KNPPluginNew extends Plugin {
 
 
         jBaseConverterClass = Helper.generateBaseConverter(interfacePageMap);
-        jXmlToRestConverter = Helper.generateXmlToRestConverter();
-        jRestToXmlConverter = Helper.generateRestToXmlConverter();
+        jXmlToRestConverter = XmlToRestConverter.generate();
+        jRestToXmlConverter = RestToXmlConverter.generate();
 
 
         return true;
