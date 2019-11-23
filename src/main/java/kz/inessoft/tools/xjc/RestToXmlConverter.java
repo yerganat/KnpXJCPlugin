@@ -119,14 +119,27 @@ public class RestToXmlConverter {
                     JType jSheetGroupClass = J_MODEL.parseType(returnFormTypeBase.fullName() + ".SheetGroup");
                     JVar sheetGroup = mainCopyBlock.decl(NONE, jSheetGroupClass, "sheetGroup", JExpr._new(jSheetGroupClass));
 
-                    mainCopyBlock.add(xmlForm.invoke("setSheetGroup").arg(sheetGroup));
+                    boolean isSheetGroupSet = false;
 
                     for (JFieldVar formField : xmlFormClassMap.get(formTypeName).fields().values()) {
 
-                        if (!formField.name().equals("sheetGroup") || formField.type().fullName().contains("List"))
-                            continue;
+                        if (!formField.type().name().contains("SheetGroup")) continue;
 
-                        JDefinedClass jSheetClass = (JDefinedClass) formField.type();
+                        if(!isSheetGroupSet) {
+                            if (formField.type().name().contains("List<SheetGroup>")) {
+                                mainCopyBlock.add(xmlForm.invoke("getSheetGroup").invoke("add").arg(sheetGroup));
+                            } else {
+                                mainCopyBlock.add(xmlForm.invoke("setSheetGroup").arg(sheetGroup));
+                            }
+                            isSheetGroupSet = true;
+                        }
+
+                        String sheetGroupClassName = Helper.getNameWithoutList(formField.type().fullName());
+
+                        //JDefinedClass jSheetClass = (JDefinedClass) formField.type();
+
+                        JDefinedClass jSheetClass  = xmlSheetGroupClassMap.get(sheetGroupClassName);
+
 
                         for (JFieldVar sheetField : jSheetClass.fields().values()) {
                             JType jPageClass = sheetField.type();
