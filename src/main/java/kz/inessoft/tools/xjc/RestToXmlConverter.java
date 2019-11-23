@@ -36,19 +36,27 @@ public class RestToXmlConverter {
 
             //public Fno convert() {
             JMethod jConvertMethod = jRestToXmlConverter.method(PUBLIC, xmlFnoClass, "convert");
-            JBlock jBlock = jConvertMethod.body();
-            jBlock._if(jFnoFieldVar.eq(JExpr._null()))._then()._return(JExpr._null());
-            JVar retVal = jBlock.decl(NONE, xmlFnoClass, "retVal", JExpr._new(xmlFnoClass));
+            JBlock jConvertMethodBody = jConvertMethod.body();
+            jConvertMethodBody._if(jFnoFieldVar.eq(JExpr._null()))._then()._return(JExpr._null());
+            JVar retVal = jConvertMethodBody.decl(NONE, xmlFnoClass, "retVal", JExpr._new(xmlFnoClass));
 
-            for (JMethod jXmlFnoMethod: xmlFnoClass.methods()) {
-                if(jXmlFnoMethod.name().startsWith("get") || !jXmlFnoMethod.name().contains("Form")|| jXmlFnoMethod.name().contains("FormatVersion")) {
+            for (JFieldVar fnoField: xmlFnoClass.fields().values()) {
+                if(!fnoField.name().contains("form") || fnoField.name().contains("formatVersion")) {
                     continue;
                 }
 
-                //JType jFromType = jXmlFnoMethod.type();
-                jBlock.add(retVal.invoke(jXmlFnoMethod).arg(JExpr._this().invoke("convert" + jXmlFnoMethod.name().replace("set", "")) .arg(jFnoFieldVar.ref(jXmlFnoMethod.name().replace("set", "get") + "()"))));
+                //retVal.setForm20000(convertForm20000(fno.getForm20000()));
+                JInvocation setMethods = null;
+                if(fnoField.type().name().contains("List")) {
+                    setMethods = retVal.invoke("get" + StringUtils.capitalize(fnoField.name())).invoke("addAll");
+                } else {
+                    setMethods = retVal.invoke("set" + StringUtils.capitalize(fnoField.name()));
+                }
+                jConvertMethodBody.add(setMethods.arg(JExpr._this().invoke("convert" + StringUtils.capitalize(fnoField.name()))
+                        .arg(jFnoFieldVar.invoke("get" + StringUtils.capitalize(fnoField.name())))));
             }
-            jBlock._return(retVal);
+
+            jConvertMethodBody._return(retVal);
 
             //private Form10104 convertForm10104(kz.inessoft.sono.app.fno.f101.app04.v20.services.dto.rest.Form10104 form10104) {
             String argName= "form";

@@ -34,9 +34,9 @@ public class XmlToRestConverter {
             JType restFnoClass = J_MODEL.parseType(PKG_SERVICE_DTO_REST + StringUtils.capitalize(jFnoVar.name()));
             //public Fno convert() {
             JMethod jConvertMethod = jXmlToRestConverter.method(PUBLIC, restFnoClass, "convert");
-            JBlock jBlock = jConvertMethod.body();
-            jBlock._if(jFnoFieldVar.eq(JExpr._null()))._then()._return(JExpr._null());
-            JVar retVal = jBlock.decl(NONE, restFnoClass, "retVal", JExpr._new(restFnoClass));
+            JBlock jConvertMethodBody = jConvertMethod.body();
+            jConvertMethodBody._if(jFnoFieldVar.eq(JExpr._null()))._then()._return(JExpr._null());
+            JVar retVal = jConvertMethodBody.decl(NONE, restFnoClass, "retVal", JExpr._new(restFnoClass));
 
             for (JFieldVar fnoField: xmlFnoClass.fields().values()) {
                 if(!fnoField.name().contains("form") || fnoField.name().contains("formatVersion")) {
@@ -50,10 +50,10 @@ public class XmlToRestConverter {
                 } else {
                     setMethods = retVal.invoke("set" + StringUtils.capitalize(fnoField.name()));
                 }
-                jBlock.add(setMethods.arg(JExpr._this().invoke("convert" + StringUtils.capitalize(fnoField.name()))
+                jConvertMethodBody.add(setMethods.arg(JExpr._this().invoke("convert" + StringUtils.capitalize(fnoField.name()))
                         .arg(jFnoFieldVar.invoke("get" + StringUtils.capitalize(fnoField.name())))));
             }
-            jBlock._return(retVal);
+            jConvertMethodBody._return(retVal);
 
 
             //private Form10104 convertForm10104(kz.inessoft.sono.app.fno.f101.app04.v20.services.dto.xml.Form10104 form[s]) {
@@ -91,18 +91,11 @@ public class XmlToRestConverter {
                 JFieldRef jFormParamRef = JExpr.ref(jFormParam.name());
                 if(isListForm) {
 
-                    //                .filter(form20003 -> form20003.getSheetGroup() != null &&
-                    //                        (form20003.getSheetGroup().getPage2000301() != null || form20003.getSheetGroup().getPage2000302() != null))
-
+                    //                .filter(form20003 -> form20003.getSheetGroup() != null)
                     //String filterLambdaParamName = StringUtils.lowerCase(formTypeName);
                     JLambda filterLambda = new JLambda();
                     JLambdaParam filterLambdaParam = filterLambda.addParam(fnoField.name());
                     JBlock filterLambdaBlock = filterLambda.body();
-
-//                    JVar lambdaRetVal = filterLambdaBlock.decl(NONE, J_MODEL.BOOLEAN, "retVal1",
-//                            JExpr.ref(filterLambdaParam.name()).invoke("getSheetGroup").ne(JExpr._null())
-//                                    .cand(JExpr.ref(filterLambdaParam.name()).invoke("getSheetGroup").invoke("getPageXXX1").ne(JExpr._null()))
-//                                    .cor(JExpr.ref(filterLambdaParam.name()).invoke("getSheetGroup").invoke("getPageXXX1").ne(JExpr._null())));
 
                     filterLambdaBlock._return(JExpr.ref(filterLambdaParam.name()).invoke("getSheetGroup").ne(JExpr._null()));
 
