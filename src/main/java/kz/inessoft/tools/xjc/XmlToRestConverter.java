@@ -4,6 +4,8 @@ import com.sun.codemodel.*;
 import kz.inessoft.tools.xjc.ext.JLambda;
 import kz.inessoft.tools.xjc.ext.JLambdaParam;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,9 @@ import static kz.inessoft.tools.xjc.KNPPluginNew.*;
 import static kz.inessoft.tools.xjc.KNPPluginNew.PKG_SERVICE_DTO_REST;
 
 public class XmlToRestConverter {
+
+    private static final Logger logger = LogManager.getLogger(RestToXmlConverter.class);
+
     static JDefinedClass generate() {
         JDefinedClass jXmlToRestConverter= null;
         try {
@@ -146,7 +151,7 @@ public class XmlToRestConverter {
                         for (JFieldVar sheetField : jSheetClass.fields().values()) {
                             JType jPageClass = sheetField.type();
 
-                            logger.debug("+++++++ " + jPageClass.name());
+                            logger.debug("  convert " + jPageClass.name());
                             if (!jPageClass.name().contains("Page")) continue;
 
                             JType pageType = J_MODEL.parseType(PKG_SERVICE_DTO_REST + jPageClass.name());

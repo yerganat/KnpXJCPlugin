@@ -27,16 +27,15 @@ import static kz.inessoft.tools.xjc.Helper.getInterfacePageRow;
 
 public class KNPPluginNew extends Plugin {
 
-    private static Boolean GENERATE_ONLY_DTO = false;
+    static Boolean GENERATE_ONLY_DTO = false;
 
-    private static String FORM_CODE = "";
-    private static String FNO_VERSION = "";
+    static String FORM_CODE = "";
+    static String FNO_VERSION = "";
 
-    private static String FORM_CODE_VALUE = "";
-    private static String FORM_APP_VALUE = "";
-    private static String FNO_VERSION_VALUE = "";
+    static String FORM_CODE_VALUE = "";
+    static String FORM_APP_VALUE = "";
 
-    private static String PKG_BASE = "kz.inessoft.sono.app.fno"; //kz.inessoft.sono.app.fno.f710.v22
+    static String PKG_BASE = "kz.inessoft.sono.app.fno"; //kz.inessoft.sono.app.fno.f710.v22
     static String PKG_REST = ""; //kz.inessoft.sono.app.fno.f710.v22.rest.
     static String PKG_SERVICE = ""; //kz.inessoft.sono.app.fno.f710.v22.services.
     static String PKG_SERVICE_DTO = ""; //kz.inessoft.sono.app.fno.f710.v22.services.dto.
@@ -44,7 +43,7 @@ public class KNPPluginNew extends Plugin {
     static String PKG_SERVICE_DTO_XML = ""; //kz.inessoft.sono.app.fno.f710.v22.services.dto.xml.
     static String PKG_SERVICE_FLK = ""; //kz.inessoft.sono.app.fno.f710.v22.services.flk.
 
-    private File targetDir;
+    static File targetDir;
 
     public static final Logger logger = LogManager.getLogger(KNPPluginNew.class);
 
@@ -61,8 +60,6 @@ public class KNPPluginNew extends Plugin {
 //    static Map<String, JDefinedClass> restPageClassMap = new HashMap<>();
 
     static JDefinedClass jBaseConverterClass = null;
-    static  JDefinedClass jRestToXmlConverter = null;
-    static  JDefinedClass jXmlToRestConverter = null;
 
     @Override
     public String getOptionName() {
@@ -255,9 +252,9 @@ public class KNPPluginNew extends Plugin {
 
 
         jBaseConverterClass = Helper.generateBaseConverter(interfacePageMap);
-        jXmlToRestConverter = XmlToRestConverter.generate();
-        jRestToXmlConverter = RestToXmlConverter.generate();
-
+        XmlToRestConverter.generate();
+        RestToXmlConverter.generate();
+        new MockGenerator().generateMocks();
 
         return true;
     }

@@ -225,7 +225,7 @@ class Helper {
 
             //protected void copyTo(IPage1010401 src, IPage1010401 dst) {
             for (Map.Entry<String, JDefinedClass> interf: interfacePageMap.entrySet()) {
-                logger.debug("====== " + interf.getKey());
+                logger.debug(" BaseConverter copyTo for " + interf.getKey());
                 JMethod jCopyToMethod = jBaseConverterClass.method(PUBLIC, void.class, "copyTo");
                 JVar src = jCopyToMethod.param(interf.getValue(), "src");
                 JVar dst = jCopyToMethod.param(interf.getValue(), "dst");
