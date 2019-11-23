@@ -40,18 +40,26 @@ public class XmlToRestConverter {
             jBlock._if(jFnoFieldVar.eq(JExpr._null()))._then()._return(JExpr._null());
             JVar retVal = jBlock.decl(NONE, restFnoClass, "retVal", JExpr._new(restFnoClass));
 
-            for (JMethod jXmlFnoMethod: xmlFnoClass.methods()) {
-                if(jXmlFnoMethod.name().startsWith("get") || !jXmlFnoMethod.name().contains("Form")|| jXmlFnoMethod.name().contains("FormatVersion")) {
+            for (JFieldVar fnoField: xmlFnoClass.fields().values()) {
+                if(!fnoField.name().contains("form") || fnoField.name().contains("formatVersion")) {
                     continue;
                 }
 
-                //JType jFromType = jXmlFnoMethod.type();
-                jBlock.add(retVal.invoke(jXmlFnoMethod).arg(JExpr._this().invoke("convert" + jXmlFnoMethod.name().replace("set", "")) .arg(jFnoFieldVar.ref(jXmlFnoMethod.name().replace("set", "get") + "()"))));
+                //retVal.setForm20000(convertForm20000(fno.getForm20000()));
+                JInvocation setMethods = null;
+                if(fnoField.type().name().contains("List")) {
+                    setMethods = retVal.invoke("get" + StringUtils.capitalize(fnoField.name())).invoke("addAll");
+                } else {
+                    setMethods = retVal.invoke("set" + StringUtils.capitalize(fnoField.name()));
+                }
+                jBlock.add(setMethods.arg(JExpr._this().invoke("convert" + StringUtils.capitalize(fnoField.name()))
+                        .arg(jFnoFieldVar.invoke("get" + StringUtils.capitalize(fnoField.name())))));
             }
             jBlock._return(retVal);
 
 
-            //private Form10104 convertForm10104(kz.inessoft.sono.app.fno.f101.app04.v20.services.dto.xml.Form10104 form10104) {
+            //private Form10104 convertForm10104(kz.inessoft.sono.app.fno.f101.app04.v20.services.dto.xml.Form10104 form[s]) {
+            String argName= "form";
             for (JFieldVar fnoField: xmlFnoClass.fields().values()) {
                 JType xmlFormType = fnoField.type();
                 if(!xmlFormType.name().contains("Form")) continue;
@@ -69,7 +77,7 @@ public class XmlToRestConverter {
                 }
 
                 JMethod jConvertFormMethod = jXmlToRestConverter.method(PUBLIC, returnFormType, "convert" + formTypeName);
-                JVar jFormParam = jConvertFormMethod.param(xmlFormType, fnoField.name());
+                JVar jFormParam = jConvertFormMethod.param(xmlFormType, argName + (isListForm?"s":""));
 
                 JBlock jConvertBlock = jConvertFormMethod.body();
 
@@ -81,6 +89,8 @@ public class XmlToRestConverter {
 
                 JBlock mainCopyBlock = jConvertBlock;
 
+
+                JFieldRef jFormParamRef = JExpr.ref(jFormParam.name());
                 if(isListForm) {
 
                     //                .filter(form20003 -> form20003.getSheetGroup() != null &&
@@ -88,28 +98,36 @@ public class XmlToRestConverter {
 
                     //String filterLambdaParamName = StringUtils.lowerCase(formTypeName);
                     JLambda filterLambda = new JLambda();
-                    JLambdaParam filterLambdaParam = filterLambda.addParam(jFormParam.name());
+                    JLambdaParam filterLambdaParam = filterLambda.addParam(fnoField.name());
                     JBlock filterLambdaBlock = filterLambda.body();
 
-                    JVar lambdaRetVal = filterLambdaBlock.decl(NONE, J_MODEL.BOOLEAN, "retVal1",
-                            JExpr.ref(filterLambdaParam.name()).invoke("getSheetGroup").ne(JExpr._null()).
-                                    cand(JExpr.ref(filterLambdaParam.name()).invoke("getSheetGroup").invoke("getPageXXX1").ne(JExpr._null()))
-                                    .cor(JExpr.ref(filterLambdaParam.name()).invoke("getSheetGroup").invoke("getPageXXX1").ne(JExpr._null())));
-                    filterLambdaBlock._return(lambdaRetVal);
+//                    JVar lambdaRetVal = filterLambdaBlock.decl(NONE, J_MODEL.BOOLEAN, "retVal1",
+//                            JExpr.ref(filterLambdaParam.name()).invoke("getSheetGroup").ne(JExpr._null())
+//                                    .cand(JExpr.ref(filterLambdaParam.name()).invoke("getSheetGroup").invoke("getPageXXX1").ne(JExpr._null()))
+//                                    .cor(JExpr.ref(filterLambdaParam.name()).invoke("getSheetGroup").invoke("getPageXXX1").ne(JExpr._null())));
+
+                    filterLambdaBlock._return(JExpr.ref(filterLambdaParam.name()).invoke("getSheetGroup").ne(JExpr._null()));
 
                     //.map(form20003 -> {})
 
                     JLambda mapLambda = new JLambda();
-                    mapLambda.addParam(jFormParam.name());
+
+                    JVar retValList   = jConvertBlock.decl(NONE, returnFormType, "retValList", jFormParam.invoke("stream").invoke("filter")
+                            .arg(filterLambda).invoke("map").arg(mapLambda).invoke("collect").arg(JExpr.direct("java.util.stream.Collectors.toList()")));
+                    jConvertBlock._return(retValList);
+
+                    JLambdaParam mapLambdaParam = mapLambda.addParam(fnoField.name());
                     mainCopyBlock = mapLambda.body();
 
-                    jConvertBlock.decl(NONE, returnFormType, "retValList", jFormParam.invoke("stream").invoke("filter").arg(filterLambda).invoke("map").arg(mapLambda));
+
+                    jFormParamRef = JExpr.ref(mapLambdaParam.name());
+
 
                 }
 
 
                 {
-                    JVar retVal2 = mainCopyBlock.decl(NONE, returnFormTypeBase, "retVal", JExpr._new(returnFormTypeBase));
+                    JVar restForm = mainCopyBlock.decl(NONE, returnFormTypeBase, "restForm", JExpr._new(returnFormTypeBase));
 
                     for (JFieldVar formField : xmlFormClassMap.get(formTypeName).fields().values()) {
 
@@ -125,10 +143,10 @@ public class XmlToRestConverter {
 
                             JType pageType = J_MODEL.parseType(PKG_SERVICE_DTO_REST + jPageClass.name());
                             JVar pageVar = mainCopyBlock.decl(NONE, pageType, sheetField.name(), JExpr._new(pageType));
-                            mainCopyBlock.add(retVal2.invoke("set" + StringUtils.capitalize(sheetField.name())).arg(pageVar));
+                            mainCopyBlock.add(restForm.invoke("set" + StringUtils.capitalize(sheetField.name())).arg(pageVar));
 
-                            JBlock jIfNullBlock = mainCopyBlock._if(jFormParam.invoke("getSheetGroup").invoke("get" + StringUtils.capitalize(sheetField.name())).ne(JExpr._null()))._then();
-                            jIfNullBlock.invoke("copyTo").arg(jFormParam.invoke("getSheetGroup").invoke("get" + StringUtils.capitalize(sheetField.name()))).arg(pageVar);
+                            JBlock jIfNullBlock = mainCopyBlock._if(jFormParamRef.invoke("getSheetGroup").invoke("get" + StringUtils.capitalize(sheetField.name())).ne(JExpr._null()))._then();
+                            jIfNullBlock.invoke("copyTo").arg(jFormParamRef.invoke("getSheetGroup").invoke("get" + StringUtils.capitalize(sheetField.name()))).arg(pageVar);
 
                             if (jPageClass instanceof JDefinedClass) {
                                 JFieldVar jPageRowVar = ((JDefinedClass) jPageClass).fields().get("row");
@@ -142,7 +160,7 @@ public class XmlToRestConverter {
                                     jLambdaBlock.add(JExpr._this().invoke("copyTo").arg(JExpr.ref(aParam.name())).arg(lambdaRetVal))._return(lambdaRetVal);
 
                                     jIfNullBlock.invoke("fillPageRows").arg(
-                                            jFormParam.invoke("getSheetGroup").invoke("get" + StringUtils.capitalize(sheetField.name())).invoke("getRow"))
+                                            jFormParamRef.invoke("getSheetGroup").invoke("get" + StringUtils.capitalize(sheetField.name())).invoke("getRow"))
                                             .arg(pageVar.invoke("getRow")).arg(aLambda);
 
                                 }
@@ -152,7 +170,7 @@ public class XmlToRestConverter {
                     }
 
 
-                    mainCopyBlock._return(retVal2);
+                    mainCopyBlock._return(restForm);
                 }
             }
 
