@@ -5,9 +5,6 @@ import com.sun.codemodel.*;
 import com.sun.tools.xjc.model.CPropertyInfo;
 import com.sun.xml.xsom.XSAttributeUse;
 import com.sun.xml.xsom.XmlString;
-import kz.inessoft.tools.xjc.ext.JLambda;
-import kz.inessoft.tools.xjc.ext.JLambdaParam;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.text.WordUtils;
 
 import java.io.PrintWriter;
@@ -16,7 +13,7 @@ import java.util.*;
 
 import static com.sun.codemodel.JMod.*;
 import static com.sun.codemodel.JMod.NONE;
-import static kz.inessoft.tools.xjc.KNPPluginNew.*;
+import static kz.inessoft.tools.xjc.KNPPlugin.*;
 
 class Helper {
 

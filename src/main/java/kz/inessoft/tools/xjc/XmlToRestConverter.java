@@ -13,8 +13,8 @@ import java.util.List;
 import static com.sun.codemodel.JMod.*;
 import static com.sun.codemodel.JMod.NONE;
 import static kz.inessoft.tools.xjc.Helper.getNameWithoutList;
-import static kz.inessoft.tools.xjc.KNPPluginNew.*;
-import static kz.inessoft.tools.xjc.KNPPluginNew.PKG_SERVICE_DTO_REST;
+import static kz.inessoft.tools.xjc.KNPPlugin.*;
+import static kz.inessoft.tools.xjc.KNPPlugin.PKG_SERVICE_DTO_REST;
 
 public class XmlToRestConverter {
 

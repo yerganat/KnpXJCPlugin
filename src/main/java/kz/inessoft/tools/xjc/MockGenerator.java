@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
 
-import static kz.inessoft.tools.xjc.KNPPluginNew.*;
+import static kz.inessoft.tools.xjc.KNPPlugin.*;
 
 public class MockGenerator {
 
