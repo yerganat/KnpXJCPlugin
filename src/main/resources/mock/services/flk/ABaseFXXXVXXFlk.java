@@ -14,7 +14,6 @@ public abstract class ABaseFXXXVXXFlk {
     private static Map<String, String> KZ_ERRORS = new HashMap<>();
 
     static {
-
         RU_ERRORS.put("msgEmpty", "Реквизит отсутствует");
         KZ_ERRORS.put("msgEmpty", "Реквизит көрсетілмеген");
 
@@ -27,7 +26,7 @@ public abstract class ABaseFXXXVXXFlk {
         RU_ERRORS.put("msgYear", "Налоговый период, за который представляется налоговая отчетность не указан");
         KZ_ERRORS.put("msgYear", "Налоговый период, за который представляется налоговая отчетность не указан");
 
-        RU_ERRORS.put("msgIINCheck", "Введенное значение не является ИИН(БИН)");
+        RU_ERRORS.put("msgIINCheck", "Введенное значение не является (ИИН)БИН");
         KZ_ERRORS.put("msgIINCheck", "Енгізілген шама (ЖСН)БСН  құрылымына сәйкес емес");
 
         RU_ERRORS.put("msgError", "Поле заполненно некорректно");
