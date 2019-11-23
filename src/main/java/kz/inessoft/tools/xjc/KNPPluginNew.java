@@ -53,6 +53,7 @@ public class KNPPluginNew extends Plugin {
     static JDefinedClass xmlFnoClass;
     static Map<String, JDefinedClass> xmlFormClassMap = new HashMap<String, JDefinedClass>();
     static Map<String, JDefinedClass> xmlPageClassMap = new HashMap<>();
+    static Map<String, JDefinedClass> xmlSheetGroupClassMap = new HashMap<>();
     private static Map<String, JDefinedClass> interfacePageMap = new HashMap<>();
 
 //    static JDefinedClass restFnoClass;
@@ -161,6 +162,8 @@ public class KNPPluginNew extends Plugin {
             JDefinedClass currentClass = classOutline.implClass;
             CClassInfo cClassInfo = classOutline.target;
 
+            logger.debug("Class name " + cClassInfo.shortName);
+
             if(cClassInfo.shortName.equals("Fno")) {
                 xmlFnoClass = currentClass;
                 JAnnotationUse jAnnotationForRow = currentClass.annotate(XmlRootElement.class);
@@ -169,9 +172,10 @@ public class KNPPluginNew extends Plugin {
                 xmlFormClassMap.put(currentClass.name(), currentClass);
             } else  if (cClassInfo.shortName.startsWith("Page")) {
                 xmlPageClassMap.put(currentClass.name(), currentClass);
+            } else  if (cClassInfo.shortName.startsWith("SheetGroup")) {
+                logger.debug("Class name " + currentClass.fullName());
+                xmlSheetGroupClassMap.put(currentClass.fullName(), currentClass);
             }
-
-            logger.debug("Class name " + cClassInfo.shortName);
 
             if(currentClass.fields().containsKey("sheetGroup")) { //Если есть параметр sheetGroup то пропускаем(Это Form класс), так как Json атрибуты сгенерирована в классе SheetGroup
                 logger.debug("  skip... ");

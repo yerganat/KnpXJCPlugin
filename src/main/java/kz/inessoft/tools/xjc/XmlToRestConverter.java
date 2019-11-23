@@ -4,8 +4,6 @@ import com.sun.codemodel.*;
 import kz.inessoft.tools.xjc.ext.JLambda;
 import kz.inessoft.tools.xjc.ext.JLambdaParam;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -131,9 +129,26 @@ public class XmlToRestConverter {
 
                     for (JFieldVar formField : xmlFormClassMap.get(formTypeName).fields().values()) {
 
-                        if (!formField.name().equals("sheetGroup") || formField.type().fullName().contains("List")) continue; //TODO List<SheetGroup>
+                        String sheetGroupClassName = Helper.getNameWithoutList(formField.type().fullName());
 
-                        JDefinedClass jSheetClass = (JDefinedClass) formField.type();
+                        JVar varSheetGroup = null;
+
+
+                        if( formField.type().name().contains("List<SheetGroup>")) {
+                            jConvertBlock._if(jFormParam.invoke("getSheetGroup").eq(JExpr._null()).cor(jFormParam.invoke("getSheetGroup").invoke("isEmpty")))._then()._return(JExpr._null());
+                            varSheetGroup = mainCopyBlock.decl(NONE, J_MODEL.parseType(sheetGroupClassName), "sheetGroup", jFormParamRef.invoke("getSheetGroup").invoke("get").arg(JExpr.lit(0)));
+                        } else {
+                            varSheetGroup = mainCopyBlock.decl(NONE, J_MODEL.parseType(sheetGroupClassName), "sheetGroup", jFormParamRef.invoke("getSheetGroup"));
+                        }
+
+                        if (!formField.type().name().contains("SheetGroup")) continue;
+
+
+                        //JDefinedClass jSheetClass = (JDefinedClass) formField.type();
+
+                        JDefinedClass jSheetClass  = xmlSheetGroupClassMap.get(sheetGroupClassName);
+
+
 
                         for (JFieldVar sheetField : jSheetClass.fields().values()) {
                             JType jPageClass = sheetField.type();
@@ -145,8 +160,8 @@ public class XmlToRestConverter {
                             JVar pageVar = mainCopyBlock.decl(NONE, pageType, sheetField.name(), JExpr._new(pageType));
                             mainCopyBlock.add(restForm.invoke("set" + StringUtils.capitalize(sheetField.name())).arg(pageVar));
 
-                            JBlock jIfNullBlock = mainCopyBlock._if(jFormParamRef.invoke("getSheetGroup").invoke("get" + StringUtils.capitalize(sheetField.name())).ne(JExpr._null()))._then();
-                            jIfNullBlock.invoke("copyTo").arg(jFormParamRef.invoke("getSheetGroup").invoke("get" + StringUtils.capitalize(sheetField.name()))).arg(pageVar);
+                            JBlock jIfNullBlock = mainCopyBlock._if(varSheetGroup.invoke("get" + StringUtils.capitalize(sheetField.name())).ne(JExpr._null()))._then();
+                            jIfNullBlock.invoke("copyTo").arg(varSheetGroup.invoke("get" + StringUtils.capitalize(sheetField.name()))).arg(pageVar);
 
                             if (jPageClass instanceof JDefinedClass) {
                                 JFieldVar jPageRowVar = ((JDefinedClass) jPageClass).fields().get("row");
@@ -160,7 +175,7 @@ public class XmlToRestConverter {
                                     jLambdaBlock.add(JExpr._this().invoke("copyTo").arg(JExpr.ref(aParam.name())).arg(lambdaRetVal))._return(lambdaRetVal);
 
                                     jIfNullBlock.invoke("fillPageRows").arg(
-                                            jFormParamRef.invoke("getSheetGroup").invoke("get" + StringUtils.capitalize(sheetField.name())).invoke("getRow"))
+                                            varSheetGroup.invoke("get" + StringUtils.capitalize(sheetField.name())).invoke("getRow"))
                                             .arg(pageVar.invoke("getRow")).arg(aLambda);
 
                                 }

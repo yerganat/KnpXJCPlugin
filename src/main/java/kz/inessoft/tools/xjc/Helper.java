@@ -250,7 +250,7 @@ class Helper {
 
 
     static String getNameWithoutList(String typeName) {
-        return typeName.replace("List<", "").replace(">", "");
+        return typeName.replace("java.util.List<", "").replace("List<", "").replace(">", "");
     }
 
 
