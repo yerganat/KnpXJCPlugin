@@ -226,7 +226,7 @@ public class VXXService {
         return getRestDTOFromXML(xmlOld);
     }
 
-    private List<EDocType> getDocTypes(IPage4210001 page4210001) {
+    private List<EDocType> getDocTypes(IPage4210001 page4210001) { //TODO Реализовать превый интерфейс
         List<EDocType> docTypes = new ArrayList<>();
         if (isFinal(page4210001))
             docTypes.add(EDocType.LIQUIDATION);
@@ -314,7 +314,7 @@ public class VXXService {
 
     public AcceptResult acceptForm(String signedXml, Long draftId) throws TransformerException, SAXException, JAXBException, ParseException {
         String xml = XSLTTransformer.convertFromOldSonoFormat(signedXml);
-        XSDChecker.checkXml(xml, "/xsds/421.00vXX.xsd", VXXService.class);
+        XSDChecker.checkXml(xml, "/xsds/421.00vXX.xsd", VXXService.class);  //TODO название формы
         TaxPayerCheckEDSResult taxPayerCheckEDSResult = checkSignService.checkTaxPayerEDS(signedXml);
 
         Unmarshaller unmarshaller = getJaxbContext().createUnmarshaller();
@@ -323,7 +323,7 @@ public class VXXService {
 
         kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.Page4210002 page1010402 = fno.getForm42100().getSheetGroup().getPage4210002();
         if (taxPayerCheckEDSResult.getStatus() == EStatus.INVALID) {
-            errors.add(new FormError("form_421_00", "page_421_00_01", "iin", "ЭЦП не верна", "ЭЦП не верна"));
+            errors.add(new FormError("form_421_00", "page_421_00_01", "iin", "ЭЦП не верна", "ЭЦП не верна")); //TODO перебить как в xml парметры
             return createErrorsResponse(errors);
         }
 
@@ -364,12 +364,21 @@ public class VXXService {
         }
 
         Integer periodYear = Integer.valueOf(page1010402.getPeriodYear());
-        Integer periodMonth = Integer.valueOf(page1010402.getPeriodMonth());
+        Integer periodMonth = Integer.valueOf(page1010402.getPeriodMonth()); // TODO указать нужный, разработчик должен разобраться, закоментирую
         if (periodYear < minYear ||
                 periodYear == minYear && periodMonth != null && periodMonth < minMonth ||
                 periodYear > maxYear ||
                 periodYear == maxYear && periodMonth != null && periodMonth > maxMonth)
             errors.add(new FormError("form_421_00", "page_421_00_01", "period_year", "Документ имеет не допустимый период", "Документ имеет не допустимый период"));
+
+
+        Integer periodQuarter = Integer.valueOf(page7100001.getPeriodQuarter());
+        if (periodYear < minYear ||
+                periodYear == minYear && periodQuarter != null && periodQuarter < minQuarter ||
+                periodYear > maxYear ||
+                periodYear == maxYear && periodQuarter != null && periodQuarter > maxQuarter)
+            errors.add(new FormError("form_710_00", "page_710_00_01", "period_year", "Документ имеет не допустимый период", "Документ имеет не допустимый период"));
+
 
         Calendar cal = GregorianCalendar.getInstance();
         int year = cal.get(Calendar.YEAR);
@@ -416,6 +425,8 @@ public class VXXService {
         ErrorMsg errorMsg = relatedDocsService.completeStandardChecks(taxPayer, Collections.singletonList(FORM_CODE), taxOrg, docPeriod, docTypes);
         if (errorMsg != null) {
             String fieldName = "";
+            if (isFinal(page7100001))
+                fieldName = "dt_final";
             if (isMain(page4210001))
                 fieldName = "dt_main";
             if (isRegular(page4210001))
@@ -437,38 +448,31 @@ public class VXXService {
 
     private RegisterDocResponce registerDocument(kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.Fno fno, String docXml, BaseTaxPayer taxPayer, List<EDocType> docTypes,
                                                  DocPeriod docPeriod, Long draftId, Date acceptDate, Date submitDate) throws ParseException {
-        RegisterDocRequest registerDocRequest = new RegisterDocRequest();
-        registerDocRequest.setDraftId(draftId);
-        registerDocRequest.setDocXml(docXml);
-        registerDocRequest.setFormVersion(VXXConstants.VERSION);
-        registerDocRequest.setFormCode(FORM_CODE);
-        registerDocRequest.setDocTypes(docTypes);
+
+        kz.inessoft.sono.app.fno.f710.v22.services.dto.xml.Page7100001 page7100001 = fno.getForm71000().getSheetGroup().getPage7100001(); //TODO первый класс
+
+        ChargeInfo chargeInfo = new V22ChargeInfoBuilder(fno, taxPayer, docPeriod, daysOffService, relatedDocsService).build();
+
+        RegisterDocRequest registerDocRequest = RegisterDocRequestBuilder.newRequest()
+                .setFormInfo(FORM_CODE, V22Constants.VERSION)
+                .setDocumentXml(docXml)
+                .setTaxPayer(taxPayer)
+                .setDraftId(draftId)
+                .setAcceptDate(acceptDate)
+                .setSubmitDate(submitDate)
+                .setDocTypes(docTypes)
+                .setDocPeriod(docPeriod)
+                .setTaxOrgCode(page7100001.getRatingAuthCode())
+                .setChargeInfo(chargeInfo)
+                .setGenerateReceptionNotification(true)
+                .buildStandardRequest();
 
         PayerInfo payerInfo = new PayerInfo();
-        kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.Page4210002 page1010402 = fno.getForm42100().getSheetGroup().getPage4210002();
-        payerInfo.setIin(page1010402.getIin());
+        payerInfo.setIin(page7100001.getIin());
         payerInfo.setRnn(taxPayer.getRnn());
         registerDocRequest.setPayerInfo(payerInfo);
-        registerDocRequest.setTaxOrgCode(page1010402.getRatingAuthCode());
-        registerDocRequest.setDocPeriod(docPeriod);
-        ChargeInfo chargeInfo = new VXXChargeInfoBuilder(fno, taxPayer, daysOffService).build();
-        registerDocRequest.setChargeInfo(chargeInfo);
-        registerDocRequest.setDocumentStatus(chargeInfo != null ? EDocumentStatus.SENDING_TO_OUT_SYSTEM : EDocumentStatus.ACCEPTED);
 
-        registerDocRequest.setGenerateReceptionNotification(true);
-        registerDocRequest.setSubmitDate(submitDate);
-        registerDocRequest.setAcceptDate(acceptDate);
-        RegisterDocResponce registerDocResponce = docsRegistryService.registerDocument(registerDocRequest);
-        if (chargeInfo == null) {
-            NewStatusInfo newStatusInfo = new NewStatusInfo();
-            newStatusInfo.setRegistryDocumentId(registerDocResponce.getDocId());
-            newStatusInfo.setStatus(EDocumentStatus.NO_CHARGE_AMOUNTS);
-            newStatusInfo.setDescription("Обработка документа налоговой отчетности");
-            newStatusInfo.setStatusDate(new Date());
-            newStatusInfo.setSystem(ESystem.SONO);
-            notificationService.addNewStatusToDoc(newStatusInfo);
-        }
-        return registerDocResponce;
+        return docsRegistryService.registerDocument(registerDocRequest);
     }
 
 

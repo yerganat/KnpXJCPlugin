@@ -5,7 +5,7 @@ import kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.IPage4210001;
 import static org.apache.commons.lang.BooleanUtils.isTrue;
 
 public class VXXUtils {
-    public static boolean isFinal(IPage4210001 page4210001) {
+    public static boolean isFinal(IPage4210001 page4210001) { //TODO реализовать интерфейс самой первой страницы
         return page4210001.isDtFinal() != null && page4210001.isDtFinal();
     }
 

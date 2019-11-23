@@ -74,7 +74,9 @@ public class FXXXConfiguration extends WebSecurityConfigurerAdapter {
             return requestURI.startsWith("/fno/x_form_path/x_fno_version/newPrefilledForm") ||
                     requestURI.startsWith("/fno/x_form_path/x_fno_version/document/") ||
                     requestURI.startsWith("/fno/x_form_path/x_fno_version/saveDraft") ||
-                    requestURI.startsWith("/fno/x_form_path/x_fno_version/draft");
+                    requestURI.startsWith("/fno/x_form_path/x_fno_version/draft") ||
+                    requestURI.startsWith("/fno/x_form_path/x_fno_version/serializeToXmlForPrint") ||
+                    requestURI.startsWith("/fno/x_form_path/x_fno_version/serializeToXmlForSign");
         }).authorizeRequests().anyRequest().authenticated();
     }
 }
