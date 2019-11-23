@@ -1,6 +1,7 @@
 package kz.inessoft.tools.xjc;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
@@ -40,7 +41,7 @@ public class MockGenerator {
 
 
             InputStream inputStream = getClass().getResourceAsStream("/mock/" + subDir + resName);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
             String restController = reader.lines()
                     .collect(Collectors.joining(System.lineSeparator()));
 
@@ -52,7 +53,7 @@ public class MockGenerator {
                     .replace("x_form_path", FORM_CODE)
                     .replace("x_fno_version", "v" + FNO_VERSION)
                     .replace("x_only_fno_version", FNO_VERSION);
-            Files.write( Paths.get(restPath), restController.getBytes());
+            Files.write( Paths.get(restPath), restController.getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {
             e.printStackTrace();
         }
