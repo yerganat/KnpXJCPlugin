@@ -18,7 +18,7 @@ kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.RestToXMLConverter
 kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.XMLToRestConverter
 kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.IPage* интерфейсы для страницы
 
-kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.* классы которые генерируется самой xjc 
+kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.* классы XML которые генерируется самой xjc
 kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.rest.* соответствующие REST классы
 
 
