@@ -26,7 +26,7 @@ kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.rest.* соответствующ
 kz.inessoft.sono.app.fno.fXXX.vXX.rest.VXXRestController
 
 kz.inessoft.sono.app.fno.fXXX.vXX.services.flk.ABaseFXXXVXXFlk
-kz.inessoft.sono.app.fno.fXXX.vXX.services.flk.FXXXForm00VXXFlk
+kz.inessoft.sono.app.fno.fXXX.vXX.services.flk.FXXXFormXXVXXFlk
 
 kz.inessoft.sono.app.fno.fXXX.vXX.services.VXXChargeInfoBuilder
 kz.inessoft.sono.app.fno.fXXX.vXX.services.VXXConstants
