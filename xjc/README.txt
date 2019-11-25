@@ -5,6 +5,7 @@
 
 
 Примеры запуска KnpXJCPlugin генератора из папки bin(для UNIX систем sh xjc.sh):
+xjc.bat -Xknp-generate -d genSRC 590.00v15.xsd -p kz.inessoft.sono.app.fno.f590.v15.services.dto.xml
 xjc.bat -Xknp-generate -d genSRC 200v29.xsd -p kz.inessoft.sono.app.fno.f200.v29.services.dto.xml
 xjc.bat -Xknp-generate -d genSRC 300v25format1.xsd -p kz.inessoft.sono.app.fno.f300.v25.services.dto.xml
 xjc.bat -Xknp-generate -d genSRC 101.04v20.xsd -p kz.inessoft.sono.app.fno.f101.app04.v20.services.dto.xml

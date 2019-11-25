@@ -1,0 +1,1571 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:fn="http://www.w3.org/2005/xpath-functions">
+   <xs:element name="fno" type="Fno"/>
+   <xs:complexType name="Fno">
+      <xs:sequence>
+         <xs:element name="form_590_00" type="form_590_00"/>
+         <xs:element name="form_590_01" type="form_590_01" minOccurs="0" maxOccurs="1"/>
+         <xs:element name="form_590_02" type="form_590_02" minOccurs="0" maxOccurs="1"/>
+         <xs:element name="form_590_03" type="form_590_03" minOccurs="0" maxOccurs="1"/>
+         <xs:element name="form_590_04" type="form_590_04" minOccurs="0" maxOccurs="1"/>
+      </xs:sequence>
+      <xs:attribute name="code" fixed="590.00"/>
+      <xs:attribute name="formatVersion" fixed="1"/>
+      <xs:attribute name="version" fixed="15"/>
+   </xs:complexType>
+   <xs:complexType name="form_590_00">
+      <xs:sequence>
+         <xs:element name="sheetGroup">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="page_590_00_01" type="page_590_00_01"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_590_00_01">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode1" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="accept_date">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="contract_name1">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="contract_name2" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="currency_code">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="date_">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="dt_additional" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="dt_final" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="dt_main" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="dt_notice" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="dt_regular" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="dt_w" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="dt_w_2" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_00_001" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_00_001_w" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="filler_name">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="in_doc_number">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="notice_date" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="notice_number" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="num">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="payer_name1">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="payer_name2" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="payer_name3" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_quarter">
+            <xs:simpleType>
+               <xs:restriction base="xs:long">
+                  <xs:minInclusive value="1"/>
+                  <xs:maxInclusive value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="post_date">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="pril_1" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="pril_2" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="pril_3" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="pril_4" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="rate" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="rating_auth_code">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="receptor_name">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="rnn" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="submit_date">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="form_590_01">
+      <xs:sequence>
+         <xs:element name="sheetGroup">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="page_590_01_01" type="page_590_01_01"/>
+                  <xs:element name="page_590_01_02" type="page_590_01_02"/>
+                  <xs:element name="page_590_01_03" type="page_590_01_03"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_590_01_01">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode1" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="contract_date" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="contract_num" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="decree_date" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="decree_num" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_001" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_002" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_003" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_004" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_005" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_006" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_007" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_008" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_009" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_010" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_011" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_012" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_013" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_014" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_015" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_016" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_017" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_018" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_019" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_020" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_021" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_022" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_023" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_024" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_025" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_026" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="page_number" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_quarter">
+            <xs:simpleType>
+               <xs:restriction base="xs:long">
+                  <xs:minInclusive value="1"/>
+                  <xs:maxInclusive value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_590_01_02">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode2" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_027" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_028" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_029" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_030" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_031" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_032" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_033" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_034" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_035" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_036" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_037" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_038" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_039" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_040" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_041" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_042" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_043" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_044" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_045" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_046" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_047" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_048" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_049" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_050" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_051" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_052" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_053" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_054" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_055" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_056" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="page_number" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_quarter">
+            <xs:simpleType>
+               <xs:restriction base="xs:long">
+                  <xs:minInclusive value="1"/>
+                  <xs:maxInclusive value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_590_01_03">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode3" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_057" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_058" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_059" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_060" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_061" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_062" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_063" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_064" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_064w" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_065" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_065w" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_066" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_067" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_068" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_069" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_070" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_071" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_072" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_073" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_074" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_075" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_076" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_077" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_01_078" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="page_number" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_quarter">
+            <xs:simpleType>
+               <xs:restriction base="xs:long">
+                  <xs:minInclusive value="1"/>
+                  <xs:maxInclusive value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="form_590_02">
+      <xs:sequence>
+         <xs:element name="sheetGroup">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="page_590_02_01" type="page_590_02_01"/>
+                  <xs:element name="page_590_02_02" type="page_590_02_02"/>
+                  <xs:element name="page_590_02_03" type="page_590_02_03"/>
+                  <xs:element name="page_590_02_04" type="page_590_02_04"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_590_02_01">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode1" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="contract_date" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="contract_num" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="decree_date" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="decree_num" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_02_001" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="minerals" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="page_number" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_quarter">
+            <xs:simpleType>
+               <xs:restriction base="xs:long">
+                  <xs:minInclusive value="1"/>
+                  <xs:maxInclusive value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="row" type="page_590_02_01_row" minOccurs="0" maxOccurs="9"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_590_02_01_row">
+      <xs:sequence>
+         <xs:element name="field_590_02_a" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="8"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_02_b" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_02_c" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_02_d" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_02_e" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_590_02_02">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode2" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="h_w" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="page_number" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_quarter">
+            <xs:simpleType>
+               <xs:restriction base="xs:long">
+                  <xs:minInclusive value="1"/>
+                  <xs:maxInclusive value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="row" type="page_590_02_02_row" minOccurs="0" maxOccurs="9"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_590_02_02_row">
+      <xs:sequence>
+         <xs:element name="field_590_02_a" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="8"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_02_f" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_02_g" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_02_h" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_02_i" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_590_02_03">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode3" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="page_number" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_quarter" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="row" type="page_590_02_03_row" minOccurs="0" maxOccurs="9"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_590_02_03_row">
+      <xs:sequence>
+         <xs:element name="field_590_02_a" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="8"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_02_j" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_02_k" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_02_l" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_02_m" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_590_02_04">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode4" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_02_p_itog" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="page_number" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_quarter" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="row" type="page_590_02_04_row" minOccurs="0" maxOccurs="9"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_590_02_04_row">
+      <xs:sequence>
+         <xs:element name="field_590_02_a" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="8"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_02_n" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_02_o" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_02_p" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="form_590_03">
+      <xs:sequence>
+         <xs:element name="sheetGroup">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="page_590_03_01" type="page_590_03_01"/>
+                  <xs:element name="page_590_03_02" type="page_590_03_02"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_590_03_01">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode1" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="contract_date" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="contract_num" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_001" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_002" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_003" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_004" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_005" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_006" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_007" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_008" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_009" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_010" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_011" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_012" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_013" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_014" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_015" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_016" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_017" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_018" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_019" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_020" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_021" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_022" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_023" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_024" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_025" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_026" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_027" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_028" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="page_number" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_quarter">
+            <xs:simpleType>
+               <xs:restriction base="xs:long">
+                  <xs:minInclusive value="1"/>
+                  <xs:maxInclusive value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_590_03_02">
+      <xs:sequence>
+         <xs:element name="field_590_03_029" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_030" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_031" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_032" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_033" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_034" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_035" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_036" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_037" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_038" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_039" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_040" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_041" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_042" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_043" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_03_044" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="page_number" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_quarter" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="form_590_04">
+      <xs:sequence>
+         <xs:element name="sheetGroup">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="page_590_04_01" type="page_590_04_01"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_590_04_01">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode1" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="contract_date" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="contract_num" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_04_001" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_04_002" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_04_003" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_04_004" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_04_005" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="2"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_04_006" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_590_04_007" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="mud_name" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="mud_unit" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="page_number" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_quarter">
+            <xs:simpleType>
+               <xs:restriction base="xs:long">
+                  <xs:minInclusive value="1"/>
+                  <xs:maxInclusive value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>
