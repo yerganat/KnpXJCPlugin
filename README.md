@@ -22,7 +22,7 @@ kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.* классы которые
 kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.rest.* соответствующие рест классы
 
 
-(Вспомогательный MOCK файлы, можно отключить если указать -onlydto)
+(Вспомогательный MOCK файлы, можно отключить если указать -onlydto, *надо дописать внутри mock файлов где есть TODO метки)
 kz.inessoft.sono.app.fno.fXXX.vXX.rest.VXXRestController
 
 kz.inessoft.sono.app.fno.fXXX.vXX.services.flk.ABaseFXXXVXXFlk

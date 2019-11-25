@@ -36,6 +36,7 @@ import kz.inessoft.sono.lib.tax.payers.dtos.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import kz.inessoft.sono.lib.docs.registry.dtos.RegisterDocRequestBuilder
 import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBContext;
@@ -115,11 +116,11 @@ public class VXXService {
     private Fno generateDefaultForm(BaseTaxPayer taxPayer, int year) {
         Fno retVal = new Fno();
 //        TODO надо автозаполнить данные !!!
-//        Form42100 form42100 = new Form42100();
-//        retVal.setForm42100(form42100);
+//        FormX0000 formX0000 = new FormX0000();
+//        retVal.setFormX0000(formX0000);
 //
 //        PageX000001 pageX000001 = new PageX000001();
-//        form42100.setPageX000001(pageX000001);
+//        formX0000.setPageX000001(pageX000001);
 /
 
         return retVal;
@@ -178,6 +179,8 @@ public class VXXService {
     public SaveDraftResponse saveDraft(Fno fno, Long id, UserInfo userInfo) throws JAXBException, TransformerException {
         SaveDraftResponse retVal = new SaveDraftResponse();
         List<FormError> errors = new ArrayList<>();
+
+        //TODO укажите нужную старницу !!!
         PageX000001 pageX000001 = fno.getFormX0000().getPageX000001();
 
         if (pageX000001.getPeriodYear() == null) {
@@ -213,8 +216,7 @@ public class VXXService {
         payerInfo.setRnn(rnn);
         saveDraftRequest.setPayerInfo(payerInfo);
 
-        Page4210002 page4210002 = fno.getForm42100().getPage4210002();
-        saveDraftRequest.setTaxOrgCode(page4210002.getRatingAuthCode());
+        saveDraftRequest.setTaxOrgCode(pageX000001.getRatingAuthCode());
         DocPeriod docPeriod = new DocPeriod();
         docPeriod.setYear(Integer.valueOf(pageX000001.getPeriodYear()));
 
@@ -236,8 +238,10 @@ public class VXXService {
 
     public String serializeToXmlForSign(Fno form) throws JAXBException, TransformerException {
         String strNow = date(new Date());
-        form.getForm42100().getPage4210002().setAcceptDate(strNow);
-        form.getForm42100().getPage4210002().setSubmitDate(strNow);
+
+        //TODO укажите нужные поля
+        form.getFormX0000().getPageX000001().setAcceptDate(strNow);
+        form.getFormX0000().getPageX000001().setSubmitDate(strNow);
         return serializeToXml(form);
     }
 
@@ -247,14 +251,14 @@ public class VXXService {
 
     public AcceptResult acceptForm(String signedXml, Long draftId) throws TransformerException, SAXException, JAXBException, ParseException {
         String xml = XSLTTransformer.convertFromOldSonoFormat(signedXml);
-        XSDChecker.checkXml(xml, "/xsds/421.00vXX.xsd", VXXService.class);  //TODO название формы
+        XSDChecker.checkXml(xml, "/xsds/x_form_pathvXX.xsd", VXXService.class);  /
         TaxPayerCheckEDSResult taxPayerCheckEDSResult = checkSignService.checkTaxPayerEDS(signedXml);
 
         Unmarshaller unmarshaller = getJaxbContext().createUnmarshaller();
         kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.Fno fno = (kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.Fno) unmarshaller.unmarshal(new StringReader(xml));
         List<FormError> errors = new ArrayList<>();
 
-        kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.PageX000001 page1010401 = fno.getFormX0000().getSheetGroup().getPageX000001();
+        kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.PageX000001 pageX000001 = fno.getFormX0000().getSheetGroup().getPageX000001();
         if (taxPayerCheckEDSResult.getStatus() == EStatus.INVALID) {
             errors.add(new FormError("form_X00_00", "page_X00_00_01", "iin", "ЭЦП не верна", "ЭЦП не верна")); //TODO перебить как в xml парметры
             return createErrorsResponse(errors);
@@ -297,7 +301,7 @@ public class VXXService {
         }
 
         Integer periodYear = Integer.valueOf(pageX000001.getPeriodYear());
-        Integer periodMonth = Integer.valueOf(pageX000001.getPeriodMonth()); // TODO указать нужный, разработчик должен разобраться, закоментирую
+        Integer periodMonth = Integer.valueOf(pageX000001.getPeriodMonth()); // TODO указать нужный период, месяц, квартал, полугодие
         if (periodYear < minYear ||
                 periodYear == minYear && periodMonth != null && periodMonth < minMonth ||
                 periodYear > maxYear ||
@@ -305,7 +309,7 @@ public class VXXService {
             errors.add(new FormError("form_X00_00", "page_X00_00_01", "period_year", "Документ имеет не допустимый период", "Документ имеет не допустимый период"));
 
 
-        Integer periodQuarter = Integer.valueOf(page7100001.getPeriodQuarter());
+        Integer periodQuarter = Integer.valueOf(pageX000001.getPeriodQuarter());
         if (periodYear < minYear ||
                 periodYear == minYear && periodQuarter != null && periodQuarter < minQuarter ||
                 periodYear > maxYear ||
@@ -319,8 +323,6 @@ public class VXXService {
         if (periodYear > year || periodYear == year && periodMonth != null && periodMonth > month)
             errors.add(new FormError("form_X00_00", "page_X00_00_01", "period_year", "Налоговое обязательство по представлению налоговой отчетности исполняется налогоплательщиком (налоговым агентом) по окончании налогового периода, если иное не установлено Налоговым кодексом",
                     "Налоговое обязательство по представлению налоговой отчетности исполняется налогоплательщиком (налоговым агентом) по окончании налогового периода, если иное не установлено Налоговым кодексом"));
-
-        kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.PageX000001 pageX000001 = fno.getForm42100().getSheetGroup().getPageX000001();
 
         EPeriod priodType = periodMonth == null ? EPeriod.YEAR : EPeriod.getQuartalByNumber(periodMonth);
         if (isAdditional(pageX000001) || isNotice(pageX000001)) {
@@ -358,7 +360,7 @@ public class VXXService {
         ErrorMsg errorMsg = relatedDocsService.completeStandardChecks(taxPayer, Collections.singletonList(FORM_CODE), taxOrg, docPeriod, docTypes);
         if (errorMsg != null) {
             String fieldName = "";
-            if (isFinal(page7100001))
+            if (isFinal(pageЧ000001))
                 fieldName = "dt_final";
             if (isMain(pageX000001))
                 fieldName = "dt_main";
@@ -382,12 +384,12 @@ public class VXXService {
     private RegisterDocResponce registerDocument(kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.Fno fno, String docXml, BaseTaxPayer taxPayer, List<EDocType> docTypes,
                                                  DocPeriod docPeriod, Long draftId, Date acceptDate, Date submitDate) throws ParseException {
 
-        kz.inessoft.sono.app.fno.f710.v22.services.dto.xml.PageX000001 pageX000001 = fno.getFormX0000().getSheetGroup().getPageX000001(); //TODO первая старница ФНО
+        kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.PageX000001 pageX000001 = fno.getFormX0000().getSheetGroup().getPageX000001(); //TODO первая старница ФНО
 
-        ChargeInfo chargeInfo = new V22ChargeInfoBuilder(fno, taxPayer, docPeriod, daysOffService, relatedDocsService).build();
+        ChargeInfo chargeInfo = new VXXChargeInfoBuilder(fno, taxPayer, docPeriod, daysOffService, relatedDocsService).build();
 
         RegisterDocRequest registerDocRequest = RegisterDocRequestBuilder.newRequest()
-                .setFormInfo(FORM_CODE, V22Constants.VERSION)
+                .setFormInfo(FORM_CODE, VXXConstants.VERSION)
                 .setDocumentXml(docXml)
                 .setTaxPayer(taxPayer)
                 .setDraftId(draftId)

@@ -1,7 +1,7 @@
-package kz.inessoft.sono.app.fno.f200.v29.services.flk;
+package kz.inessoft.sono.app.fno.fXXX.vXX.services.flk;
 
-import kz.inessoft.sono.app.fno.f200.v29.services.VXXUtils;
-import kz.inessoft.sono.app.fno.f200.v29.services.dto.xml.*;
+import kz.inessoft.sono.app.fno.fXXX.vXX.services.VXXUtils;
+import kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.*;
 import kz.inessoft.sono.lib.fno.utils.rest.FormError;
 
 import java.util.ArrayList;

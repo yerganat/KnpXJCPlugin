@@ -1,7 +1,7 @@
 package kz.inessoft.sono.app.fno.fXXX.vXX.services;
 
 import kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.*;
-import kz.inessoft.sono.app.fno.f710.v22.services.flk.FXXXFormXXVXXFlk;
+import kz.inessoft.sono.app.fno.fXXX.vXX.services.flk.FXXXFormXXVXXFlk;
 import kz.inessoft.sono.lib.fno.utils.rest.FormError;
 
 import java.math.BigDecimal;

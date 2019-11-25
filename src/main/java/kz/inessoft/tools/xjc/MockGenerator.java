@@ -26,10 +26,10 @@ public class MockGenerator {
             this.genMockResourceContent(PKG_SERVICE_FLK, "ABaseFXXXVXXFlk.java", "services/flk/");
             this.genMockResourceContent(PKG_SERVICE_FLK, "FXXXFormXXVXXFlk.java", "services/flk/"); //TODO FormXX заменить на имя Формы
 
-            this.genMockResourceContent(PKG_BASE + ".", "FXXXApplication.java", "");
-            this.genMockResourceContent(PKG_BASE + ".", "FXXXChargeCallback.java", "");
-            this.genMockResourceContent(PKG_BASE + ".", "FXXXConfiguration.java", "");
-            this.genMockResourceContent(PKG_BASE + ".", "FXXXConstants.java", "");
+            this.genMockResourceContent(PKG_BASE_WITHOUT_VERSION + ".", "FXXXApplication.java", "");
+            this.genMockResourceContent(PKG_BASE_WITHOUT_VERSION + ".", "FXXXChargeCallback.java", "");
+            this.genMockResourceContent(PKG_BASE_WITHOUT_VERSION + ".", "FXXXConfiguration.java", "");
+            this.genMockResourceContent(PKG_BASE_WITHOUT_VERSION + ".", "FXXXConstants.java", "");
         }
     }
 

@@ -1,6 +1,6 @@
-package kz.inessoft.sono.app.fno.f200.v29.services.flk;
+package kz.inessoft.sono.app.fno.fXXX.vXX.services.flk;
 
-import kz.inessoft.sono.app.fno.f200.v29.services.dto.xml.Fno;
+import kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.Fno;
 import kz.inessoft.sono.lib.fno.utils.rest.FormError;
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.StringUtils;
@@ -11,7 +11,7 @@ import java.util.Objects;
 
 import static kz.inessoft.sono.lib.fno.utils.FieldUtils.*;
 
-public class FXXXFormXXVXXFlk extends ABaseF200V29Flk {
+public class FXXXFormXXVXXFlk extends ABaseFXXXVXXFlk {
     private static final String FORM_NAME = "form_X00_00";
     private static final String PAGE_1 = "page_X00_00_01";
 

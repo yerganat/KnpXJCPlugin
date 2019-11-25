@@ -35,6 +35,7 @@ public class KNPPlugin extends Plugin {
     static String FORM_CODE_VALUE = "";
     static String FORM_APP_VALUE = "";
 
+    static String PKG_BASE_WITHOUT_VERSION = "kz.inessoft.sono.app.fno"; //kz.inessoft.sono.app.fno.f710.
     static String PKG_BASE = "kz.inessoft.sono.app.fno"; //kz.inessoft.sono.app.fno.f710.v22
     static String PKG_REST = ""; //kz.inessoft.sono.app.fno.f710.v22.rest.
     static String PKG_SERVICE = ""; //kz.inessoft.sono.app.fno.f710.v22.services.
@@ -139,6 +140,7 @@ public class KNPPlugin extends Plugin {
                     PKG_BASE =  PKG_BASE + ".app" + FORM_APP_VALUE;
                 }
 
+                PKG_BASE_WITHOUT_VERSION = PKG_BASE;
                 if(StringUtils.isNotBlank(FNO_VERSION)) {
                     PKG_BASE =  PKG_BASE + ".v" + FNO_VERSION;
                 }
