@@ -1,4 +1,4 @@
-!!! плагин работает только на Oracle Jre 11 версии(если у вас JAVA_HOME другой то на xjc.sh/xjc.bat(метка ORACLE JRE 11) установить путь к 11 jave)
+!!! плагин работает только на Oracle Jre 10/11 версии(если у вас JAVA_HOME другой то на xjc.sh/xjc.bat(метка ORACLE JRE 10/11) установить путь к 10/11 jave)
 
 Для запска планига в атрибутах гомманодной строке укажите -Xknp-generate
 Параметр -onlydto используется если надо сгенерировать только пакет kz.inessoft.sono.app.fno.fXXX.vXX.services.dto
