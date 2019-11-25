@@ -19,7 +19,7 @@ kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.XMLToRestConverter
 kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.IPage* интерфейсы для страницы
 
 kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.* классы которые генерируется самой xjc 
-kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.rest.* соответствующие рест классы
+kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.rest.* соответствующие REST классы
 
 
 (Вспомогательный MOCK файлы, можно отключить если указать -onlydto, *надо дописать внутри mock файлов где есть TODO метки)
