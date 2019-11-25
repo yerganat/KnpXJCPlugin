@@ -29,11 +29,11 @@ public class KNPPlugin extends Plugin {
 
     static Boolean GENERATE_ONLY_DTO = false;
 
-    static String FORM_CODE = "";
-    static String FNO_VERSION = "";
+    static String FORM_CODE = ""; //710.00
+    static String FNO_VERSION = ""; //22
 
-    static String FORM_CODE_VALUE = "";
-    static String FORM_APP_VALUE = "";
+    static String FORM_CODE_VALUE = ""; //710
+    static String FORM_APP_VALUE = ""; //00
 
     static String PKG_BASE_WITHOUT_VERSION = "kz.inessoft.sono.app.fno"; //kz.inessoft.sono.app.fno.f710.
     static String PKG_BASE = "kz.inessoft.sono.app.fno"; //kz.inessoft.sono.app.fno.f710.v22

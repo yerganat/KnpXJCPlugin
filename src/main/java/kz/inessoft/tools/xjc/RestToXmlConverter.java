@@ -47,6 +47,10 @@ public class RestToXmlConverter {
             jConvertMethodBody._if(jFnoFieldVar.eq(JExpr._null()))._then()._return(JExpr._null());
             JVar retVal = jConvertMethodBody.decl(NONE, xmlFnoClass, "retVal", JExpr._new(xmlFnoClass));
 
+            jConvertMethodBody.add(retVal.invoke("setCode").arg(JExpr.direct(PKG_BASE_WITHOUT_VERSION + ".F" + FORM_CODE_VALUE + "Constants.FORM_CODE")));
+            jConvertMethodBody.add(retVal.invoke("setVersion").arg(JExpr.direct("String.valueOf(" + PKG_SERVICE + "V" + FNO_VERSION + "Constants.VERSION)")));
+            jConvertMethodBody.add(retVal.invoke("setFormatVersion").arg(JExpr.lit("1")));
+
             for (JFieldVar fnoField: xmlFnoClass.fields().values()) {
                 if(!fnoField.name().contains("form") || fnoField.name().contains("formatVersion")) {
                     continue;
