@@ -53,7 +53,7 @@ public class KNPPlugin extends Plugin {
     static Map<String, JDefinedClass> xmlFormClassMap = new HashMap<String, JDefinedClass>();
     static Map<String, JDefinedClass> xmlPageClassMap = new HashMap<>();
     static Map<String, JDefinedClass> xmlSheetGroupClassMap = new HashMap<>();
-    private static Map<String, JDefinedClass> interfacePageMap = new HashMap<>();
+    static Map<String, JDefinedClass> interfacePageMap = new HashMap<>();
 
 //    static JDefinedClass restFnoClass;
 //    static Map<String, JDefinedClass> restFormClassMap = new HashMap<String, JDefinedClass>();

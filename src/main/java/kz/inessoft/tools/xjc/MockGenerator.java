@@ -1,9 +1,12 @@
 package kz.inessoft.tools.xjc;
 
+import com.sun.codemodel.JDefinedClass;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static kz.inessoft.tools.xjc.KNPPlugin.*;
@@ -33,6 +36,10 @@ public class MockGenerator {
 
     private  void genMockResourceContent(String addPkg, String resName, String subDir) {
         try {
+
+            //String firstInterfaceClass = interfacePageMap.keySet().stream().findFirst().get();
+
+            Map.Entry<String, JDefinedClass> interfaceEntry = interfacePageMap.entrySet().iterator().next();
             String restDir = targetDir.getAbsolutePath() + File.separator + addPkg.replace('.', File.separatorChar);
             new File(restDir).mkdirs();
             String restPath = restDir + resName.replace("VXX", "V" + FNO_VERSION ).replace("FXXX", "F" + FORM_CODE_VALUE );
@@ -52,7 +59,10 @@ public class MockGenerator {
                     .replace("VXX", "V"+FNO_VERSION)
                     .replace("x_form_path", FORM_CODE)
                     .replace("x_fno_version", "v" + FNO_VERSION)
-                    .replace("x_only_fno_version", FNO_VERSION);
+                    .replace("x_only_fno_version", FNO_VERSION)
+                    .replace("ageX00", "age" + FORM_CODE_VALUE);
+                    //.replace("IPageX000001", firstInterfaceClass)
+                    //.replace("pageX000001", firstInterfaceClass.toLowerCase().replace("ipage", "page"));
             Files.write( Paths.get(restPath), restController.getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {
             e.printStackTrace();

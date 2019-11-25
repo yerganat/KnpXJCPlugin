@@ -12,10 +12,8 @@ import java.util.Objects;
 import static kz.inessoft.sono.lib.fno.utils.FieldUtils.*;
 
 public class FXXXFormXXVXXFlk extends ABaseF200V29Flk {
-    private static final String FORM_NAME = "form_200_00"; //TODO вынеси в параметр
-    private static final String PAGE_1 = "page_200_00_01"; //TODO Вынести в параметр
-    private static final String PAGE_2 = "page_200_00_02";
-    private static final String PAGE_3 = "page_200_00_03";
+    private static final String FORM_NAME = "form_X00_00";
+    private static final String PAGE_1 = "page_X00_00_01";
 
     public FXXXFormXXVXXFlk(Fno fno, List<FormError> errors) {
         super(fno, errors);
@@ -30,10 +28,10 @@ public class FXXXFormXXVXXFlk extends ABaseF200V29Flk {
     // page_101_04_01.notice_number
 //    private void doFlkFldNoticeNumber() {
 //        if (!isDtNotice() && pageXXXX.getNoticeNumber() != null)
-//            addError("form_XXX_XX", "page_XXX_XX_XX", "notice_number", "msg20269577");
+//            addError(FORM_NAME, PAGE_1, "notice_number", "msg20269577");
 //
 //        if (isDtNotice() && pageXXXX.getNoticeNumber() == null)
-//            addError("form_XXX_XX", "page_XX_XX_XX", "notice_number", "msg20269068");
+//            addError(FORM_NAME, PAGE_1, "notice_number", "msg20269068");
 //    }
 
 

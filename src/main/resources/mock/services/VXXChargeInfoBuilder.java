@@ -48,8 +48,7 @@ public class VXXChargeInfoBuilder {
     public ChargeInfo build() {
         List<Charge> chargesTaxOrg = new ArrayList<>();
 
-        //TODO Charge builder
-
+        //TODO Дополнить реализацией расзноски!!!
         //createAndAddCharge(chargesTaxOrg, pageXXXXXXX.getFieldXXXXXX(), paymentDate1, "101.04.002 I", KBK);
 
         ChargeInfo retVal = createEmptyCharge();

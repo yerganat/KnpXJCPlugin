@@ -20,7 +20,9 @@ public class VXXFLKProcessor {
 
     public List<FormError> doFlk() {
         List<FormError> errors = new ArrayList<>();
-        new FXXXFormXXVXXFlk(fno, errors).doFlk(); //TODO реализовать список
+
+        //TODO реализовать проверку ФЛК(желательно для каждой формы своя реализация )
+        new FXXXFormXXVXXFlk(fno, errors).doFlk();
         new FXXXFormXXVXXFlk(fno, errors).doFlk();
         new FXXXFormXXVXXFlk(fno, errors).doFlk();
         return errors;

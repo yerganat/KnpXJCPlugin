@@ -1,6 +1,6 @@
 package kz.inessoft.sono.app.fno.fXXX.vXX.services;
 
-import kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.IPage4210001;
+import kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.IPageX000001;
 import kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.RestToXmlConverter;
 import kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.XMLToRestConverter;
 import kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.rest.*;
@@ -114,80 +114,13 @@ public class VXXService {
 
     private Fno generateDefaultForm(BaseTaxPayer taxPayer, int year) {
         Fno retVal = new Fno();
-//        TODO надо зполнить функцию, можно сгенерировать
+//        TODO надо автозаполнить данные !!!
 //        Form42100 form42100 = new Form42100();
 //        retVal.setForm42100(form42100);
 //
-//        Page4210001 page4210001 = new Page4210001();
-//        form42100.setPage4210001(page4210001);
-//        page4210001.setRnn(taxPayer.getRnn());
-//        page4210001.setIin(taxPayer.getXin());
-//        page4210001.setPeriodYear(String.valueOf(year));
-//
-//
-//        Page4210002 page4210002 = new Page4210002();
-//        form42100.setPage4210002(page4210002);
-//
-//        String strNow = date(new Date());
-//        page4210002.setSubmitDate(strNow);
-//        page4210002.setAcceptDate(strNow);
-//        page4210002.setIin(taxPayer.getXin());
-//        page4210002.setPeriodYear(String.valueOf(year));
-//
-//
-//
-//        Form42101 form42101 = new Form42101();
-//        retVal.setForm42101(form42101);
-//
-//        Page4210101 page4210101 = new Page4210101();
-//        form42101.setPage4210101(page4210101);
-//        page4210101.setIin(taxPayer.getXin());
-//        page4210101.setPeriodYear(String.valueOf(year));
-//
-//
-//
-//        Form42102 form42102 = new Form42102();
-//        retVal.setForm42102(form42102);
-//
-//        Page4210201 page4210201 = new Page4210201();
-//        form42102.setPage4210201(page4210201);
-//        page4210201.setIin(taxPayer.getXin());
-//        page4210201.setPeriodYear(String.valueOf(year));
-//
-//        Page4210202 page4210202 = new Page4210202();
-//        form42102.setPage4210202(page4210202);
-//        page4210202.setIin(taxPayer.getXin());
-//        page4210202.setPeriodYear(String.valueOf(year));
-//
-//
-//
-//        Form42103 form42103 = new Form42103();
-//        retVal.setForm42103(form42103);
-//
-//        Page4210301 page4210301 = new Page4210301();
-//        form42103.setPage4210301(page4210301);
-//        page4210301.setIin(taxPayer.getXin());
-//        page4210301.setPeriodYear(String.valueOf(year));
-//
-//
-//
-//        Form42104 form42104 = new Form42104();
-//        retVal.setForm42104(form42104);
-//
-//        Page4210401 page4210401 = new Page4210401();
-//        form42104.setPage4210401(page4210401);
-//        page4210401.setIin(taxPayer.getXin());
-//        page4210401.setPeriodYear(String.valueOf(year));
-//
-//        Page4210402 page4210402 = new Page4210402();
-//        form42104.setPage4210402(page4210402);
-//        page4210402.setIin(taxPayer.getXin());
-//        page4210402.setPeriodYear(String.valueOf(year));
-//
-//        Page4210403 page4210403 = new Page4210403();
-//        form42104.setPage4210403(page4210403);
-//        page4210403.setIin(taxPayer.getXin());
-//        page4210403.setPeriodYear(String.valueOf(year));
+//        PageX000001 pageX000001 = new PageX000001();
+//        form42100.setPageX000001(pageX000001);
+/
 
         return retVal;
     }
@@ -226,17 +159,17 @@ public class VXXService {
         return getRestDTOFromXML(xmlOld);
     }
 
-    private List<EDocType> getDocTypes(IPage4210001 page4210001) { //TODO Реализовать превый интерфейс
+    private List<EDocType> getDocTypes(IPageX000001 pageX000001) {
         List<EDocType> docTypes = new ArrayList<>();
-        if (isFinal(page4210001))
+        if (isFinal(pageX000001))
             docTypes.add(EDocType.LIQUIDATION);
-        if (isMain(page4210001))
+        if (isMain(pageX000001))
             docTypes.add(EDocType.PRIMARY);
-        else if (isAdditional(page4210001))
+        else if (isAdditional(pageX000001))
             docTypes.add(EDocType.ADDITIONAL);
-        else if (isNotice(page4210001))
+        else if (isNotice(pageX000001))
             docTypes.add(EDocType.NOTICE);
-        else if (isRegular(page4210001))
+        else if (isRegular(pageX000001))
             docTypes.add(EDocType.REGULAR);
         return docTypes;
     }
@@ -245,22 +178,22 @@ public class VXXService {
     public SaveDraftResponse saveDraft(Fno fno, Long id, UserInfo userInfo) throws JAXBException, TransformerException {
         SaveDraftResponse retVal = new SaveDraftResponse();
         List<FormError> errors = new ArrayList<>();
-        Page4210001 page4210001 = fno.getForm42100().getPage4210001();
+        PageX000001 pageX000001 = fno.getFormX0000().getPageX000001();
 
-        if (page4210001.getPeriodYear() == null) {
-            errors.add(new FormError("form_421_00", "page_421_00_01", "period_year",
+        if (pageX000001.getPeriodYear() == null) {
+            errors.add(new FormError("form_X00_00", "page_X00_00_01", "period_year",
                     "Налоговый период, за который представляется налоговая отчетность не указан", "Налоговый период, за который представляется налоговая отчетность не указан"));
         }
 
-        Integer periodMonth = Integer.valueOf(page4210001.getPeriodMonth());
+        Integer periodMonth = Integer.valueOf(pageX000001.getPeriodMonth());
         if (periodMonth == null || periodMonth < 13 || periodMonth > 0) {
-            errors.add(new FormError("form_421_00", "page_421_00_01", "period_quarter",
+            errors.add(new FormError("form_X00_00", "page_X00_00_01", "period_quarter",
                     "Налоговый период, за который представляется налоговая отчетность не указан", "Налоговый период, за который представляется налоговая отчетность не указан"));
         }
 
 
-        if (!isMain(page4210001) && !isRegular(page4210001) && !isAdditional(page4210001) && !isNotice(page4210001)) {
-            errors.add(new FormError("form_421_00", "page_421_00_01", "dt_main",
+        if (!isMain(pageX000001) && !isRegular(pageX000001) && !isAdditional(pageX000001) && !isNotice(pageX000001)) {
+            errors.add(new FormError("form_X00_00", "page_X00_00_01", "dt_main",
                     "Реквизит Не указан вид расчета", "Реквизит Не указан вид расчета"));
         }
 
@@ -283,11 +216,11 @@ public class VXXService {
         Page4210002 page4210002 = fno.getForm42100().getPage4210002();
         saveDraftRequest.setTaxOrgCode(page4210002.getRatingAuthCode());
         DocPeriod docPeriod = new DocPeriod();
-        docPeriod.setYear(Integer.valueOf(page4210001.getPeriodYear()));
+        docPeriod.setYear(Integer.valueOf(pageX000001.getPeriodYear()));
 
         docPeriod.setPeriod(EPeriod.getQuartalByNumber(periodMonth));
         saveDraftRequest.setDocPeriod(docPeriod);
-        saveDraftRequest.setDocTypes(getDocTypes(page4210001));
+        saveDraftRequest.setDocTypes(getDocTypes(pageX000001));
         retVal.setId(String.valueOf(draftsService.saveDraft(saveDraftRequest)));
         return retVal;
     }
@@ -321,21 +254,21 @@ public class VXXService {
         kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.Fno fno = (kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.Fno) unmarshaller.unmarshal(new StringReader(xml));
         List<FormError> errors = new ArrayList<>();
 
-        kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.Page4210002 page1010402 = fno.getForm42100().getSheetGroup().getPage4210002();
+        kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.PageX000001 page1010401 = fno.getFormX0000().getSheetGroup().getPageX000001();
         if (taxPayerCheckEDSResult.getStatus() == EStatus.INVALID) {
-            errors.add(new FormError("form_421_00", "page_421_00_01", "iin", "ЭЦП не верна", "ЭЦП не верна")); //TODO перебить как в xml парметры
+            errors.add(new FormError("form_X00_00", "page_X00_00_01", "iin", "ЭЦП не верна", "ЭЦП не верна")); //TODO перебить как в xml парметры
             return createErrorsResponse(errors);
         }
 
         Date now = new Date();
 
-        String acceptDate = page1010402.getAcceptDate();
+        String acceptDate = pageX000001.getAcceptDate();
         if (acceptDate != null && !date(now).equals(acceptDate))
-            errors.add(new FormError("form_421_00", "page_421_00_02", "accept_date", "Дата приема не равна текущей дате", "Дата приема не равна текущей дате"));
+            errors.add(new FormError("form_X00_00", "page_X00_00_01", "accept_date", "Дата приема не равна текущей дате", "Дата приема не равна текущей дате"));
 
-        String strSubmitDate = page1010402.getSubmitDate();
+        String strSubmitDate = pageX000001.getSubmitDate();
         if (!date(now).equals(strSubmitDate))
-            errors.add(new FormError("form_421_00", "page_421_00_02", "submit_date", "Дата приема не равна текущей дате", "Дата приема не равна текущей дате"));
+            errors.add(new FormError("form_X00_00", "page_X00_00_01", "submit_date", "Дата приема не равна текущей дате", "Дата приема не равна текущей дате"));
 
         String edsXin = taxPayerCheckEDSResult.getBin();
         if (edsXin == null)
@@ -345,31 +278,31 @@ public class VXXService {
         if (edsXin == null) {
             taxPayer = taxPayersService.findByRnn(rnn);
             if (taxPayer == null) {
-                errors.add(new FormError("form_421_00", "page_421_00_01", "iin", "РНН декларанта из ЭЦП на найден в базе налогоплательщиков", "РНН декларанта из ЭЦП на найден в базе налогоплательщиков"));
+                errors.add(new FormError("form_X00_00", "page_X00_00_01", "iin", "РНН декларанта из ЭЦП на найден в базе налогоплательщиков", "РНН декларанта из ЭЦП на найден в базе налогоплательщиков"));
                 return createErrorsResponse(errors);
             }
             edsXin = taxPayer.getXin();
         }
 
-        if (!page1010402.getIin().equals(edsXin))
-            errors.add(new FormError("form_421_00", "page_421_00_01", "iin", "ИИН декларанта не совпадает с ИИН в ЭЦП", "ИИН декларанта не совпадает с ИИН в ЭЦП"));
+        if (!pageX000001.getIin().equals(edsXin))
+            errors.add(new FormError("form_X00_00", "page_X00_00_01", "iin", "ИИН декларанта не совпадает с ИИН в ЭЦП", "ИИН декларанта не совпадает с ИИН в ЭЦП"));
 
         if (rnn == null) {
             taxPayer = taxPayersService.findByXin(edsXin);
             if (taxPayer == null) {
-                errors.add(new FormError("form_421_00", "page_421_00_01", "iin", "ИИН/БИН декларанта из ЭЦП на найден в базе налогоплательщиков", "ИИН/БИН декларанта из ЭЦП на найден в базе налогоплательщиков"));
+                errors.add(new FormError("form_X00_00", "page_X00_00_01", "iin", "ИИН/БИН декларанта из ЭЦП на найден в базе налогоплательщиков", "ИИН/БИН декларанта из ЭЦП на найден в базе налогоплательщиков"));
                 return createErrorsResponse(errors);
             }
             rnn = taxPayer.getRnn();
         }
 
-        Integer periodYear = Integer.valueOf(page1010402.getPeriodYear());
-        Integer periodMonth = Integer.valueOf(page1010402.getPeriodMonth()); // TODO указать нужный, разработчик должен разобраться, закоментирую
+        Integer periodYear = Integer.valueOf(pageX000001.getPeriodYear());
+        Integer periodMonth = Integer.valueOf(pageX000001.getPeriodMonth()); // TODO указать нужный, разработчик должен разобраться, закоментирую
         if (periodYear < minYear ||
                 periodYear == minYear && periodMonth != null && periodMonth < minMonth ||
                 periodYear > maxYear ||
                 periodYear == maxYear && periodMonth != null && periodMonth > maxMonth)
-            errors.add(new FormError("form_421_00", "page_421_00_01", "period_year", "Документ имеет не допустимый период", "Документ имеет не допустимый период"));
+            errors.add(new FormError("form_X00_00", "page_X00_00_01", "period_year", "Документ имеет не допустимый период", "Документ имеет не допустимый период"));
 
 
         Integer periodQuarter = Integer.valueOf(page7100001.getPeriodQuarter());
@@ -377,35 +310,35 @@ public class VXXService {
                 periodYear == minYear && periodQuarter != null && periodQuarter < minQuarter ||
                 periodYear > maxYear ||
                 periodYear == maxYear && periodQuarter != null && periodQuarter > maxQuarter)
-            errors.add(new FormError("form_710_00", "page_710_00_01", "period_year", "Документ имеет не допустимый период", "Документ имеет не допустимый период"));
+            errors.add(new FormError("form_710_00", "page_X00_00_01", "period_year", "Документ имеет не допустимый период", "Документ имеет не допустимый период"));
 
 
         Calendar cal = GregorianCalendar.getInstance();
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
         if (periodYear > year || periodYear == year && periodMonth != null && periodMonth > month)
-            errors.add(new FormError("form_421_00", "page_421_00_01", "period_year", "Налоговое обязательство по представлению налоговой отчетности исполняется налогоплательщиком (налоговым агентом) по окончании налогового периода, если иное не установлено Налоговым кодексом",
+            errors.add(new FormError("form_X00_00", "page_X00_00_01", "period_year", "Налоговое обязательство по представлению налоговой отчетности исполняется налогоплательщиком (налоговым агентом) по окончании налогового периода, если иное не установлено Налоговым кодексом",
                     "Налоговое обязательство по представлению налоговой отчетности исполняется налогоплательщиком (налоговым агентом) по окончании налогового периода, если иное не установлено Налоговым кодексом"));
 
-        kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.Page4210001 page4210001 = fno.getForm42100().getSheetGroup().getPage4210001();
+        kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.PageX000001 pageX000001 = fno.getForm42100().getSheetGroup().getPageX000001();
 
         EPeriod priodType = periodMonth == null ? EPeriod.YEAR : EPeriod.getQuartalByNumber(periodMonth);
-        if (isAdditional(page4210001) || isNotice(page4210001)) {
+        if (isAdditional(pageX000001) || isNotice(pageX000001)) {
             AuditRequest request = new AuditRequest();
             request.setYear(periodYear);
             request.setDocPeriod(priodType);
             request.setRnn(rnn);
             request.setKbkCodes(Arrays.asList(VXXChargeInfoBuilder.KBKXXXXX, VXXChargeInfoBuilder.KBKXXXXX));
             if (auditService.hasActiveAudit(request)) {
-                errors.add(new FormError("form_421_00", "page_421_00_01", "iin",
+                errors.add(new FormError("form_X00_00", "page_X00_00_01", "iin",
                         "Регистрация данной ФНО невозможна. Проводится налоговая проверка.",
                         "Ұсынылған  СЕН тіркеу мүмкін емес. Салықтық тексеру жүргізілуде."));
             }
         }
 
-        String taxOrg = page1010402.getRatingAuthCode();
+        String taxOrg = pageX000001.getRatingAuthCode();
         if (dictTaxOrgService.getByCode(taxOrg) == null)
-            errors.add(new FormError("form_421_00", "page_421_00_02", "rating_auth_code", "КОГД1. Введенное значение в справочнике отсутствует", "КОГД1. Енгізілген мағына кұжатта жоқ"));
+            errors.add(new FormError("form_X00_00", "page_X00_00_01", "rating_auth_code", "КОГД1. Введенное значение в справочнике отсутствует", "КОГД1. Енгізілген мағына кұжатта жоқ"));
 
         List<FormError> formErrors = new VXXFLKProcessor(fno).doFlk();
         if (!formErrors.isEmpty())
@@ -420,22 +353,22 @@ public class VXXService {
         docPeriod.setYear(periodYear);
         docPeriod.setPeriod(priodType);
 
-        List<EDocType> docTypes = getDocTypes(page4210001);
+        List<EDocType> docTypes = getDocTypes(pageX000001);
 
         ErrorMsg errorMsg = relatedDocsService.completeStandardChecks(taxPayer, Collections.singletonList(FORM_CODE), taxOrg, docPeriod, docTypes);
         if (errorMsg != null) {
             String fieldName = "";
             if (isFinal(page7100001))
                 fieldName = "dt_final";
-            if (isMain(page4210001))
+            if (isMain(pageX000001))
                 fieldName = "dt_main";
-            if (isRegular(page4210001))
+            if (isRegular(pageX000001))
                 fieldName = "dt_regular";
-            if (isAdditional(page4210001))
+            if (isAdditional(pageX000001))
                 fieldName = "dt_additional";
-            if (isNotice(page4210001))
+            if (isNotice(pageX000001))
                 fieldName = "dt_notice";
-            errors.add(new FormError("form_421_00", "page_421_00_01", fieldName, errorMsg.getMsgRu(), errorMsg.getMsgKz()));
+            errors.add(new FormError("form_X00_00", "page_X00_00_01", fieldName, errorMsg.getMsgRu(), errorMsg.getMsgKz()));
             return createErrorsResponse(errors);
         }
 
@@ -449,7 +382,7 @@ public class VXXService {
     private RegisterDocResponce registerDocument(kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.Fno fno, String docXml, BaseTaxPayer taxPayer, List<EDocType> docTypes,
                                                  DocPeriod docPeriod, Long draftId, Date acceptDate, Date submitDate) throws ParseException {
 
-        kz.inessoft.sono.app.fno.f710.v22.services.dto.xml.Page7100001 page7100001 = fno.getForm71000().getSheetGroup().getPage7100001(); //TODO первый класс
+        kz.inessoft.sono.app.fno.f710.v22.services.dto.xml.PageX000001 pageX000001 = fno.getFormX0000().getSheetGroup().getPageX000001(); //TODO первая старница ФНО
 
         ChargeInfo chargeInfo = new V22ChargeInfoBuilder(fno, taxPayer, docPeriod, daysOffService, relatedDocsService).build();
 
@@ -462,13 +395,13 @@ public class VXXService {
                 .setSubmitDate(submitDate)
                 .setDocTypes(docTypes)
                 .setDocPeriod(docPeriod)
-                .setTaxOrgCode(page7100001.getRatingAuthCode())
+                .setTaxOrgCode(pageX000001.getRatingAuthCode())
                 .setChargeInfo(chargeInfo)
                 .setGenerateReceptionNotification(true)
                 .buildStandardRequest();
 
         PayerInfo payerInfo = new PayerInfo();
-        payerInfo.setIin(page7100001.getIin());
+        payerInfo.setIin(pageX000001.getIin());
         payerInfo.setRnn(taxPayer.getRnn());
         registerDocRequest.setPayerInfo(payerInfo);
 
