@@ -84,7 +84,9 @@ else
     JAVA=java
 fi
 
-JAVA="../jre-11.0.5.jre/bin/java";
+# УСТАНОВИТЕ ЗДЕСЬ путь к Oracle JRE 11 если JAVA_HOME у вас другая, потому что KnpXJCPlugin не работает
+# ORACLE JRE 11
+# JAVA="../jre-11.0.5.jre/bin/java";
 
 #JXC module path
 JAXB_PATH=${JAXB_HOME}/mod/jaxb-xjc.jar:\

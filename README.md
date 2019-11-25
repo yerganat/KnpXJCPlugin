@@ -1,14 +1,40 @@
-xjc.bat -d gen form_421_00_v19_transformed.xml -p kz.inessoft.sono.app.fno.f421.v19.services.dto.xml -Xknp-generate
-xjc.bat -d gen form_710_00_v22_r53_transformed.xml -p kz.inessoft.sono.app.fno.f710.v22.services.dto.xml -Xknp-generate
+!!! плагин работает только на Oracle Jre 11 версии(если у вас JAVA_HOME другой то на xjc.sh/xjc.bat(метка ORACLE JRE 11) установить путь к 11 jave)
 
-xjc.bat -d gen 200v29.xsd -p kz.inessoft.sono.app.fno.f200.v29.services.dto.xml -Xknp-generate
+Для запска планига в атрибутах гомманодной строке укажите -Xknp-generate
+Параметр -onlydto используется если надо сгенерировать только пакет kz.inessoft.sono.app.fno.fXXX.vXX.services.dto
 
-xjc.bat -d gen 300v25format1.xsd -p kz.inessoft.sono.app.fno.f300.v25.services.dto.xml -Xknp-generate
 
-xjc.bat -d gen 101.04v20.xsd -p kz.inessoft.sono.app.fno.f101.app04.v20.services.dto.xml -Xknp-generate
+Примеры запуска KnpXJCPlugin генератора(для UNIX систем sh xjc.sh):
+ файлы генерируется в папке genSRC, пожно указать папку своего проекта
+ -p указывает пакет куда xml классы генерировать, лучше указать в фармате kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml где fXXX код фно, vXX версия фно
+xjc.bat -d genSRC 200v29.xsd -p kz.inessoft.sono.app.fno.f200.v29.services.dto.xml -Xknp-generate
+xjc.bat -d genSRC 300v25format1.xsd -p kz.inessoft.sono.app.fno.f300.v25.services.dto.xml -Xknp-generate
+xjc.bat -d genSRC 101.04v20.xsd -p kz.inessoft.sono.app.fno.f101.app04.v20.services.dto.xml -Xknp-generate
 
-xjc.bat -d gen form_421_00_v19_transformed.xml -p kz.dto.xml -Xknp-generate
 
-sh xjc.sh -d gen form_421_00_v19_transformed.xml -p kz.inessoft.sono.app.fno.f421.v19.services.dto.xml -Xknp-generate
+Плагин генерирует следующие классы(DTO пакет)
+kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.BaseV29Converter
+kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.RestToXMLConverter
+kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.XMLToRestConverter
+kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.IPage* интерфейсы для страницы
 
-sh xjc.sh -d gen form_710_00_v22_r53_transformed.xml -p kz.inessoft.sono.app.fno.f710.v22.services.dto.xml -Xknp-generate
+kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.* классы которые генерируется самой xjc 
+kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.rest.* соответствующие рест классы
+
+
+(Вспомогательный MOCK файлы, можно отключить если указать -onlydto)
+kz.inessoft.sono.app.fno.fXXX.vXX.rest.VXXRestController
+
+kz.inessoft.sono.app.fno.fXXX.vXX.services.flk.ABaseFXXXVXXFlk
+kz.inessoft.sono.app.fno.fXXX.vXX.services.flk.FXXXForm00VXXFlk
+
+kz.inessoft.sono.app.fno.fXXX.vXX.services.VXXChargeInfoBuilder
+kz.inessoft.sono.app.fno.fXXX.vXX.services.VXXConstants
+kz.inessoft.sono.app.fno.fXXX.vXX.services.VXXFLKProcessor
+kz.inessoft.sono.app.fno.fXXX.vXX.services.VXXService
+kz.inessoft.sono.app.fno.fXXX.vXX.services.VXXUtils
+
+kz.inessoft.sono.app.fno.fXXX.FXXXApplication
+kz.inessoft.sono.app.fno.fXXX.FXXXChargeCallback
+kz.inessoft.sono.app.fno.fXXX.FXXXConfiguration
+kz.inessoft.sono.app.fno.fXXX.FXXXConstants
