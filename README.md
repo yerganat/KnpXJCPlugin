@@ -10,6 +10,7 @@
 xjc.bat -d genSRC 200v29.xsd -p kz.inessoft.sono.app.fno.f200.v29.services.dto.xml -Xknp-generate
 xjc.bat -d genSRC 300v25format1.xsd -p kz.inessoft.sono.app.fno.f300.v25.services.dto.xml -Xknp-generate
 xjc.bat -d genSRC 101.04v20.xsd -p kz.inessoft.sono.app.fno.f101.app04.v20.services.dto.xml -Xknp-generate
+xjc.bat -d genSRC 400.00v20.xsd -p kz.inessoft.sono.app.fno.f400.v20.services.dto.xml -Xknp-generate
 
 
 Плагин генерирует следующие классы(DTO пакет)
