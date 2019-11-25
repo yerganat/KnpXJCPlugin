@@ -4,7 +4,7 @@
 Параметр -onlydto используется если надо сгенерировать только пакет kz.inessoft.sono.app.fno.fXXX.vXX.services.dto
 
 
-Примеры запуска KnpXJCPlugin генератора(для UNIX систем sh xjc.sh):
+Примеры запуска KnpXJCPlugin генератора из папки bin(для UNIX систем sh xjc.sh):
 xjc.bat -Xknp-generate -d genSRC 200v29.xsd -p kz.inessoft.sono.app.fno.f200.v29.services.dto.xml
 xjc.bat -Xknp-generate -d genSRC 300v25format1.xsd -p kz.inessoft.sono.app.fno.f300.v25.services.dto.xml
 xjc.bat -Xknp-generate -d genSRC 101.04v20.xsd -p kz.inessoft.sono.app.fno.f101.app04.v20.services.dto.xml
