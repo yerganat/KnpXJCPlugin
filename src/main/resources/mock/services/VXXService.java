@@ -386,7 +386,7 @@ public class VXXService {
 
         kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.PageX000001 pageX000001 = fno.getFormX0000().getSheetGroup().getPageX000001(); //TODO первая старница ФНО
 
-        ChargeInfo chargeInfo = new VXXChargeInfoBuilder(fno, taxPayer, docPeriod, daysOffService, relatedDocsService).build();
+        ChargeInfo chargeInfo = new VXXChargeInfoBuilder(fno, taxPayer, daysOffService).build();
 
         RegisterDocRequest registerDocRequest = RegisterDocRequestBuilder.newRequest()
                 .setFormInfo(FORM_CODE, VXXConstants.VERSION)
