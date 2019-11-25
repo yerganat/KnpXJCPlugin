@@ -30,7 +30,7 @@ public class VXXChargeInfoBuilder {
     private String taxOrg;
     private Date paymentDate1;
 
-    //private PageXXXXXXX pageXXXXXXX;
+    //private PageX000001 pageX000001;
 
     private boolean additionalOrNotice;
 
@@ -38,6 +38,9 @@ public class VXXChargeInfoBuilder {
     public VXXChargeInfoBuilder(Fno fno, BaseTaxPayer tp, DictDaysOffService dictDaysOffService) throws ParseException {
         this.fno = fno;
         this.tp = tp;
+
+        //        TODO заполненеие страницы фно из xml !!!
+//        pageX000001 = fno.getFormX0000().getSheetGroup().getPageX000001();
 
         paymentDate1 = this.getDate1();
 
@@ -49,7 +52,7 @@ public class VXXChargeInfoBuilder {
         List<Charge> chargesTaxOrg = new ArrayList<>();
 
         //TODO Дополнить реализацией расзноски!!!
-        //createAndAddCharge(chargesTaxOrg, pageXXXXXXX.getFieldXXXXXX(), paymentDate1, "101.04.002 I", KBK);
+        //createAndAddCharge(chargesTaxOrg, pageX000001.getFieldXXXXXX(), paymentDate1, "710.00.001 I", KBK);
 
         ChargeInfo retVal = createEmptyCharge();
 

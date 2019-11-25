@@ -51,9 +51,7 @@ public abstract class ABaseFXXXVXXFlk {
     public ABaseFXXXVXXFlk(Fno fno, List<FormError> errors) {
         this.errors = errors;
 //        TODO заполненеие страницы фно из xml !!!
-//        FormX0000 formX0000 = fno.getFormX0000();
-//        FormX0000.SheetGroup sheetGroup00 = form20000.getSheetGroup();
-//        pageX000001 = sheetGroup00.getPageX000001();
+//        pageX000001 = fno.getFormX0000().getSheetGroup().getPageX000001();
     }
 
     public abstract void doFlk();
