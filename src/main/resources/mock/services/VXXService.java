@@ -360,7 +360,7 @@ public class VXXService {
         ErrorMsg errorMsg = relatedDocsService.completeStandardChecks(taxPayer, Collections.singletonList(FORM_CODE), taxOrg, docPeriod, docTypes);
         if (errorMsg != null) {
             String fieldName = "";
-            if (isFinal(pageЧ000001))
+            if (isFinal(pageX000001))
                 fieldName = "dt_final";
             if (isMain(pageX000001))
                 fieldName = "dt_main";
