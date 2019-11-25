@@ -7,11 +7,10 @@
 Примеры запуска KnpXJCPlugin генератора(для UNIX систем sh xjc.sh):
  файлы генерируется в папке genSRC, пожно указать папку своего проекта
  -p указывает пакет куда xml классы генерировать, лучше указать в фармате kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml где fXXX код фно, vXX версия фно
-xjc.bat -d genSRC 200v29.xsd -p kz.inessoft.sono.app.fno.f200.v29.services.dto.xml -Xknp-generate
-xjc.bat -d genSRC 300v25format1.xsd -p kz.inessoft.sono.app.fno.f300.v25.services.dto.xml -Xknp-generate
-xjc.bat -d genSRC 101.04v20.xsd -p kz.inessoft.sono.app.fno.f101.app04.v20.services.dto.xml -Xknp-generate
-xjc.bat -d genSRC 400.00v20.xsd -p kz.inessoft.sono.app.fno.f400.v20.services.dto.xml -Xknp-generate
-
+xjc.bat -Xknp-generate -d genSRC 200v29.xsd -p kz.inessoft.sono.app.fno.f200.v29.services.dto.xml 
+xjc.bat -Xknp-generate -d genSRC 300v25format1.xsd -p kz.inessoft.sono.app.fno.f300.v25.services.dto.xml
+xjc.bat -Xknp-generate -d genSRC 101.04v20.xsd -p kz.inessoft.sono.app.fno.f101.app04.v20.services.dto.xml
+xjc.bat -Xknp-generate -d genSRC 400.00v20.xsd -p kz.inessoft.sono.app.fno.f400.v20.services.dto.xml
 
 Плагин генерирует следующие классы(DTO пакет)
 kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.BaseV29Converter
