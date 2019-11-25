@@ -12,6 +12,7 @@ xjc.bat -Xknp-generate -d genSRC 101.04v20.xsd -p kz.inessoft.sono.app.fno.f101.
 xjc.bat -Xknp-generate -d genSRC 400.00v20.xsd -p kz.inessoft.sono.app.fno.f400.v20.services.dto.xml
 *файлы генерируется в папке genSRC, пожно указать папку своего проекта
  -p указывает пакет куда надо xml классы генерировать, лучше указать в фармате kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml где fXXX код фно, vXX версия фно
+ если не указывать -p(пакет) то в текущей директории создается generated папка для xml классов
 
 Плагин генерирует следующие классы(DTO пакет)
 kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.BaseV29Converter
