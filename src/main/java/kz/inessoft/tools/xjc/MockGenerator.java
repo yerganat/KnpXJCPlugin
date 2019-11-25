@@ -60,7 +60,9 @@ public class MockGenerator {
                     .replace("x_form_path", FORM_CODE)
                     .replace("x_fno_version", "v" + FNO_VERSION)
                     .replace("x_only_fno_version", FNO_VERSION)
-                    .replace("ageX00", "age" + FORM_CODE_VALUE);
+                    .replace("ageX00", "age" + FORM_CODE_VALUE)
+                    .replace("form_X00_00", "form_" + FORM_CODE.replace(",", "_"))
+                    .replace("page_X00_00", "page_" + FORM_CODE.replace(",", "_"));
                     //.replace("IPageX000001", firstInterfaceClass)
                     //.replace("pageX000001", firstInterfaceClass.toLowerCase().replace("ipage", "page"));
             Files.write( Paths.get(restPath), restController.getBytes(StandardCharsets.UTF_8));
