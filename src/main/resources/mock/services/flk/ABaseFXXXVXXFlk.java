@@ -58,26 +58,6 @@ public abstract class ABaseFXXXVXXFlk {
 
     public abstract void doFlk();
 
-    protected boolean isMain() {
-        return VXXUtils.isMain(page2000001);
-    }
-
-    protected boolean isRegular() {
-        return VXXUtils.isRegular(page2000001);
-    }
-
-    protected boolean isAdditional() {
-        return VXXUtils.isAdditional(page2000001);
-    }
-
-    protected boolean isNotice() {
-        return VXXUtils.isNotice(page2000001);
-    }
-
-    protected boolean isFinal() {
-        return VXXUtils.isFinal(page2000001);
-    }
-
     protected void addError(String formName, Integer formIdx, String sheetName, Integer rowIdx, String fieldName, String msgCode) {
         FormError e = new FormError();
         e.setFormName(formName);
