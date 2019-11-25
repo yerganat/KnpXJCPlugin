@@ -36,7 +36,7 @@ import kz.inessoft.sono.lib.tax.payers.dtos.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import kz.inessoft.sono.lib.docs.registry.dtos.RegisterDocRequestBuilder
+import kz.inessoft.sono.lib.docs.registry.dtos.RegisterDocRequestBuilder;
 import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBContext;
@@ -121,7 +121,7 @@ public class VXXService {
 //
 //        PageX000001 pageX000001 = new PageX000001();
 //        formX0000.setPageX000001(pageX000001);
-/
+//
 
         return retVal;
     }
@@ -251,7 +251,7 @@ public class VXXService {
 
     public AcceptResult acceptForm(String signedXml, Long draftId) throws TransformerException, SAXException, JAXBException, ParseException {
         String xml = XSLTTransformer.convertFromOldSonoFormat(signedXml);
-        XSDChecker.checkXml(xml, "/xsds/x_form_pathvXX.xsd", VXXService.class);  /
+        XSDChecker.checkXml(xml, "/xsds/x_form_pathvXX.xsd", VXXService.class);
         TaxPayerCheckEDSResult taxPayerCheckEDSResult = checkSignService.checkTaxPayerEDS(signedXml);
 
         Unmarshaller unmarshaller = getJaxbContext().createUnmarshaller();
