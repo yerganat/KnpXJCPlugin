@@ -65,7 +65,7 @@ set JAVA="%JAVA_HOME%\bin\java"
 goto LAUNCHXJC
 
 :LAUNCHXJC
-rem set JAVA="D:\RSK\jdk-11.0.4\bin\java"
+set JAVA="D:\RSK\jdk-11.0.4\bin\java"
 rem set JAVA="D:\jre-10.0.2_windows-x64_bin\jre-10.0.2\bin\java"
 
 rem УСТАНОВИТЕ ЗДЕСЬ путь к Oracle JRE 10/11 если JAVA_HOME у вас другая, потому что KnpXJCPlugin не работает

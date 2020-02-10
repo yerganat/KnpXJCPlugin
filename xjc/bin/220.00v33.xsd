@@ -1,0 +1,1555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:fn="http://www.w3.org/2005/xpath-functions">
+   <xs:element name="fno" type="Fno"/>
+   <xs:complexType name="Fno">
+      <xs:sequence>
+         <xs:element name="form_220_00" type="form_220_00"/>
+         <xs:element name="form_220_01" type="form_220_01" minOccurs="0" maxOccurs="1"/>
+         <xs:element name="form_220_02" type="form_220_02" minOccurs="0" maxOccurs="1"/>
+         <xs:element name="form_220_03" type="form_220_03" minOccurs="0" maxOccurs="1"/>
+         <xs:element name="form_220_04" type="form_220_04" minOccurs="0" maxOccurs="1"/>
+         <xs:element name="form_220_05" type="form_220_05" minOccurs="0" maxOccurs="1"/>
+      </xs:sequence>
+      <xs:attribute name="code" fixed="220.00"/>
+      <xs:attribute name="formatVersion" fixed="1"/>
+      <xs:attribute name="version" fixed="33"/>
+   </xs:complexType>
+   <xs:complexType name="form_220_00">
+      <xs:sequence>
+         <xs:element name="sheetGroup">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="page_220_00_01" type="page_220_00_01"/>
+                  <xs:element name="page_220_00_02" type="page_220_00_02"/>
+                  <xs:element name="page_220_00_03" type="page_220_00_03"/>
+                  <xs:element name="page_220_00_04" type="page_220_00_04"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_220_00_01">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode1" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="abroad" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="cb_n1" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="cb_n2" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="cb_n_w" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="country_num" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="currency_code">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="dt_additional" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="dt_final" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="dt_main" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="dt_notice" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="dt_regular" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="dt_w" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_001" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_002" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_003" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_004" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_005" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_006" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_007" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_007_01" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_007_02" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_008" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_009" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_010" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_011" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_011_01" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="notice_date" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="notice_number" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="payer_name1">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="payer_name2" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="payer_name3" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="pril_1" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="pril_2" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="pril_3" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="pril_4" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="pril_5" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="rnn" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="taxreg_num" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="18"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="uchr_dov" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="upr_dov" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_220_00_02">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode4" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_011_02" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_011_03" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_011_03_A" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_011_03_B" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_011_03_C" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_011_03_D" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_011_03_E" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_011_03_F" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_011_03_G" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_011_03_H" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_011_04" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_011_05" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_011_06" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_011_07" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_011_08" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_011_09" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_012" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_013" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_014" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_015" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_016" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_017" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_018" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_019" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_020" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_021" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_022" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_023" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_024" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_025" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_025_01" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_025_02" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_025_03" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_026" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_220_00_03">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode7" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_027" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_028" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_029" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_030" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_031" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_032" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_033" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_033_01" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_033_02" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_034" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_035" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_036" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_037" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_038" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_039" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_040" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="1"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_041" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_042" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_042_01" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_042_02" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_042_03" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_042_04" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_042_05" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_042_06" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_043" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_044" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_00_045" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_220_00_04">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode1" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="accept_date" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="filler_name">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="in_doc_number" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="post_date" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="rating_auth_code" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="receptor_name" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="submit_date">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="form_220_01">
+      <xs:sequence>
+         <xs:element name="sheetGroup">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="page_220_01_01" type="page_220_01_01"/>
+                  <xs:element name="page_220_01_02" type="page_220_01_02"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_220_01_01">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode3" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="page_number" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="row" type="page_220_01_01_row" minOccurs="0" maxOccurs="10"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_220_01_01_row">
+      <xs:sequence>
+         <xs:element name="field_220_01_A" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="8"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_01_B" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_01_C" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_220_01_02">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode2" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_01_F_SUM" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="page_number" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="row" type="page_220_01_02_row" minOccurs="0" maxOccurs="10"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_220_01_02_row">
+      <xs:sequence>
+         <xs:element name="field_220_01_A" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="8"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_01_D" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_01_E" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_01_F" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="form_220_02">
+      <xs:sequence>
+         <xs:element name="sheetGroup">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="page_220_02_01" type="page_220_02_01"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_220_02_01">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode1" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_02_E_SUM" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="page_number" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="row" type="page_220_02_01_row" minOccurs="0" maxOccurs="11"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_220_02_01_row">
+      <xs:sequence>
+         <xs:element name="field_220_02_A" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="8"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_02_B" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_02_C" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_02_D" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_02_E" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="form_220_03">
+      <xs:sequence>
+         <xs:element name="sheetGroup">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="page_220_03_01" type="page_220_03_01"/>
+                  <xs:element name="page_220_03_02" type="page_220_03_02"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_220_03_01">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode1" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_03_F_SUM" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="page_number" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="row" type="page_220_03_01_row" minOccurs="0" maxOccurs="10"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_220_03_01_row">
+      <xs:sequence>
+         <xs:element name="field_220_03_A" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="8"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_03_B" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_03_C" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_03_D" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_03_E" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_03_F" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_220_03_02">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode2" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_03_G_SUM" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="page_number" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="row" type="page_220_03_02_row" minOccurs="0" maxOccurs="10"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_220_03_02_row">
+      <xs:sequence>
+         <xs:element name="field_220_03_A" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="8"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_03_G" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="form_220_04">
+      <xs:sequence>
+         <xs:element name="sheetGroup">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="page_220_04_01" type="page_220_04_01"/>
+                  <xs:element name="page_220_04_02" type="page_220_04_02"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_220_04_01">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode1" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_001" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_001_01" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_001_02" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_001_03" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_001_04" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_002" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_002_01" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_002_02" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_002_03" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_002_04" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_003" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_003_01" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_003_02" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_003_03" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_003_04" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_004" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_004_01" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_004_02" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_004_03" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_004_04" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_005" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_005_01" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_005_02" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_005_03" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_005_04" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_220_04_02">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode2" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_006" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_006_01" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_006_02" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_006_03" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_006_04" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_007" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_007_01" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_007_02" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_007_03" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_007_04" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_008" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_008_01" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_008_02" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_008_03" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_008_04" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_009" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_009_01" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_009_02" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_009_03" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_009_04" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_010" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_010_01" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_010_02" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_010_03" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_010_04" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_011" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_011_01" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_011_02" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_011_03" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_011_04" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_04_012" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="form_220_05">
+      <xs:sequence>
+         <xs:element name="sheetGroup">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="page_220_05_01" type="page_220_05_01"/>
+                  <xs:element name="page_220_05_02" type="page_220_05_02"/>
+                  <xs:element name="page_220_05_03" type="page_220_05_03"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_220_05_01">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode1" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="page_number" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="row" type="page_220_05_01_row" minOccurs="0" maxOccurs="10"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_220_05_01_row">
+      <xs:sequence>
+         <xs:element name="field_220_05_a" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_05_b" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_05_c" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_05_d" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_05_e" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_220_05_02">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode1" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="page_number" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="row" type="page_220_05_02_row" minOccurs="0" maxOccurs="10"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_220_05_02_row">
+      <xs:sequence>
+         <xs:element name="field_220_05_a" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_05_f" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_05_g" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_05_h" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_05_i" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_220_05_03">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode1" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_05_j_itog" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_05_k_itog" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_05_l_itog" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_05_m_itog" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="page_number" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="row" type="page_220_05_03_row" minOccurs="0" maxOccurs="10"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_220_05_03_row">
+      <xs:sequence>
+         <xs:element name="field_220_05_a" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_05_j" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_05_k" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_05_l" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_220_05_m" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

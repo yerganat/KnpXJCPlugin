@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:fn="http://www.w3.org/2005/xpath-functions">
+   <xs:element name="fno" type="Fno"/>
+   <xs:complexType name="Fno">
+      <xs:sequence>
+         <xs:element name="form_510_00" type="form_510_00"/>
+      </xs:sequence>
+      <xs:attribute name="code" fixed="510.00"/>
+      <xs:attribute name="formatVersion" fixed="1"/>
+      <xs:attribute name="version" fixed="21"/>
+   </xs:complexType>
+   <xs:complexType name="form_510_00">
+      <xs:sequence>
+         <xs:element name="sheetGroup">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="page_510_00_01" type="page_510_00_01"/>
+                  <xs:element name="page_510_00_02" type="page_510_00_02"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_510_00_01">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode1" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="contract_name1">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="contract_name2" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="currency_code">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="data_optional" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="date_" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="date_change" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="date_letter" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="date_licence" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="dt_additional" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="dt_final" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="dt_main" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="dt_notice" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="dt_regular" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="dt_w" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="field_510_00_001" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="mineral">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="notice_date" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="notice_number" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="num" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="num_dop" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="num_letter" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="num_licence" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="payer_name1">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="payer_name2" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="payer_name3" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_quarter">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="rnn" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="vp_podp_bonus" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="vp_terr_bonus" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="vp_w" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="w_date_" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="w_letter" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="w_licence" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="w_num" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="w_win_date" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="w_win_date1" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="win_date" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="win_date1" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="page_510_00_02">
+      <xs:sequence>
+         <xs:element name="PaperFormsBarcode2" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="accept_date">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="head_name">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="iin">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="12"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="in_doc_number">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_quarter">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="period_year">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:length value="4"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="post_date">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="rating_auth_code" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:long"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="receptor_name" minOccurs="0">
+            <xs:simpleType>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="submit_date">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:pattern value="([0][1-9]|[1-2][0-9]|[3][0-1]).([0][1-9]|[1][0-2]).[1-2][0-9][0-9][0-9]"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>
