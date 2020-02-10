@@ -1961,7 +1961,7 @@
    </xs:complexType>
    <xs:complexType name="form_400_06">
       <xs:sequence>
-         <xs:element name="sheetGroup">
+         <xs:element name="sheetGroup" maxOccurs="unbounded">
             <xs:complexType>
                <xs:sequence>
                   <xs:element name="page_400_06_01" type="page_400_06_01"/>
