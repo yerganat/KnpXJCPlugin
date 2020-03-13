@@ -5,21 +5,23 @@ import kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.RestToXmlConverter;
 import kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.XMLToRestConverter;
 import kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.rest.*;
 import kz.inessoft.sono.lib.audit.client.api.AuditService;
+import kz.inessoft.sono.lib.charge.client.api.ChargeService;
+import kz.inessoft.sono.lib.charge.dtos.RedateCharge;
 import kz.inessoft.sono.lib.charge.dtos.request.ChargeInfo;
 import kz.inessoft.sono.lib.dict.client.api.DictDaysOffService;
+import kz.inessoft.sono.lib.dict.client.api.DictMSUService;
 import kz.inessoft.sono.lib.dict.client.api.DictRawMaterialSupplierService;
 import kz.inessoft.sono.lib.dict.client.api.DictTaxOrgService;
 import kz.inessoft.sono.lib.docs.registry.client.api.DocsRegistryService;
 import kz.inessoft.sono.lib.docs.registry.client.api.DraftsService;
 import kz.inessoft.sono.lib.docs.registry.client.api.ErrorMsg;
 import kz.inessoft.sono.lib.docs.registry.client.api.RelatedDocsService;
-import kz.inessoft.sono.lib.docs.registry.dtos.PayerInfo;
-import kz.inessoft.sono.lib.docs.registry.dtos.RegisterDocRequest;
-import kz.inessoft.sono.lib.docs.registry.dtos.RegisterDocResponce;
-import kz.inessoft.sono.lib.docs.registry.dtos.SaveDraftRequest;
+import kz.inessoft.sono.lib.docs.registry.client.api.checks.StandardChecks1;
+import kz.inessoft.sono.lib.docs.registry.dtos.*;
 import kz.inessoft.sono.lib.dto.audit.AuditRequest;
 import kz.inessoft.sono.lib.fno.notifications.client.api.ReceptionNotificationService;
 import kz.inessoft.sono.lib.fno.notifications.dtos.NewStatusInfo;
+import kz.inessoft.sono.lib.fno.utils.FormUtils;
 import kz.inessoft.sono.lib.fno.utils.rest.AcceptResult;
 import kz.inessoft.sono.lib.fno.utils.rest.FormError;
 import kz.inessoft.sono.lib.fno.utils.rest.SaveDraftResponse;
@@ -33,10 +35,10 @@ import kz.inessoft.sono.lib.sso.EUinType;
 import kz.inessoft.sono.lib.sso.UserInfo;
 import kz.inessoft.sono.lib.tax.payers.client.api.TaxPayersService;
 import kz.inessoft.sono.lib.tax.payers.dtos.*;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import kz.inessoft.sono.lib.docs.registry.dtos.RegisterDocRequestBuilder;
 import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBContext;
@@ -49,6 +51,7 @@ import java.io.StringWriter;
 import java.text.ParseException;
 import java.util.*;
 
+import static java.util.Objects.isNull;
 import static kz.inessoft.sono.app.fno.fXXX.FXXXConstants.FORM_CODE;
 import static kz.inessoft.sono.app.fno.fXXX.vXX.services.VXXUtils.*;
 import static kz.inessoft.sono.lib.fno.utils.FieldUtils.date;
@@ -64,24 +67,20 @@ public class VXXService {
     private DraftsService draftsService;
     private DictTaxOrgService dictTaxOrgService;
     private DictDaysOffService daysOffService;
-    private ReceptionNotificationService notificationService;
+    private ChargeService chargeService;
     private AuditService auditService;
-    private int minMonth;
+    private DictMSUService msuService;
     private int minYear;
-    private int maxMonth;
     private int maxYear;
 
 
     @Autowired
-    public VXXService(@Value("${vXX.min.month}") int minMonth, @Value("${vXX.min.year}") int minYear,
-                      @Value("${vXX.max.month}") int maxMonth, @Value("${vXX.max.year}") int maxYear,
+    public VXXService(@Value("${vXX.min.year}") int minYear, @Value("${vXX.max.year}") int maxYear,
                       TaxPayersService taxPayersService, DocsRegistryService docsRegistryService,
                       RelatedDocsService relatedDocsService, CheckSignService checkSignService,
-                      DraftsService draftsService, DictTaxOrgService dictTaxOrgService, DictDaysOffService daysOffService, ReceptionNotificationService notificationService,
-                      AuditService auditService) {
-        this.minMonth = minMonth;
+                      DraftsService draftsService, DictTaxOrgService dictTaxOrgService, DictDaysOffService daysOffService,
+                      ChargeService chargeService,  AuditService auditService, DictMSUService msuService) {
         this.minYear = minYear;
-        this.maxMonth = maxMonth;
         this.maxYear = maxYear;
         this.taxPayersService = taxPayersService;
         this.docsRegistryService = docsRegistryService;
@@ -90,8 +89,9 @@ public class VXXService {
         this.draftsService = draftsService;
         this.dictTaxOrgService = dictTaxOrgService;
         this.daysOffService = daysOffService;
-        this.notificationService = notificationService;
         this.auditService = auditService;
+        this.chargeService = chargeService;
+        this.msuService = msuService;
     }
 
     public Fno getPrefilledForm(UserInfo userInfo, int year) {
@@ -123,12 +123,44 @@ public class VXXService {
 //        formX0000.setPageX000001(pageX000001);
 //
 
+
+        if (taxPayer instanceof PhisPerson || taxPayer instanceof IndPerson) {
+            IPhisPerson person = (IPhisPerson) taxPayer;
+            PhisName phisName = person.getPhisNameRu();
+            if (phisName == null)
+                phisName = person.getPhisNameKz();
+            if (phisName == null)
+                phisName = person.getPhisNameEn();
+            pageX000001.setPayerName1(phisName.getSurname());
+            pageX000001.setPayerName2(phisName.getName());
+            pageX000001.setPayerName3(phisName.getMiddleName());
+
+            String fullName = phisName.getSurname() +
+                    (phisName.getName() != null && !phisName.getName().isEmpty() ? " " + phisName.getName() : "") +
+                    (phisName.getMiddleName() != null && !phisName.getMiddleName().isEmpty() ? " " + phisName.getMiddleName() : "");
+            pageX000004.setFillerName(fullName);
+        } else {
+            JurPerson jurPerson = (JurPerson) taxPayer;
+            String name = jurPerson.getJurNameRu();
+            if (name == null)
+                name = jurPerson.getJurNameKz();
+            if (name == null)
+                name = jurPerson.getJurNameEn();
+
+            List<String> parts = FormUtils.splitString(name, new int[]{21, 36, 36});
+            pageX000001.setPayerName1(parts.get(0));
+            pageX000001.setPayerName2(parts.get(1));
+            pageX000001.setPayerName3(parts.get(2));
+        }
+
         return retVal;
     }
 
     public Fno getDocument(Long id, UserInfo userInfo) throws JAXBException, TransformerException {
-        String documentXml = docsRegistryService.getDocumentXml(id, getRnn(userInfo));
-        return getRestDTOFromXML(documentXml);
+        DocumentMainData data = docsRegistryService.getDocumentMainData(id, getRnn(userInfo));
+        Fno restDTOFromXML = getRestDTOFromXML(data.getDocXml());
+        restDTOFromXML.getFormX0000().getPageX000004().setInDocNumber(isNull(data.getRegNumberInfo()) ? null : data.getRegNumberInfo().getInDocNumber());
+        return restDTOFromXML;
     }
 
     private String getRnn(UserInfo userInfo) {
@@ -180,24 +212,22 @@ public class VXXService {
         SaveDraftResponse retVal = new SaveDraftResponse();
         List<FormError> errors = new ArrayList<>();
 
-        //TODO укажите нужную старницу !!!
         PageX000001 pageX000001 = fno.getFormX0000().getPageX000001();
+        PageX000004 pageX000004 = fno.getFormX0000().getPageX000004();
 
         if (pageX000001.getPeriodYear() == null) {
             errors.add(new FormError("form_X00_00", "page_X00_00_01", "period_year",
                     "Налоговый период, за который представляется налоговая отчетность не указан", "Налоговый период, за который представляется налоговая отчетность не указан"));
         }
 
-        Integer periodMonth = Integer.valueOf(pageX000001.getPeriodMonth());
-        if (periodMonth == null || periodMonth < 13 || periodMonth > 0) {
-            errors.add(new FormError("form_X00_00", "page_X00_00_01", "period_quarter",
-                    "Налоговый период, за который представляется налоговая отчетность не указан", "Налоговый период, за который представляется налоговая отчетность не указан"));
-        }
-
-
-        if (!isMain(pageX000001) && !isRegular(pageX000001) && !isAdditional(pageX000001) && !isNotice(pageX000001)) {
+        if (!isFinal(pageX000001) && !isMain(pageX000001) && !isRegular(pageX000001) && !isAdditional(pageX000001) && !isNotice(pageX000001)) {
             errors.add(new FormError("form_X00_00", "page_X00_00_01", "dt_main",
                     "Реквизит Не указан вид расчета", "Реквизит Не указан вид расчета"));
+        }
+
+        if(StringUtils.isBlank(pageX000004.getRatingAuthCode())) {
+            errors.add(new FormError("form_220", "page_220_00_04", "rating_auth_code",
+                    "Не указан код ОГД", "Не указан код ОГД"));
         }
 
         if (!errors.isEmpty()) {
@@ -213,14 +243,15 @@ public class VXXService {
         saveDraftRequest.setFormVersion(VXXConstants.VERSION);
         saveDraftRequest.setDraftId(id);
         PayerInfo payerInfo = new PayerInfo();
+        payerInfo.setIin(pageX000001.getIin());
         payerInfo.setRnn(rnn);
         saveDraftRequest.setPayerInfo(payerInfo);
 
-        saveDraftRequest.setTaxOrgCode(pageX000001.getRatingAuthCode());
+        saveDraftRequest.setTaxOrgCode(pageX000004.getRatingAuthCode());
         DocPeriod docPeriod = new DocPeriod();
-        docPeriod.setYear(Integer.valueOf(pageX000001.getPeriodYear()));
+        docPeriod.setYear(Integer.parseInt(pageX000001.getPeriodYear()));
+        docPeriod.setPeriod(EPeriod.YEAR);
 
-        docPeriod.setPeriod(EPeriod.getQuartalByNumber(periodMonth));
         saveDraftRequest.setDocPeriod(docPeriod);
         saveDraftRequest.setDocTypes(getDocTypes(pageX000001));
         retVal.setId(String.valueOf(draftsService.saveDraft(saveDraftRequest)));
@@ -238,10 +269,8 @@ public class VXXService {
 
     public String serializeToXmlForSign(Fno form) throws JAXBException, TransformerException {
         String strNow = date(new Date());
-
-        //TODO укажите нужные поля
-        form.getFormX0000().getPageX000001().setAcceptDate(strNow);
-        form.getFormX0000().getPageX000001().setSubmitDate(strNow);
+        form.getFormX0000().getPageX000004().setAcceptDate(strNow);
+        form.getFormX0000().getPageX000004().setSubmitDate(strNow);
         return serializeToXml(form);
     }
 
@@ -249,9 +278,9 @@ public class VXXService {
         return  serializeToXml(form);
     }
 
-    public AcceptResult acceptForm(String signedXml, Long draftId) throws TransformerException, SAXException, JAXBException, ParseException {
+    public AcceptResult acceptForm(String signedXml, Long draftId) throws TransformerException, SAXException, JAXBException {
         String xml = XSLTTransformer.convertFromOldSonoFormat(signedXml);
-        XSDChecker.checkXml(xml, "/xsds/x_form_pathvXX.xsd", VXXService.class);
+        XSDChecker.checkXml(xml, "/xsds/220.x_form_pathvXX.xsd", VXXService.class);
         TaxPayerCheckEDSResult taxPayerCheckEDSResult = checkSignService.checkTaxPayerEDS(signedXml);
 
         Unmarshaller unmarshaller = getJaxbContext().createUnmarshaller();
@@ -259,18 +288,19 @@ public class VXXService {
         List<FormError> errors = new ArrayList<>();
 
         kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.PageX000001 pageX000001 = fno.getFormX0000().getSheetGroup().getPageX000001();
+        kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.PageX000004 pageX000004 = fno.getFormX0000().getSheetGroup().getPageX000004();
         if (taxPayerCheckEDSResult.getStatus() == EStatus.INVALID) {
-            errors.add(new FormError("form_X00_00", "page_X00_00_01", "iin", "ЭЦП не верна", "ЭЦП не верна")); //TODO перебить как в xml парметры
+            errors.add(new FormError("form_X00_00", "page_X00_00_01", "iin", "ЭЦП не верна", "ЭЦП не верна"));
             return createErrorsResponse(errors);
         }
 
         Date now = new Date();
 
-        String acceptDate = pageX000001.getAcceptDate();
+        String acceptDate = pageX000004.getAcceptDate();
         if (acceptDate != null && !date(now).equals(acceptDate))
             errors.add(new FormError("form_X00_00", "page_X00_00_01", "accept_date", "Дата приема не равна текущей дате", "Дата приема не равна текущей дате"));
 
-        String strSubmitDate = pageX000001.getSubmitDate();
+        String strSubmitDate = pageX000004.getSubmitDate();
         if (!date(now).equals(strSubmitDate))
             errors.add(new FormError("form_X00_00", "page_X00_00_01", "submit_date", "Дата приема не равна текущей дате", "Дата приема не равна текущей дате"));
 
@@ -357,7 +387,8 @@ public class VXXService {
 
         List<EDocType> docTypes = getDocTypes(pageX000001);
 
-        ErrorMsg errorMsg = relatedDocsService.completeStandardChecks(taxPayer, Collections.singletonList(FORM_CODE), taxOrg, docPeriod, docTypes);
+        StandardChecks1 standardChecks = new StandardChecks1(taxPayer,  Collections.singletonList(FORM_CODE), taxOrg, docPeriod, docTypes, relatedDocsService);
+        ErrorMsg errorMsg = standardChecks.doChecks();
         if (errorMsg != null) {
             String fieldName = "";
             if (isFinal(pageX000001))
@@ -374,7 +405,7 @@ public class VXXService {
             return createErrorsResponse(errors);
         }
 
-        RegisterDocResponce registerDocResponce = registerDocument(fno, signedXml, taxPayer, docTypes, docPeriod, draftId, now, now);
+        RegisterDocResponce registerDocResponce = registerDocument(fno, signedXml, taxPayer, docTypes, standardChecks.getParentDocId(), docPeriod, draftId, now, now);
         AcceptResult retVal = new AcceptResult();
         retVal.setRegNumber(registerDocResponce.getDocNumber());
         retVal.setDocId(registerDocResponce.getDocId().toString());
@@ -382,11 +413,12 @@ public class VXXService {
     }
 
     private RegisterDocResponce registerDocument(kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.Fno fno, String docXml, BaseTaxPayer taxPayer, List<EDocType> docTypes,
-                                                 DocPeriod docPeriod, Long draftId, Date acceptDate, Date submitDate) throws ParseException {
+                                                 Long parentDocId, DocPeriod docPeriod, Long draftId, Date acceptDate, Date submitDate) {
 
-        kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.PageX000001 pageX000001 = fno.getFormX0000().getSheetGroup().getPageX000001(); //TODO первая старница ФНО
+        kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.PageX000001 pageX000001 = fno.getFormX0000().getSheetGroup().getPageX000001();
+        kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml.PageX000004 pageX000004 = fno.getFormX0000().getSheetGroup().getPageX000004();
 
-        ChargeInfo chargeInfo = new VXXChargeInfoBuilder(fno, taxPayer, daysOffService).build();
+        VXXChargeInfoBuilder vXXChargeInfoBuilder = new VXXChargeInfoBuilder(fno, taxPayer, docPeriod, daysOffService, relatedDocsService, msuService);
 
         RegisterDocRequest registerDocRequest = RegisterDocRequestBuilder.newRequest()
                 .setFormInfo(FORM_CODE, VXXConstants.VERSION)
@@ -397,15 +429,20 @@ public class VXXService {
                 .setSubmitDate(submitDate)
                 .setDocTypes(docTypes)
                 .setDocPeriod(docPeriod)
-                .setTaxOrgCode(pageX000001.getRatingAuthCode())
-                .setChargeInfo(chargeInfo)
+                .setTaxOrgCode(pageX000004.getRatingAuthCode())
+                .setChargeInfo(vXXChargeInfoBuilder.build())
                 .setGenerateReceptionNotification(true)
+                .setParentDocId(parentDocId)
                 .buildStandardRequest();
 
         PayerInfo payerInfo = new PayerInfo();
         payerInfo.setIin(pageX000001.getIin());
         payerInfo.setRnn(taxPayer.getRnn());
         registerDocRequest.setPayerInfo(payerInfo);
+
+        if (isFinal(pageX000001))
+            // Поменять начисления в документах с предыдущим периодом
+            processFinalCharge(taxPayer, docPeriod, vXXChargeInfoBuilder.getFinalPaymentDate());
 
         return docsRegistryService.registerDocument(registerDocRequest);
     }
@@ -416,5 +453,27 @@ public class VXXService {
         AcceptResult retVal = new AcceptResult();
         retVal.setErrors(errors);
         return retVal;
+    }
+
+
+    private void processFinalCharge(BaseTaxPayer taxPayer, DocPeriod docPeriod, Date newDate) {
+        // Если форма ликвидационная, то надо скорректировать начисления по предыдущим уменьшив их срок начисления
+        DocsExistsRequest docsExistsRequest = new DocsExistsRequest();
+        docsExistsRequest.setCheckPeriodType(DocsExistsRequest.ECheckPeriodType.EXACT);
+        docsExistsRequest.setFormCodes(Collections.singletonList(FORM_CODE));
+        docsExistsRequest.setRnn(taxPayer.getRnn());
+        DocPeriod period = new DocPeriod();
+
+        period.setPeriod(EPeriod.YEAR);
+        period.setYear(docPeriod.getYear() - 1);
+        docsExistsRequest.setPeriod(period);
+
+        List<Long> docsId = relatedDocsService.getDocsId(docsExistsRequest);
+        if (!docsId.isEmpty()) {
+            RedateCharge redateCharge = new RedateCharge();
+            redateCharge.setDocsId(docsId);
+            redateCharge.setNewMaxDate(newDate);
+            chargeService.redateCharges(redateCharge);
+        }
     }
 }
