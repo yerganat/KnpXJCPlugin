@@ -14,6 +14,7 @@ xjc.bat -Xknp-generate -d genSRC 400.00v20.xsd -p kz.inessoft.sono.app.fno.f400.
 xjc.bat -Xknp-generate -d genSRC 220.00v33.xsd -p kz.inessoft.sono.app.fno.f220.v33.services.dto.xml
 xjc.bat -Xknp-generate -d genSRC 421.00v19.xsd -p kz.inessoft.sono.app.fno.f421.v19.services.dto.xml
 xjc.bat -Xknp-generate -d genSRC 570.00v17.xsd -p kz.inessoft.sono.app.fno.f570.v17.services.dto.xml
+xjc.bat -Xknp-generate -d genSRC 230.00v19.xsd -p kz.inessoft.sono.app.fno.f230.v19.services.dto.xml
 *файлы генерируется в папке genSRC, пожно указать папку своего проекта
  -p указывает пакет куда надо xml классы генерировать, лучше указать в фармате kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml где fXXX код фно, vXX версия фно
  если не указывать -p(пакет) то в текущей директории создается generated папка для xml классов

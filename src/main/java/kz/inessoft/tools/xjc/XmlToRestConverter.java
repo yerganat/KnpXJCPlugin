@@ -121,8 +121,19 @@ public class XmlToRestConverter {
 
                 }
 
+                boolean isSheetList = false;
 
-                {
+                for (JFieldVar formField : xmlFormClassMap.get(formTypeName).fields().values()) {
+
+                    if (!formField.type().name().contains("SheetGroup")) continue;
+
+                    logger.debug("  sheet name " + formField.type().fullName());
+                    logger.debug("  sheet name " + formField.type().name());
+
+                    isSheetList = formField.type().fullName().contains("java.util.List");
+                }
+
+                if(!isSheetList) {
                     JVar restForm = mainCopyBlock.decl(NONE, returnFormTypeBase, "restForm", JExpr._new(returnFormTypeBase));
 
                     for (JFieldVar formField : xmlFormClassMap.get(formTypeName).fields().values()) {
@@ -175,6 +186,107 @@ public class XmlToRestConverter {
                                     jIfNullBlock.invoke("fillPageRows").arg(
                                             varSheetGroup.invoke("get" + StringUtils.capitalize(sheetField.name())).invoke("getRow"))
                                             .arg(pageVar.invoke("getRow")).arg(aLambda);
+
+                                }
+
+                            }
+                        }
+                    }
+
+
+                    mainCopyBlock._return(restForm);
+                } else {
+                    JVar restForm = mainCopyBlock.decl(NONE, returnFormTypeBase, "restForm", JExpr._new(returnFormTypeBase));
+
+                    for (JFieldVar formField : xmlFormClassMap.get(formTypeName).fields().values()) {
+
+                        String sheetGroupClassName = Helper.getNameWithoutList(formField.type().fullName());
+
+                        JVar varSheetGroup = null;
+
+
+                        if( formField.type().name().contains("List<SheetGroup>")) {
+                            jConvertBlock._if(jFormParam.invoke("getSheetGroup").eq(JExpr._null()).cor(jFormParam.invoke("getSheetGroup").invoke("isEmpty")))._then()._return(JExpr._null());
+                            varSheetGroup = mainCopyBlock.decl(NONE, J_MODEL.parseType(sheetGroupClassName), "sheetGroup0", jFormParamRef.invoke("getSheetGroup").invoke("get").arg(JExpr.lit(0)));
+                        } else {
+                            varSheetGroup = mainCopyBlock.decl(NONE, J_MODEL.parseType(sheetGroupClassName), "sheetGroup", jFormParamRef.invoke("getSheetGroup"));
+                        }
+
+                        if (!formField.type().name().contains("SheetGroup")) continue;
+
+
+                        //JDefinedClass jSheetClass = (JDefinedClass) formField.type();
+
+                        JDefinedClass jSheetClass  = xmlSheetGroupClassMap.get(sheetGroupClassName);
+
+
+                        JBlock declBlock = new JBlock();
+                        mainCopyBlock.add(declBlock);
+
+                        JBlock pageSetBlock = new JBlock();
+                        mainCopyBlock.add(pageSetBlock);
+
+                        JForLoop SGforLoop = mainCopyBlock._for();
+                        JVar SGforLoopArg = SGforLoop.init(J_MODEL.parseType(sheetGroupClassName), "sg", jFormParam.invoke("getSheetGroup")); //: form10104001.getSheetGroup()
+                        SGforLoop.test(JExpr.invoke("1"));
+                        SGforLoop.update(SGforLoopArg.incr());
+                        JBlock forLoopBody = SGforLoop.body();
+                        JVar rowsCount = forLoopBody.decl(NONE, J_MODEL.INT, "rowsCount", JExpr.lit(0));
+
+
+                        JBlock rowCoutnBlock = new JBlock();
+                        forLoopBody.add(rowCoutnBlock);
+
+                        JForLoop ROWforLoop = forLoopBody._for();
+                        JVar ROWforLoopArg = ROWforLoop.init(J_MODEL.INT, "i", JExpr.lit(0));
+                        ROWforLoop.test(ROWforLoopArg.lt(rowsCount));
+                        ROWforLoop.update(ROWforLoopArg.incr());
+                        JBlock ROWforLoopBody = ROWforLoop.body();
+
+                        for (JFieldVar sheetField : jSheetClass.fields().values()) {
+                            JType jPageClass = sheetField.type();
+
+                            logger.debug("  convert " + jPageClass.name());
+                            if (!jPageClass.name().contains("Page")) continue;
+
+                            String pageGetter = "get" + StringUtils.capitalize(sheetField.name());
+
+                            JType pageType = J_MODEL.parseType(PKG_SERVICE_DTO_REST + jPageClass.name());
+                            JVar pageVar = declBlock.decl(NONE, pageType, sheetField.name(), JExpr._null());
+                            //JVar pageVar = mainCopyBlock.decl(NONE, pageType, sheetField.name(), JExpr._new(pageType));
+
+                            JBlock jIfNullBlock = pageSetBlock._if(varSheetGroup.invoke(pageGetter).ne(JExpr._null()))._then();
+                            jIfNullBlock.assign(pageVar, JExpr._new(pageType));
+                            jIfNullBlock.add(restForm.invoke("set" + StringUtils.capitalize(sheetField.name())).arg(pageVar));
+                            jIfNullBlock.invoke("copyTo").arg(varSheetGroup.invoke(pageGetter)).arg(pageVar);
+
+
+
+                            rowCoutnBlock._if(SGforLoopArg.invoke("get" + StringUtils.capitalize(sheetField.name())).ne(JExpr._null()))._then()
+                                    .assign(rowsCount, JExpr.ref("Math").invoke("max").arg(rowsCount).arg(SGforLoopArg.invoke(pageGetter).invoke("getRow").invoke("size")));
+
+
+                            if (jPageClass instanceof JDefinedClass) {
+                                JFieldVar jPageRowVar = ((JDefinedClass) jPageClass).fields().get("row");
+                                if (jPageRowVar != null) {
+                                    JBlock rowCopyBlock = ROWforLoopBody._if(SGforLoopArg.invoke(pageGetter).ne(JExpr._null()).cand(pageVar.ne(JExpr._null())))._then();
+                                    JType pageRowType = J_MODEL.parseType(PKG_SERVICE_DTO_REST + pageVar.type().name() + "Row");
+                                    JVar row = rowCopyBlock.decl(NONE, pageRowType, "row", JExpr._new(pageRowType));
+                                    rowCopyBlock.add(pageVar.invoke("getRow").invoke("add").arg(row));
+                                    rowCopyBlock._if(SGforLoopArg.invoke(pageGetter).invoke("getRow").invoke("size").gt(ROWforLoopArg))._then()
+                                            .invoke("copyTo").arg(SGforLoopArg.invoke(pageGetter).invoke("getRow").invoke("get").arg(ROWforLoopArg)).arg(row);
+
+//                                    JLambda aLambda = new JLambda();
+//                                    JLambdaParam aParam = aLambda.addParam("srcRow");
+//                                    JBlock jLambdaBlock = aLambda.body();
+//
+//                                    JType pageRowType = J_MODEL.parseType(PKG_SERVICE_DTO_REST + pageVar.type().name() + "Row");
+//                                    JVar lambdaRetVal = jLambdaBlock.decl(NONE, pageRowType, "retVal1", JExpr._new(pageRowType));
+//                                    jLambdaBlock.add(JExpr._this().invoke("copyTo").arg(JExpr.ref(aParam.name())).arg(lambdaRetVal))._return(lambdaRetVal);
+//
+//                                    jIfNullBlock.invoke("fillPageRows").arg(
+//                                            varSheetGroup.invoke("get" + StringUtils.capitalize(sheetField.name())).invoke("getRow"))
+//                                            .arg(pageVar.invoke("getRow")).arg(aLambda);
 
                                 }
 

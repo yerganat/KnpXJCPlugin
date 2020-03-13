@@ -675,7 +675,7 @@
    </xs:complexType>
    <xs:complexType name="form_220_01">
       <xs:sequence>
-         <xs:element name="sheetGroup">
+         <xs:element name="sheetGroup" maxOccurs="unbounded">
             <xs:complexType>
                <xs:sequence>
                   <xs:element name="page_220_01_01" type="page_220_01_01"/>
@@ -799,7 +799,7 @@
    </xs:complexType>
    <xs:complexType name="form_220_02">
       <xs:sequence>
-         <xs:element name="sheetGroup">
+         <xs:element name="sheetGroup" maxOccurs="unbounded">
             <xs:complexType>
                <xs:sequence>
                   <xs:element name="page_220_02_01" type="page_220_02_01"/>
@@ -875,7 +875,7 @@
    </xs:complexType>
    <xs:complexType name="form_220_03">
       <xs:sequence>
-         <xs:element name="sheetGroup">
+         <xs:element name="sheetGroup" maxOccurs="unbounded">
             <xs:complexType>
                <xs:sequence>
                   <xs:element name="page_220_03_01" type="page_220_03_01"/>
@@ -1345,7 +1345,7 @@
    </xs:complexType>
    <xs:complexType name="form_220_05">
       <xs:sequence>
-         <xs:element name="sheetGroup">
+         <xs:element name="sheetGroup" maxOccurs="unbounded">
             <xs:complexType>
                <xs:sequence>
                   <xs:element name="page_220_05_01" type="page_220_05_01"/>
