@@ -41,6 +41,15 @@ public abstract class ABaseFXXXVXXFlk {
         RU_ERRORS.put("msgDateGreater", "Указана дата больше текущей даты");
         KZ_ERRORS.put("msgDateGreater", "Ағымдағы күннен үлкен күн көрсетілген");
 
+        RU_ERRORS.put("msgDeclarationEmpty", "Не указан вид декларации");
+        KZ_ERRORS.put("msgDeclarationEmpty", "Нысанның түрі көрсетілуі тиіс");
+
+        RU_ERRORS.put("msgPrilNotChecked", "Не отмечено представленное приложение");
+        KZ_ERRORS.put("msgPrilNotChecked", "Берілген қосымша көрсетілмеген");
+
+        RU_ERRORS.put("msgPril1", "Отсутствует приложение 1");
+        KZ_ERRORS.put("msgPril1", "Қосымша 1 толтырылмаған");
+
     }
 
     private List<FormError> errors;
