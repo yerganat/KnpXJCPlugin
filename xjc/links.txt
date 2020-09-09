@@ -1,0 +1,15 @@
+https://blog.jooq.org/tag/xjc-plugin/
+http://www.archive.ricston.com/blog/xjc-plugin/
+https://stackoverflow.com/questions/38204600/generate-non-schema-classes-annotations-in-xjc-plugin
+https://www.programcreek.com/java-api-examples/?api=com.sun.tools.xjc.Options
+https://github.com/highsource/jaxb2-annotate-plugin
+https://github.com/phax/jcodemodel
+https://stackoverflow.com/questions/21370161/xjc-with-annox-running-from-command-prompt
+https://theopentutorials.com/examples/java/jaxb/generate-java-class-from-xml-schema-using-jaxb-xjc-command/
+http://shengwangi.blogspot.com/2014/11/how-to-simply-print-object-content-to-string.html
+https://github.com/fbdo/jaxb2-fixed-value
+https://github.com/esfand/printit/blob/master/codemodel-tutorial.md
+https://blogs.sap.com/2010/10/11/generating-java-source-with-the-codemodel-api/
+http://www.java2s.com/example/java-src/pkg/com/sun/tools/xjc/addon/xew/xmlelementwrapperplugin-04bfb.html
+https://github.com/javaee/jaxb-v2
+https://drive.google.com/file/d/1dLIl5pGwsvLjLSCnqQ4dxPQrjYJIEpIx/view
