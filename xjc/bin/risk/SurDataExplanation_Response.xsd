@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by kach (ecc) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns="http://www.esepshi.kz/edw/surdata" targetNamespace="http://www.esepshi.kz/edw/surdata">
+	<xs:element name="rms_expl_response" type="RmsExplResponse">
+		<xs:annotation>
+			<xs:documentation>Потверждение из ЕХД в КНП. Класс транспортаа: BT_EHD_KNP_SUREXPLANATION.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="RmsExplResponse">
+		<xs:sequence>
+			<xs:element name="rms_basic_id" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>Внутр. идентификатор НП в ЕХД.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="explanation_id" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>Внутр. идентификатор пояснения в КНП.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BIN_IIN" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="12"/>
+						<xs:pattern value="[0-9]{12}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="send_date" type="xs:dateTime">
+				<xs:annotation>
+					<xs:documentation>Дата и время формирования ответа.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="status">
+				<xs:annotation>
+					<xs:documentation>Статус по принятому пакету: SUCCESS, ERROR</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="SUCCESS"/>
+						<xs:enumeration value="ERROR"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="description" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Пояснение, если была ошибка</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="0"/>
+						<xs:maxLength value="512"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

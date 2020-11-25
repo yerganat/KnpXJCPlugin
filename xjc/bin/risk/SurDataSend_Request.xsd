@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by kach (ecc) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.esepshi.kz/edw/surdata" targetNamespace="http://www.esepshi.kz/edw/surdata" elementFormDefault="qualified">
+	<xs:element name="rms_send_request" type="RmsSendRequest">
+		<xs:annotation>
+			<xs:documentation>Отправка информаций о результатах категорирования налогоплательщиков. Транспортный класс: BT_EHD_KNP_SURDATA</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="RmsSendRequest">
+		<xs:sequence>
+			<xs:element name="sys_info" type="RmsSystemInfo"/>
+			<xs:element name="taxpayers">
+				<xs:annotation>
+					<xs:documentation>Налогоплательщики</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="taxpayer" type="RmsTaxpayer" maxOccurs="1000"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RmsSystemInfo">
+		<xs:sequence>
+			<xs:element name="import_id" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>Идентификатор файла - источника данных.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="batch_number">
+				<xs:annotation>
+					<xs:documentation>Номер пакета</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="1"/>
+						<xs:maxInclusive value="5000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="sended_date" type="xs:dateTime">
+				<xs:annotation>
+					<xs:documentation>Дата и время формирования запроса.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RmsTaxpayer">
+		<xs:sequence>
+			<xs:element name="rms_basic_id" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>Внутр. идентификатор НП в ЕХД.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BIN_IIN">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="12"/>
+						<xs:pattern value="[0-9]{12}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="risk_degree">
+				<xs:annotation>
+					<xs:documentation>Степень риска</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="3"/>
+						<xs:maxLength value="128"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="date_of_data_used_for_calculate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Дата актуальности данных, использованных для расчета</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="risk_criterions">
+				<xs:annotation>
+					<xs:documentation>Сведения о критериях, по которым деятельность налогоплательщика отнесена к соответствующей степени риска</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="criterion" type="RmsCriterion" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RmsCriterion">
+		<xs:sequence>
+			<xs:element name="criterion_name">
+				<xs:annotation>
+					<xs:documentation>Наименование критерия</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="3"/>
+						<xs:maxLength value="1000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="calculated_value" type="xs:double" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Значение по результатам расчета</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="base_value" type="xs:double" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Базовое значение</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="comment" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Примечание по базовому значению</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="0"/>
+						<xs:maxLength value="4000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="number_of_points" type="xs:double" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Количество баллов</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="criterion_indincators" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Показатели, на основании которых осуществлен расчет критериев, по которым деятельность налогоплательщика отнесена к соответствующей степени риска</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="indicator" type="RmsIndicator" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RmsIndicator">
+		<xs:sequence>
+			<xs:element name="indicator_name">
+				<xs:annotation>
+					<xs:documentation>Показатель</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="3"/>
+						<xs:maxLength value="1000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="value" type="xs:double" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Значение</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="comment" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Примечание</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="0"/>
+						<xs:maxLength value="4000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
