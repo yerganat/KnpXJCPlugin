@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by kach (ecc) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns="http://www.esepshi.kz/edw/surdata" targetNamespace="http://www.esepshi.kz/edw/surdata">
+	<xs:element name="rms_expl_request" type="RmsExplRequest">
+		<xs:annotation>
+			<xs:documentation>Отправка пояснений из КНП. Транспортный класс: BT_KNP_EHD_SUREXPLANATION</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="RmsExplRequest">
+		<xs:sequence>
+			<xs:element name="rms_basic_id" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>Внутр. идентификатор НП в ЕХД.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="explanation_id" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>Внутр. идентификатор пояснения в КНП.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BIN_IIN" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Для информативности при  дебаге, можно не заполнять.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="12"/>
+						<xs:pattern value="[0-9]{12}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="sended_date" type="xs:dateTime">
+				<xs:annotation>
+					<xs:documentation>Дата и время формирования запроса.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="taxpayer_explanations">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="explanation" type="RmsTaxpayerExplanation" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RmsTaxpayerExplanation">
+		<xs:sequence>
+			<xs:element name="explanation">
+				<xs:annotation>
+					<xs:documentation>Текст пояснения.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="3"/>
+						<xs:maxLength value="4000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="knp_file_id">
+				<xs:annotation>
+					<xs:documentation>Внутр. идентификатор КНП для Документа-потверждения. Данный идентификатор будет использоваться для загрузки файла из КНП </xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="256"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="file_mime_type">
+				<xs:annotation>
+					<xs:documentation>Тип файла</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="file_name">
+				<xs:annotation>
+					<xs:documentation>Найменование файла</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="512"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

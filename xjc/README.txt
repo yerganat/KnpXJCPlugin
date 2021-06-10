@@ -19,6 +19,15 @@ xjc.bat -Xknp-generate -d genSRC 240.00v15.xsd -p kz.inessoft.sono.app.fno.f240.
 xjc.bat -Xknp-generate -d genSRC 100.00v28.xsd -p kz.inessoft.sono.app.fno.f100.v28.services.dto.xml
 xjc.bat -Xknp-generate -d genSRC 150.00v16r68.xsd -p kz.inessoft.sono.app.fno.f150.v16.services.dto.xml
 xjc.bat -Xknp-generate -d genSRC 110.00v33r106.xsd -p kz.inessoft.sono.app.fno.f110.v33.services.dto.xml
+xjc.sh -Xknp-generate -d genSRC form_100_00_v27_r98.xsd -p kz.inessoft.sono.app.fno.f100.v27.services.dto.xml
+xjc.sh -Xknp-generate -d genSRC form_110_00_v32_r104.xsd -p kz.inessoft.sono.app.fno.f110.v32.services.dto.xml
+sh xjc.sh -d genSRC risk/SurDataExplanation_Request.xsd -p kz.inessoft.sono.app.notification.risk.ehd.wsclient.model.explanation.request
+sh xjc.sh -d genSRC risk/SurDataExplanation_Response.xsd -p kz.inessoft.sono.app.notification.risk.ehd.wsclient.model.explanation.response
+sh xjc.sh -d genSRC risk/SurDataSend_Request.xsd -p kz.inessoft.sono.app.notification.risk.ehd.wsclient.model.risk.request
+sh xjc.sh -d genSRC risk/SurDataSend_Response.xsd -p kz.inessoft.sono.app.notification.risk.ehd.wsclient.model.risk.response
+sh xjc.sh -Xknp-generate -d genSRC 700.xsd -p kz.inessoft.sono.app.fno.f007.v8.services.dto.xml
+sh xjc.sh -Xknp-generate -d genSRC 001.00v7.xsd -p kz.inessoft.sono.app.fno.f001.services.dto.xml
+sh xjc.sh -Xknp-generate -d genSRC 250_00_v2.xsd -p kz.inessoft.sono.app.fno.f250.v2.services.dto.xml -onlydto
 *файлы генерируется в папке genSRC, пожно указать папку своего проекта
  -p указывает пакет куда надо xml классы генерировать, лучше указать в фармате kz.inessoft.sono.app.fno.fXXX.vXX.services.dto.xml где fXXX код фно, vXX версия фно
  если не указывать -p(пакет) то в текущей директории создается generated папка для xml классов
