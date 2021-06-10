@@ -90,20 +90,8 @@ rem Remove -ea
 for /f "delims=-" %%i in ('echo %JAVA_VERSION2%') do set JAVA_VERSION=%%i
 echo Java major version: %JAVA_VERSION%
 
-if %JAVA_VERSION% GEQ 9 goto JDK9_OR_GREATER
 %JAVA% -cp %JAXB_PATH% %XJC_OPTS% com.sun.tools.xjc.XJCFacade %*
-GOTO END
 
-:JDK9_OR_GREATER
-if %JAVA_VERSION% GTR 10 goto JDK11_OR_GREATER
-rem module path + upgrade
-%JAVA% --module-path %JAXB_PATH% --upgrade-module-path %JAXB_HOME%/mod/jaxb-api.jar %XJC_OPTS% -m com.sun.tools.xjc/com.sun.tools.xjc.XJCFacade %*
-GOTO END
-
-:JDK11_OR_GREATER
-rem module path
-%JAVA% --module-path %JAXB_PATH% %XJC_OPTS% -m com.sun.tools.xjc/com.sun.tools.xjc.XJCFacade %*
-GOTO END
 
 :END
 %COMSPEC% /C exit %ERRORLEVEL%
